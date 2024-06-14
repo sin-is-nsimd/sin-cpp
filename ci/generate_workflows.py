@@ -27,6 +27,78 @@
 import os
 import sys
 
+config = {}
+
+# debian + raspios + manjaro
+for system in [
+    "debian12-amd64-sse42",
+    "debian13-amd64-sse42",
+    "raspios12-armhf-neon",
+    # "raspios12-arm64-asimd",
+    # "manjaro-aarch64-asimd",
+]:
+    config.update(
+        {
+            system: {
+                "compilers_args": [
+                    {
+                        "name": "clang",
+                        "args": "-DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang",
+                    },
+                    {
+                        "name": "gcc",
+                        "args": "-DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc",
+                    },
+                ],
+                "build_system": [
+                    {"name": "ninja", "args": "-GNinja"},
+                    {"name": "make", "args": '-G"Unix Makefiles"'},
+                ],
+            },
+        }
+    )
+
+# macOS
+for arch in ["arm64-asimd"]:
+    config.update(
+        {
+            "macOS"
+            + "-"
+            + arch: {
+                "compilers_args": [
+                    {
+                        "name": "clang",
+                        "args": "-DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang",
+                    },
+                ],
+                "build_system": [
+                    {"name": "ninja", "args": "-GNinja"},
+                    {"name": "make", "args": '-G"Unix Makefiles"'},
+                ],
+            },
+        }
+    )
+
+# Windows
+for version in []:  # ["10", "11"]:
+    config.update(
+        {
+            "windows"
+            + version
+            + "-amd64-sse42": {
+                "compilers_args": [
+                    {
+                        "name": "msvc",
+                        "args": "",
+                    },
+                ],
+                "build_system": [
+                    {"name": "ninja", "args": "-GNinja"},
+                ],
+            },
+        },
+    )
+
 header = """# THIS FILE IS GENERATED!
 
 name: ci
@@ -39,14 +111,28 @@ on:
 jobs:
 """
 
-runner_header = """
+runner = """
   {runner}:
     continue-on-error: true
-    runs-on: [ self-hosted, {os_name}, {arch} ]
+    runs-on: [ self-hosted, {os} ]
     name: {runner}
     steps:
+"""
+
+step_clean_unix = """
+      # Clean
       - name: Clean
         run: rm -rf *
+"""
+
+step_clean_windows = """
+      # Clean
+      - name: Clean
+        run: rd -r *
+"""
+
+step_clone = """
+      # Clone
       - name: Clone Google Test
         uses: actions/checkout@v3
         with:
@@ -67,27 +153,10 @@ runner_header = """
         with:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
-      - name: Clone CMake
-        uses: actions/checkout@v3
-        with:
-          repository: Kitware/CMake
-          ref: 'v3.29.2'
-          path: 'CMake'
-"""
-
-step_cmake_build = """
-      - name: CMake v3.29.2
-        shell: bash
-        run: |
-          cd CMake
-          mkdir build
-          cd build
-          ../bootstrap --prefix=../../_install -- -DCMAKE_USE_OPENSSL=OFF -DCMAKE_CXX_COMPILER_LAUNCHER=ccache
-          make -j `nproc`
-          make install
 """
 
 step_unix = """
+      # Dependencies
       - name: Google Test
         shell: bash
         run: |
@@ -111,6 +180,8 @@ step_unix = """
                                                 -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \\
                                                 {compilers_args}
           cmake --build build --target install
+
+      # sin-cpp
       - name: CMake
         shell: bash
         run: |
@@ -121,30 +192,26 @@ step_unix = """
                                                 -DCMAKE_INSTALL_PREFIX=../_install \\
                                                 -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \\
                                                 {compilers_args}
-      - name: Build & Test
+      - name: Build
         shell: bash
         run: |
           cd sin-cpp/build
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Test
+        shell: bash
+        run: |
+          cd sin-cpp/build
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 """
 
-config = {
-    "Linux": {
-        "compilers_args": [
-            {"name": "gcc", "args": "-DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc"},
-            {"name": "clang", "args": "-DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang"},
-        ],
-        "build_system": [{"name": "ninja", "args": "-GNinja"}, {"name": "make", "args": "-G\"Unix Makefiles\""}],
-        "arch": ["X64", "ARM64"],
-    },
-    "macOS": {
-        "compilers_args": [{"name": "clang", "args": "-DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang"}],
-        "build_system": [{"name": "ninja", "args": "-GNinja"}, {"name": "make", "args": "-G\"Unix Makefiles\""}],
-        "arch": ["ARM64"],
-    },
-}
+step_windows = """
+      # sin-cpp
+      - name: Compile & Test
+        run: |
+          cd sin-cpp
+          cmd.exe /c "ci\\windows.bat" "{os}"
+"""
 
 if __name__ == "__main__":
 
@@ -157,32 +224,39 @@ if __name__ == "__main__":
         print("Writing file", output_path)
         f.write(header)
 
-        for os_name, configs in config.items():
+        for os, configs in config.items():
 
-            f.write(f"\n  # {os_name}\n")
+            f.write(f"\n  # {os}\n")
 
             for build_system in configs["build_system"]:
-                for arch in configs["arch"]:
-                    for compilers_args in configs["compilers_args"]:
-                        f.write(
-                            runner_header.format(
-                                runner=f"{os_name}-{arch}-{build_system['name']}-{compilers_args['name']}".lower(),
-                                os_name=os_name,
-                                arch=arch,
-                                compiler_name=compilers_args["name"],
-                                compilers_args=compilers_args["args"],
-                                build_system=build_system["args"],
-                            )
+                for compilers_args in configs["compilers_args"]:
+
+                    # Header
+                    f.write(
+                        runner.format(
+                            runner=f"{os}-{build_system['name']}-{compilers_args['name']}".lower(),
+                            os=os,
                         )
-                        if os_name != "macOS":
-                            f.write(step_cmake_build)
+                    )
+
+                    # Clean
+                    if os.startswith("windows"):
+                        f.write(step_clean_windows)
+                    else:
+                        f.write(step_clean_unix)
+
+                    # Clone
+                    f.write(step_clone)
+
+                    # Dependencies & sin-cpp
+                    if os.startswith("windows"):
+                        f.write(step_windows.format(os=os))
+                    else:
                         f.write(
                             step_unix.format(
-                                os_name=os_name,
-                                arch=arch,
-                                compiler_name=compilers_args["name"],
-                                compilers_args=compilers_args["args"],
+                                os=os,
                                 build_system=build_system["args"],
+                                compilers_args=compilers_args["args"],
                             )
                         )
 
