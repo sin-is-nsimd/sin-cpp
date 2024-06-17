@@ -137,22 +137,26 @@ TEST(to_chars, float) {
   test_float(std::numeric_limits<long double>::max(),
              {
                  "1.189731495357231765e+4932", // clang
-                 "Infinity"                    // gcc
+                 "Infinity",                   // gcc
+                 "1.7976931348623157e+308"     // armhf
              });
   test_float(std::numeric_limits<long double>::min(),
              {
                  "3.3621031431120935063e-4932", // clang
-                 "0"                            // gcc
+                 "0",                           // gcc
+                 "2.2250738585072014e-308"      // armhf
              });
   test_float(-std::numeric_limits<long double>::min(),
              {
                  "-3.3621031431120935063e-4932", // clang
-                 "-0"                            // gcc
+                 "-0",                           // gcc
+                 "-2.2250738585072014e-308"      // armhf
              });
   test_float(std::numeric_limits<long double>::lowest(),
              {
                  "-1.189731495357231765e+4932", // clang
-                 "-Infinity"                    // gcc
+                 "-Infinity",                   // gcc
+                 "-1.7976931348623157e+308"     // armhf
              });
 }
 
@@ -180,22 +184,26 @@ TEST(to_chars, float_scientific) {
   test_scientific(std::numeric_limits<long double>::max(),
                   {
                       "1.189731495357231765e+4932", // clang
-                      "Infinity"                    // gcc
+                      "Infinity",                   // gcc
+                      "1.7976931348623157e+308"     // armhf
                   });
   test_scientific(std::numeric_limits<long double>::min(),
                   {
                       "3.3621031431120935063e-4932", // clang
-                      "0e+00"                        // gcc
+                      "0e+00",                       // gcc
+                      "2.2250738585072014e-308"      // armhf
                   });
   test_scientific(-std::numeric_limits<long double>::min(),
                   {
                       "-3.3621031431120935063e-4932", // clang
-                      "-0e+00"                        // gcc
+                      "-0e+00",                       // gcc
+                      "-2.2250738585072014e-308"      // armhf
                   });
   test_scientific(std::numeric_limits<long double>::lowest(),
                   {
                       "-1.189731495357231765e+4932", // clang
-                      "-Infinity"                    // gcc
+                      "-Infinity",                   // gcc
+                      "-1.7976931348623157e+308"     // armhf
                   });
 }
 
@@ -276,24 +284,36 @@ TEST(to_chars, float_hex) {
                                               "0p+0",    // clang
                                               "0p-16385" // gcc
                                           });
-  test_hex(static_cast<long double>(21.42), {"a.b5c28f5c28f6p+1"});
-  test_hex(static_cast<long double>(-0.4), {"-c.cccccccccccdp-5"});
+  test_hex(static_cast<long double>(21.42), {
+                                                "a.b5c28f5c28f6p+1", // amd64
+                                                "1.56b851eb851ecp+4" // arm
+                                            });
+  test_hex(static_cast<long double>(-0.4), {
+                                               "-c.cccccccccccdp-5", // amd64
+                                               "-1.999999999999ap-2" // arm
+                                           });
   test_hex(std::numeric_limits<long double>::max(),
            {
-               "f.fffffffffffffffp+16380", // clang
-               "8p+16381"                  // gcc
+               "f.fffffffffffffffp+16380", // amd64, clang
+               "8p+16381",                 // amd64, gcc
+               "1.fffffffffffffp+1023"     // arm
            });
-  test_hex(std::numeric_limits<long double>::min(), {
-                                                        "8p-16385", // clang
-                                                        "0p-16385"  // gcc
-                                                    });
-  test_hex(-std::numeric_limits<long double>::min(), {
-                                                         "-8p-16385", // clang
-                                                         "-0p-16385"  // gcc
-                                                     });
+  test_hex(std::numeric_limits<long double>::min(),
+           {
+               "8p-16385", // amd64, clang
+               "0p-16385", // amd64, gcc
+               "1p-1022"   // arm
+           });
+  test_hex(-std::numeric_limits<long double>::min(),
+           {
+               "-8p-16385", // amd64, clang
+               "-0p-16385", // amd64, gcc
+               "-1p-1022"   // arm
+           });
   test_hex(std::numeric_limits<long double>::lowest(),
            {
-               "-f.fffffffffffffffp+16380", // clang
-               "-8p+16381"                  // gcc
+               "-f.fffffffffffffffp+16380", // amd64, clang
+               "-8p+16381",                 // amd64, gcc
+               "-1.fffffffffffffp+1023"     // arm
            });
 }
