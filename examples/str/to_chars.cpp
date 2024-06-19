@@ -7,14 +7,14 @@ int main() {
   {
     std::array<char, sincpp::to_chars_max_size<int>()> r;
     auto const [r_ptr, errc] = sincpp::to_chars(r, 73);
-    std::cout << std::string_view(r.begin(), r_ptr) << std::endl; // 73
+    std::cout << std::string_view(r.data(), r_ptr) << std::endl; // 73
   }
 
   // double
   {
     std::array<char, sincpp::to_chars_max_size<double>()> r;
     auto const [r_ptr, errc] = sincpp::to_chars(r, 21.42);
-    std::cout << std::string_view(r.begin(), r_ptr) << std::endl; // 21.42
+    std::cout << std::string_view(r.data(), r_ptr) << std::endl; // 21.42
   }
 
   // error
