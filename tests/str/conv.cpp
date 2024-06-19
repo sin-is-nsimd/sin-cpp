@@ -51,7 +51,7 @@ void test_int(T const value,
               std::vector<std::string_view> const &possible_results) {
   std::array<char, sincpp::to_chars_max_size<T>()> r;
   auto const [r_ptr, errc] = sincpp::to_chars(r, value);
-  test(value, std::string_view(r.begin(), r_ptr), possible_results);
+  test(value, std::string_view(r.data(), r_ptr), possible_results);
 }
 
 template <std::chars_format FloatFormat = std::chars_format::general, class T>
@@ -59,7 +59,7 @@ void test_float(T const value,
                 std::vector<std::string_view> const &possible_results) {
   std::array<char, sincpp::to_chars_max_size<T, FloatFormat>()> r;
   auto const [r_ptr, errc] = sincpp::to_chars<FloatFormat>(r, value);
-  test(value, std::string_view(r.begin(), r_ptr), possible_results);
+  test(value, std::string_view(r.data(), r_ptr), possible_results);
 }
 
 template <class T>
