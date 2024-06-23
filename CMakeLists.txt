@@ -34,7 +34,11 @@ set(CMAKE_CXX_STANDARD 20)
 find_package(benchmark REQUIRED)
 find_package(GTest REQUIRED)
 
-# LIBRARIES
+# LIBRARY
+
+if (MSVC)
+  set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+endif()
 
 sin_add_library(sin-cpp)
 sin_add_doxygen(sincpp_doxygen INPUTS "include" "src" OUTPUT "./sincpp_doxygen")

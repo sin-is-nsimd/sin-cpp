@@ -25,10 +25,4 @@
  * @defgroup sincpp_str String operations.
  */
 
-namespace sincpp {
-
-void _to_be_removed();
-
-} // namespace sincpp
-
 #endif
