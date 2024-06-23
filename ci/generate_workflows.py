@@ -29,38 +29,17 @@ import sys
 
 config = {}
 
-# Debian
-for version in ["12", "13"]:
+# debian + raspios + manjaro
+for system in [
+    "debian12-amd64-sse42",
+    "debian13-amd64-sse42",
+    "raspios12-armhf-neon",
+    "raspios12-arm64-asimd",
+    "manjaro-aarch64-asimd",
+]:
     config.update(
         {
-            "debian"
-            + version
-            + "-amd64-sse42": {
-                "compilers_args": [
-                    {
-                        "name": "clang",
-                        "args": "-DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang",
-                    },
-                    {
-                        "name": "gcc",
-                        "args": "-DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc",
-                    },
-                ],
-                "build_system": [
-                    {"name": "ninja", "args": "-GNinja"},
-                    {"name": "make", "args": '-G"Unix Makefiles"'},
-                ],
-            },
-        }
-    )
-
-# raspios
-for arch in ["armhf-neon", "arm64-asimd"]:
-    config.update(
-        {
-            "raspios12"
-            + "-"
-            + arch: {
+            system: {
                 "compilers_args": [
                     {
                         "name": "clang",
