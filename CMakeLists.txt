@@ -40,9 +40,9 @@ find_package(GTest REQUIRED)
 
 # LIBRARY
 
-if(MSVC)
-  set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
-endif()
+# if(MSVC)
+#   set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+# endif()
 
 sin_add_library(sin-cpp ${SINCPP_LIB_TYPE})
 sin_add_doxygen(sincpp_doxygen INPUTS "include" "src" OUTPUT "./sincpp_doxygen")
