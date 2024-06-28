@@ -59,6 +59,8 @@ void test_float(T const value,
                 std::vector<std::string_view> const &possible_results) {
   std::array<char, sincpp::to_chars_max_size<T, FloatFormat>()> r;
   auto const [r_ptr, errc] = sincpp::to_chars<FloatFormat>(r, value);
+  std::cout << "BOUH " << sincpp::to_chars_max_size<T>() << " -> "
+            << std::distance(r.data(), r_ptr) << std::endl;
   test(value, std::string_view(r.data(), r_ptr), possible_results);
 }
 
