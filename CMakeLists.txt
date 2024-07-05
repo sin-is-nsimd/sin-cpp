@@ -24,6 +24,10 @@ project(sin-cpp
   VERSION 24.03.29
   DESCRIPTION "sin-cpp library")
 
+# OPTIONS
+
+SET(SINCPP_LIB_TYPE "SHARED" CACHE STRING "Library type (SHARED or STATIC)")
+
 # SIN-CMAKE
 
 include("${CMAKE_CURRENT_SOURCE_DIR}/../sin-cmake/cmake/sin.cmake")
@@ -34,9 +38,9 @@ set(CMAKE_CXX_STANDARD 20)
 find_package(benchmark REQUIRED)
 find_package(GTest REQUIRED)
 
-# LIBRARIES
+# LIBRARY
 
-sin_add_library(sin-cpp)
+sin_add_library(sin-cpp ${SINCPP_LIB_TYPE})
 sin_add_doxygen(sincpp_doxygen INPUTS "include" "src" OUTPUT "./sincpp_doxygen")
 
 # TESTS, EXAMPLES, BENCHMARKS

@@ -26,6 +26,6 @@ cd ..
 cd "sin-cpp"
 mkdir "build_ci_%~1"
 cd "build_ci_%~1"
-cmake .. -GNinja  -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="../../_install"
+cmake .. -DSINCPP_LIB_TYPE=STATIC -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE="/MT" -DCMAKE_INSTALL_PREFIX="../../_install"
 ninja
 ctest  --output-on-failure
