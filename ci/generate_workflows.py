@@ -34,8 +34,8 @@ for system in [
     "debian12-amd64-sse42",
     "debian13-amd64-sse42",
     "raspios12-armhf-neon",
-    # "raspios12-arm64-asimd",
-    # "manjaro-aarch64-asimd",
+    "raspios12-arm64-asimd",
+    "manjaro-aarch64-asimd",
 ]:
     config.update(
         {
