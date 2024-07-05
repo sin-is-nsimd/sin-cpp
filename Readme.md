@@ -84,6 +84,8 @@ ninja
 ninja install
 ```
 
+Under `Microsoft Windows`, you may add `-DSINCPP_LIB_TYPE=STATIC -DCMAKE_CXX_FLAGS_RELEASE="/MT"` arguments to the `cmake` command.
+
 # Development
 
 Project uses `clang-format` as `C++` code formatter.

@@ -80,7 +80,7 @@ for arch in ["arm64-asimd"]:
     )
 
 # Windows
-for version in []:  # ["10", "11"]:
+for version in ["10", "11"]:
     config.update(
         {
             "windows"

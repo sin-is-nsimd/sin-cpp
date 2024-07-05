@@ -1136,3 +1136,83 @@ jobs:
         run: |
           cd sin-cpp/build
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  # windows10-amd64-sse42
+
+  windows10-amd64-sse42-ninja-msvc:
+    continue-on-error: true
+    runs-on: [ self-hosted, windows10-amd64-sse42 ]
+    name: windows10-amd64-sse42-ninja-msvc
+    steps:
+
+      # Clean
+      - name: Clean
+        run: rd -r *
+
+      # Clone
+      - name: Clone Google Test
+        uses: actions/checkout@v3
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v3
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+      - name: Clone sin-cmake
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+      - name: Clone sin-cpp
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+
+      # sin-cpp
+      - name: Compile & Test
+        run: |
+          cd sin-cpp
+          cmd.exe /c "ci\windows.bat" "windows10-amd64-sse42"
+
+  # windows11-amd64-sse42
+
+  windows11-amd64-sse42-ninja-msvc:
+    continue-on-error: true
+    runs-on: [ self-hosted, windows11-amd64-sse42 ]
+    name: windows11-amd64-sse42-ninja-msvc
+    steps:
+
+      # Clean
+      - name: Clean
+        run: rd -r *
+
+      # Clone
+      - name: Clone Google Test
+        uses: actions/checkout@v3
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v3
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+      - name: Clone sin-cmake
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+      - name: Clone sin-cpp
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+
+      # sin-cpp
+      - name: Compile & Test
+        run: |
+          cd sin-cpp
+          cmd.exe /c "ci\windows.bat" "windows11-amd64-sse42"
