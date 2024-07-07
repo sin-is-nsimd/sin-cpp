@@ -78,7 +78,7 @@ constexpr size_t to_chars_max_size() {
     } else if constexpr (std::is_same_v<T, double>) {
       return 24;
     } else {
-      return 32;
+      return 43;
     }
   } else if constexpr (FloatFormat == std::chars_format::fixed) {
     return std::numeric_limits<T>::max_exponent10 + 1 +
@@ -89,7 +89,7 @@ constexpr size_t to_chars_max_size() {
     } else if constexpr (std::is_same_v<T, double>) {
       return 22;
     } else {
-      return 30;
+      return 38;
     }
   }
 }
