@@ -23,9 +23,10 @@
 #include <gtest/gtest.h>
 
 template <class T>
-void test(T const num, std::string_view const str,
+void test(T const num, std::errc const errc, std::string_view const str,
           std::vector<std::string_view> const &possible_results) {
   std::cout << "sizeof(T) = " << sizeof(T) << " | num = " << num
+            << " | errc = " << std::make_error_code(errc).message()
             << " | str_size = " << str.size() << " | str = " << str
             << std::endl;
 
@@ -51,7 +52,7 @@ void test_int(T const value,
               std::vector<std::string_view> const &possible_results) {
   std::array<char, sincpp::to_chars_max_size<T>()> r;
   auto const [r_ptr, errc] = sincpp::to_chars(r, value);
-  test(value, std::string_view(r.data(), r_ptr), possible_results);
+  test(value, errc, std::string_view(r.data(), r_ptr), possible_results);
 }
 
 template <std::chars_format FloatFormat = std::chars_format::general, class T>
@@ -59,7 +60,7 @@ void test_float(T const value,
                 std::vector<std::string_view> const &possible_results) {
   std::array<char, sincpp::to_chars_max_size<T, FloatFormat>()> r;
   auto const [r_ptr, errc] = sincpp::to_chars<FloatFormat>(r, value);
-  test(value, std::string_view(r.data(), r_ptr), possible_results);
+  test(value, errc, std::string_view(r.data(), r_ptr), possible_results);
 }
 
 template <class T>
