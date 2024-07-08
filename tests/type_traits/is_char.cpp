@@ -18,15 +18,22 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#ifndef SINCPP_SINCPP_HPP
-#define SINCPP_SINCPP_HPP
+#include <sincpp/type_traits/is_char.hpp>
 
-/**
- * @defgroup sincpp_str String operations.
- */
+#include <gtest/gtest.h>
 
-/**
- * @defgroup sincpp_type_traits Type traits.
- */
+TEST(is_char, char) {
+  static_assert(sincpp::is_char_v<char>);
+  static_assert(sincpp::is_char_v<wchar_t>);
+  static_assert(sincpp::is_char_v<char8_t>);
+  static_assert(sincpp::is_char_v<char16_t>);
+  static_assert(sincpp::is_char_v<char32_t>);
+}
 
-#endif
+TEST(is_char, not_char) {
+  static_assert(sincpp::is_char_v<int> == false);
+  static_assert(sincpp::is_char_v<float> == false);
+  static_assert(sincpp::is_char_v<double> == false);
+  static_assert(sincpp::is_char_v<char const *> == false);
+  static_assert(sincpp::is_char_v<std::string> == false);
+}
