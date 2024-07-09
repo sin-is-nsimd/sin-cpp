@@ -32,6 +32,12 @@ SET(SINCPP_LIB_TYPE "SHARED" CACHE STRING "Library type (SHARED or STATIC)")
 
 include("${CMAKE_CURRENT_SOURCE_DIR}/../sin-cmake/cmake/sin.cmake")
 set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_EXTENSIONS OFF)
+if (CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang" OR
+    CMAKE_CXX_COMPILER_ID STREQUAL "Clang" OR
+    CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+  add_compile_options(-pedantic -Wall -Wextra -Wdouble-promotion)
+endif()
 
 # DEPENDENCIES
 

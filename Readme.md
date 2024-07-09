@@ -86,6 +86,9 @@ ninja install
 
 Under `Microsoft Windows`, you may add `-DSINCPP_LIB_TYPE=STATIC -DCMAKE_CXX_FLAGS_RELEASE="/MT"` arguments to the `cmake` command.
 
+With `GCC`-like compilers, you can add this option to the `cmake ..` command:
+`-DCMAKE_CXX_FLAGS="-fdiagnostics-color=always -fconcepts-diagnostics-depth=8"`.
+
 # Development
 
 Project uses `clang-format` as `C++` code formatter.
