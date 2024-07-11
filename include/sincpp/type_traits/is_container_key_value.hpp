@@ -21,6 +21,8 @@
 #ifndef SINCPP_TYPE_TRAITS_IS_CONTAINER_KEY_VALUE_HPP
 #define SINCPP_TYPE_TRAITS_IS_CONTAINER_KEY_VALUE_HPP
 
+#include "../container/vector_pair.hpp"
+
 #include <map>
 #include <unordered_map>
 
@@ -29,7 +31,8 @@ namespace sincpp {
 /**
  * @brief Type trait to check if a type is a key-value container type.
  *
- * `std::map` and `std::unordered_map` are key-value containers.
+ * `std::map`, `std::unordered_map` and sincpp::vector_pair_t are key-value
+ * containers.
  *
  * @tparam T The type to be checked.
  *
@@ -51,6 +54,11 @@ struct is_container_key_value<std::map<K, T, Compare, Allocator>>
 template <class K, class T, class Hash, class KeyEqual, class Allocator>
 struct is_container_key_value<
     std::unordered_map<K, T, Hash, KeyEqual, Allocator>> : std::true_type {};
+
+/// @brief Template specialization for vector_pair_t.
+/// @relates sincpp::is_container_key_value
+template <class K, class T>
+struct is_container_key_value<vector_pair_t<K, T>> : std::true_type {};
 
 /**
  * @brief Variable template to check if a type is a key-type container type.
