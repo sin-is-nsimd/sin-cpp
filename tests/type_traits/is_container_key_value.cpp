@@ -23,9 +23,12 @@
 #include <gtest/gtest.h>
 
 TEST(is_container_key_value, key_value_container) {
-  static_assert(sincpp::is_container_key_value_v<std::map<std::string, int>>);
-  static_assert(
+  static_assert( //
+      sincpp::is_container_key_value_v<std::map<std::string, int>>);
+  static_assert( //
       sincpp::is_container_key_value_v<std::unordered_map<int, std::string>>);
+  static_assert( //
+      sincpp::is_container_key_value_v<sincpp::vector_pair_t<char, float>>);
 }
 
 TEST(is_container_key_value, not_key_value_container) {
