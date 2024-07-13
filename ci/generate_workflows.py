@@ -133,16 +133,21 @@ step_clean_windows = """
 
 step_clone = """
       # Clone
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
       - name: Clone Google Benchmark
         uses: actions/checkout@v3
         with:
           repository: "google/benchmark"
           path: 'benchmark'
+      - name: Clone Google Test
+        uses: actions/checkout@v3
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+      - name: Clone zlib
+        uses: actions/checkout@v3
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -157,28 +162,42 @@ step_clone = """
 
 step_unix = """
       # Dependencies
-      - name: Google Test
-        shell: bash
-        run: |
-          cd googletest
-          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
-          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \\
-                                                -GNinja \\
-                                                -DCMAKE_INSTALL_PREFIX=../_install \\
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \\
-                                                {compilers_args}
-          cmake --build build --target install
       - name: Google Benchmark
         shell: bash
         run: |
           cd benchmark
-          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
-          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \\
-                                                -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \\
-                                                -GNinja \\
-                                                -DCMAKE_INSTALL_PREFIX=../_install \\
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \\
-                                                {compilers_args}
+          cmake \\
+            -B build \\
+            -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \\
+            -DCMAKE_BUILD_TYPE=Release \\
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \\
+            -GNinja \\
+            -DCMAKE_INSTALL_PREFIX=../_install \\
+            {compilers_args}
+          cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd googletest
+          cmake \\
+            -B build \\
+            -DCMAKE_BUILD_TYPE=Release \\
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \\
+            -GNinja \\
+            -DCMAKE_INSTALL_PREFIX=../_install \\
+            {compilers_args}
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd zlib
+          cmake \\
+            -B build \\
+            -DCMAKE_BUILD_TYPE=Release \\
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \\
+            -GNinja \\
+            -DCMAKE_INSTALL_PREFIX=../_install \\
+            {compilers_args}
           cmake --build build --target install
 
       # sin-cpp

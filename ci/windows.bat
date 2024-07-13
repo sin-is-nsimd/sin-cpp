@@ -5,6 +5,15 @@ echo "PATH = %PATH%"
 
 cd ".."
 
+cd "benchmark"
+mkdir "build"
+cd "build"
+cmake .. -DBENCHMARK_ENABLE_GTEST_TESTS=OFF -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded -DCMAKE_INSTALL_PREFIX="../../_install"
+ninja
+ninja install
+cd ..
+cd ..
+
 cd "googletest"
 mkdir "build"
 cd "build"
@@ -14,18 +23,18 @@ ninja install
 cd ..
 cd ..
 
-cd "benchmark"
+cd "zlib"
 mkdir "build"
 cd "build"
-cmake .. -DBENCHMARK_ENABLE_GTEST_TESTS=OFF -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="../../_install"
+cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded -DCMAKE_INSTALL_PREFIX="../../_install"
 ninja
 ninja install
 cd ..
 cd ..
 
 cd "sin-cpp"
-mkdir "build_ci_%~1"
-cd "build_ci_%~1"
+mkdir "build"
+cd "build"
 cmake .. -DSINCPP_LIB_TYPE=STATIC -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE="/MT" -DCMAKE_INSTALL_PREFIX="../../_install"
 ninja
-ctest  --output-on-failure
+ctest --output-on-failure
