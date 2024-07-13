@@ -22,6 +22,10 @@
 #define SINCPP_SINCPP_HPP
 
 /**
+ * @defgroup sincpp_compression Compression and decompression operations.
+ */
+
+/**
  * @defgroup sincpp_str String operations.
  */
 

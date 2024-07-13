@@ -43,10 +43,16 @@ endif()
 
 find_package(benchmark REQUIRED)
 find_package(GTest REQUIRED)
+find_path(zlib_include PATH "zlib.h" REQUIRED)
+find_library(zlib_lib NAMES z zlibstatic REQUIRED)
+message(STATUS "zlib = ${zlib_include} | ${zlib_lib}")
 
 # LIBRARY
 
 sin_add_library(sin-cpp ${SINCPP_LIB_TYPE})
+target_include_directories(sin-cpp PUBLIC ${zlib_include})
+target_link_libraries(sin-cpp ${zlib_lib})
+
 sin_add_doxygen(sincpp_doxygen INPUTS "include" "src" OUTPUT "./sincpp_doxygen")
 
 # TESTS, EXAMPLES, BENCHMARKS

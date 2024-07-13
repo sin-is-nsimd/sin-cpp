@@ -9,8 +9,9 @@
 Mandatory dependencies:
 - `C++20` compiler (for compiling)
 - `CMake` (for building)
-- [gtest](https://github.com/google/googletest) (for tests)
 - [benchmark](https://github.com/google/benchmark) (for benchmarks)
+- [gtest](https://github.com/google/googletest) (for tests)
+- [zlib](https://github.com/madler/zlib) (for gzip support)
 - [sin-cmake](https://github.com/sin-is-nsimd/sin-cmake) (for building)
 
 Optional dependencies:
@@ -47,13 +48,23 @@ set PATH=C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Com
 ## Clone `sin-cpp` and Other Dependencies
 
 ```sh
-git clone https://github.com/google/googletest.git
 git clone https://github.com/google/benchmark.git
+git clone https://github.com/google/googletest.git
+git clone https://github.com/madler/zlib.git
 git clone https://github.com/sin-is-nsimd/sin-cmake.git
 git clone https://github.com/sin-is-nsimd/sin-cpp.git
 ```
 
 ## Build `gtest` and `benchmark`
+
+Build `benchmark` (in the `benchmark` directory):
+```sh
+mkdir build
+cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release -DBENCHMARK_ENABLE_LTO=true -DBENCHMARK_ENABLE_GTEST_TESTS=OFF -GNinja -DCMAKE_INSTALL_PREFIX=../../_install_sincpp
+ninja
+ninja install
+```
 
 Build `gtest` (in the `googletest` directory):
 ```sh
@@ -64,11 +75,11 @@ ninja
 ninja install
 ```
 
-Build `benchmark` (in the `benchmark` directory):
+Build `zlib` (in the `zlib` directory):
 ```sh
 mkdir build
 cd build
-cmake .. -DCMAKE_BUILD_TYPE=Release -DBENCHMARK_ENABLE_LTO=true -DBENCHMARK_ENABLE_GTEST_TESTS=OFF -GNinja -DCMAKE_INSTALL_PREFIX=../../_install_sincpp
+cmake .. -DCMAKE_BUILD_TYPE=Release -GNinja -DCMAKE_INSTALL_PREFIX=../../_install_sincpp
 ninja
 ninja install
 ```
