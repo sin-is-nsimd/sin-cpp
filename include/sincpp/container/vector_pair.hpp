@@ -32,7 +32,7 @@ namespace sincpp {
  * @brief Associative key-value pair container.
  *
  * This container contains key-value pairs with unique keys. The underlying
- * container is a `std::vector<std::pair<Key, T>>`
+ * container is a `std::vector<std::pair<Key, T>>`.
  *
  * @tparam Key Key type.
  * @tparam T Mapped type.
