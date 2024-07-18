@@ -9,12 +9,12 @@ on:
 
 jobs:
 
-  # debian12-amd64-sse42
+  # debian12-amd64
 
-  debian12-amd64-sse42-ninja-clang:
+  debian12-amd64-ninja-clang:
     continue-on-error: true
     runs-on: [ self-hosted, debian12-amd64-sse42 ]
-    name: debian12-amd64-sse42-ninja-clang
+    name: debian12-amd64-ninja-clang
     steps:
 
       # Clean
@@ -110,10 +110,10 @@ jobs:
           cd sin-cpp/build
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
-  debian12-amd64-sse42-ninja-gcc:
+  debian12-amd64-ninja-gcc:
     continue-on-error: true
     runs-on: [ self-hosted, debian12-amd64-sse42 ]
-    name: debian12-amd64-sse42-ninja-gcc
+    name: debian12-amd64-ninja-gcc
     steps:
 
       # Clean
@@ -209,10 +209,10 @@ jobs:
           cd sin-cpp/build
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
-  debian12-amd64-sse42-make-clang:
+  debian12-amd64-make-clang:
     continue-on-error: true
     runs-on: [ self-hosted, debian12-amd64-sse42 ]
-    name: debian12-amd64-sse42-make-clang
+    name: debian12-amd64-make-clang
     steps:
 
       # Clean
@@ -308,10 +308,10 @@ jobs:
           cd sin-cpp/build
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
-  debian12-amd64-sse42-make-gcc:
+  debian12-amd64-make-gcc:
     continue-on-error: true
     runs-on: [ self-hosted, debian12-amd64-sse42 ]
-    name: debian12-amd64-sse42-make-gcc
+    name: debian12-amd64-make-gcc
     steps:
 
       # Clean
@@ -407,12 +407,12 @@ jobs:
           cd sin-cpp/build
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
-  # debian13-amd64-sse42
+  # debian13-amd64
 
-  debian13-amd64-sse42-ninja-clang:
+  debian13-amd64-ninja-clang:
     continue-on-error: true
     runs-on: [ self-hosted, debian13-amd64-sse42 ]
-    name: debian13-amd64-sse42-ninja-clang
+    name: debian13-amd64-ninja-clang
     steps:
 
       # Clean
@@ -508,10 +508,10 @@ jobs:
           cd sin-cpp/build
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
-  debian13-amd64-sse42-ninja-gcc:
+  debian13-amd64-ninja-gcc:
     continue-on-error: true
     runs-on: [ self-hosted, debian13-amd64-sse42 ]
-    name: debian13-amd64-sse42-ninja-gcc
+    name: debian13-amd64-ninja-gcc
     steps:
 
       # Clean
@@ -607,10 +607,10 @@ jobs:
           cd sin-cpp/build
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
-  debian13-amd64-sse42-make-clang:
+  debian13-amd64-make-clang:
     continue-on-error: true
     runs-on: [ self-hosted, debian13-amd64-sse42 ]
-    name: debian13-amd64-sse42-make-clang
+    name: debian13-amd64-make-clang
     steps:
 
       # Clean
@@ -706,10 +706,10 @@ jobs:
           cd sin-cpp/build
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
-  debian13-amd64-sse42-make-gcc:
+  debian13-amd64-make-gcc:
     continue-on-error: true
     runs-on: [ self-hosted, debian13-amd64-sse42 ]
-    name: debian13-amd64-sse42-make-gcc
+    name: debian13-amd64-make-gcc
     steps:
 
       # Clean
@@ -805,12 +805,1604 @@ jobs:
           cd sin-cpp/build
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
-  # raspios12-armhf-neon
+  # debian13-i386
 
-  raspios12-armhf-neon-ninja-clang:
+  debian13-i386-ninja-clang:
+    continue-on-error: true
+    runs-on: [ self-hosted, debian13-i386-sse2 ]
+    name: debian13-i386-ninja-clang
+    steps:
+
+      # Clean
+      - name: Clean
+        run: rm -rf *
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v3
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+      - name: Clone Google Test
+        uses: actions/checkout@v3
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+      - name: Clone zlib
+        uses: actions/checkout@v3
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+      - name: Clone sin-cmake
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+      - name: Clone sin-cpp
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+
+      # Dependencies
+      - name: Google Benchmark
+        shell: bash
+        run: |
+          cd benchmark
+          cmake \
+            -B build \
+            -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd googletest
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd zlib
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd sin-cpp
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+                                                -GNinja \
+                                                -DCMAKE_INSTALL_PREFIX=../_install \
+                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+      - name: Build
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Test
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  debian13-i386-ninja-gcc:
+    continue-on-error: true
+    runs-on: [ self-hosted, debian13-i386-sse2 ]
+    name: debian13-i386-ninja-gcc
+    steps:
+
+      # Clean
+      - name: Clean
+        run: rm -rf *
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v3
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+      - name: Clone Google Test
+        uses: actions/checkout@v3
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+      - name: Clone zlib
+        uses: actions/checkout@v3
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+      - name: Clone sin-cmake
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+      - name: Clone sin-cpp
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+
+      # Dependencies
+      - name: Google Benchmark
+        shell: bash
+        run: |
+          cd benchmark
+          cmake \
+            -B build \
+            -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd googletest
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd zlib
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd sin-cpp
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+                                                -GNinja \
+                                                -DCMAKE_INSTALL_PREFIX=../_install \
+                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+                                                -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+      - name: Build
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Test
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  debian13-i386-make-clang:
+    continue-on-error: true
+    runs-on: [ self-hosted, debian13-i386-sse2 ]
+    name: debian13-i386-make-clang
+    steps:
+
+      # Clean
+      - name: Clean
+        run: rm -rf *
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v3
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+      - name: Clone Google Test
+        uses: actions/checkout@v3
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+      - name: Clone zlib
+        uses: actions/checkout@v3
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+      - name: Clone sin-cmake
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+      - name: Clone sin-cpp
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+
+      # Dependencies
+      - name: Google Benchmark
+        shell: bash
+        run: |
+          cd benchmark
+          cmake \
+            -B build \
+            -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd googletest
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd zlib
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd sin-cpp
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+                                                -G"Unix Makefiles" \
+                                                -DCMAKE_INSTALL_PREFIX=../_install \
+                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+      - name: Build
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Test
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  debian13-i386-make-gcc:
+    continue-on-error: true
+    runs-on: [ self-hosted, debian13-i386-sse2 ]
+    name: debian13-i386-make-gcc
+    steps:
+
+      # Clean
+      - name: Clean
+        run: rm -rf *
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v3
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+      - name: Clone Google Test
+        uses: actions/checkout@v3
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+      - name: Clone zlib
+        uses: actions/checkout@v3
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+      - name: Clone sin-cmake
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+      - name: Clone sin-cpp
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+
+      # Dependencies
+      - name: Google Benchmark
+        shell: bash
+        run: |
+          cd benchmark
+          cmake \
+            -B build \
+            -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd googletest
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd zlib
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd sin-cpp
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+                                                -G"Unix Makefiles" \
+                                                -DCMAKE_INSTALL_PREFIX=../_install \
+                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+                                                -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+      - name: Build
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Test
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  # debian13-armhf
+
+  debian13-armhf-ninja-clang:
+    continue-on-error: true
+    runs-on: [ self-hosted, debian13-armhf-neon ]
+    name: debian13-armhf-ninja-clang
+    steps:
+
+      # Clean
+      - name: Clean
+        run: rm -rf *
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v3
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+      - name: Clone Google Test
+        uses: actions/checkout@v3
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+      - name: Clone zlib
+        uses: actions/checkout@v3
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+      - name: Clone sin-cmake
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+      - name: Clone sin-cpp
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+
+      # Dependencies
+      - name: Google Benchmark
+        shell: bash
+        run: |
+          cd benchmark
+          cmake \
+            -B build \
+            -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd googletest
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd zlib
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd sin-cpp
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+                                                -GNinja \
+                                                -DCMAKE_INSTALL_PREFIX=../_install \
+                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+      - name: Build
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Test
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  debian13-armhf-ninja-gcc:
+    continue-on-error: true
+    runs-on: [ self-hosted, debian13-armhf-neon ]
+    name: debian13-armhf-ninja-gcc
+    steps:
+
+      # Clean
+      - name: Clean
+        run: rm -rf *
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v3
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+      - name: Clone Google Test
+        uses: actions/checkout@v3
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+      - name: Clone zlib
+        uses: actions/checkout@v3
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+      - name: Clone sin-cmake
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+      - name: Clone sin-cpp
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+
+      # Dependencies
+      - name: Google Benchmark
+        shell: bash
+        run: |
+          cd benchmark
+          cmake \
+            -B build \
+            -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd googletest
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd zlib
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd sin-cpp
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+                                                -GNinja \
+                                                -DCMAKE_INSTALL_PREFIX=../_install \
+                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+                                                -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+      - name: Build
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Test
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  debian13-armhf-make-clang:
+    continue-on-error: true
+    runs-on: [ self-hosted, debian13-armhf-neon ]
+    name: debian13-armhf-make-clang
+    steps:
+
+      # Clean
+      - name: Clean
+        run: rm -rf *
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v3
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+      - name: Clone Google Test
+        uses: actions/checkout@v3
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+      - name: Clone zlib
+        uses: actions/checkout@v3
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+      - name: Clone sin-cmake
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+      - name: Clone sin-cpp
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+
+      # Dependencies
+      - name: Google Benchmark
+        shell: bash
+        run: |
+          cd benchmark
+          cmake \
+            -B build \
+            -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd googletest
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd zlib
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd sin-cpp
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+                                                -G"Unix Makefiles" \
+                                                -DCMAKE_INSTALL_PREFIX=../_install \
+                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+      - name: Build
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Test
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  debian13-armhf-make-gcc:
+    continue-on-error: true
+    runs-on: [ self-hosted, debian13-armhf-neon ]
+    name: debian13-armhf-make-gcc
+    steps:
+
+      # Clean
+      - name: Clean
+        run: rm -rf *
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v3
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+      - name: Clone Google Test
+        uses: actions/checkout@v3
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+      - name: Clone zlib
+        uses: actions/checkout@v3
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+      - name: Clone sin-cmake
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+      - name: Clone sin-cpp
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+
+      # Dependencies
+      - name: Google Benchmark
+        shell: bash
+        run: |
+          cd benchmark
+          cmake \
+            -B build \
+            -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd googletest
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd zlib
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd sin-cpp
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+                                                -G"Unix Makefiles" \
+                                                -DCMAKE_INSTALL_PREFIX=../_install \
+                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+                                                -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+      - name: Build
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Test
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  # debian13-arm64
+
+  debian13-arm64-ninja-clang:
+    continue-on-error: true
+    runs-on: [ self-hosted, debian13-arm64-asimd ]
+    name: debian13-arm64-ninja-clang
+    steps:
+
+      # Clean
+      - name: Clean
+        run: rm -rf *
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v3
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+      - name: Clone Google Test
+        uses: actions/checkout@v3
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+      - name: Clone zlib
+        uses: actions/checkout@v3
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+      - name: Clone sin-cmake
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+      - name: Clone sin-cpp
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+
+      # Dependencies
+      - name: Google Benchmark
+        shell: bash
+        run: |
+          cd benchmark
+          cmake \
+            -B build \
+            -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd googletest
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd zlib
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd sin-cpp
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+                                                -GNinja \
+                                                -DCMAKE_INSTALL_PREFIX=../_install \
+                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+      - name: Build
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Test
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  debian13-arm64-ninja-gcc:
+    continue-on-error: true
+    runs-on: [ self-hosted, debian13-arm64-asimd ]
+    name: debian13-arm64-ninja-gcc
+    steps:
+
+      # Clean
+      - name: Clean
+        run: rm -rf *
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v3
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+      - name: Clone Google Test
+        uses: actions/checkout@v3
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+      - name: Clone zlib
+        uses: actions/checkout@v3
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+      - name: Clone sin-cmake
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+      - name: Clone sin-cpp
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+
+      # Dependencies
+      - name: Google Benchmark
+        shell: bash
+        run: |
+          cd benchmark
+          cmake \
+            -B build \
+            -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd googletest
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd zlib
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd sin-cpp
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+                                                -GNinja \
+                                                -DCMAKE_INSTALL_PREFIX=../_install \
+                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+                                                -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+      - name: Build
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Test
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  debian13-arm64-make-clang:
+    continue-on-error: true
+    runs-on: [ self-hosted, debian13-arm64-asimd ]
+    name: debian13-arm64-make-clang
+    steps:
+
+      # Clean
+      - name: Clean
+        run: rm -rf *
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v3
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+      - name: Clone Google Test
+        uses: actions/checkout@v3
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+      - name: Clone zlib
+        uses: actions/checkout@v3
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+      - name: Clone sin-cmake
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+      - name: Clone sin-cpp
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+
+      # Dependencies
+      - name: Google Benchmark
+        shell: bash
+        run: |
+          cd benchmark
+          cmake \
+            -B build \
+            -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd googletest
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd zlib
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd sin-cpp
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+                                                -G"Unix Makefiles" \
+                                                -DCMAKE_INSTALL_PREFIX=../_install \
+                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+      - name: Build
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Test
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  debian13-arm64-make-gcc:
+    continue-on-error: true
+    runs-on: [ self-hosted, debian13-arm64-asimd ]
+    name: debian13-arm64-make-gcc
+    steps:
+
+      # Clean
+      - name: Clean
+        run: rm -rf *
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v3
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+      - name: Clone Google Test
+        uses: actions/checkout@v3
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+      - name: Clone zlib
+        uses: actions/checkout@v3
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+      - name: Clone sin-cmake
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+      - name: Clone sin-cpp
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+
+      # Dependencies
+      - name: Google Benchmark
+        shell: bash
+        run: |
+          cd benchmark
+          cmake \
+            -B build \
+            -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd googletest
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd zlib
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd sin-cpp
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+                                                -G"Unix Makefiles" \
+                                                -DCMAKE_INSTALL_PREFIX=../_install \
+                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+                                                -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+      - name: Build
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Test
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  # debian13-ppc64el
+
+  debian13-ppc64el-ninja-clang:
+    continue-on-error: true
+    runs-on: [ self-hosted, debian13-ppc64el-vmx ]
+    name: debian13-ppc64el-ninja-clang
+    steps:
+
+      # Clean
+      - name: Clean
+        run: rm -rf *
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v3
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+      - name: Clone Google Test
+        uses: actions/checkout@v3
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+      - name: Clone zlib
+        uses: actions/checkout@v3
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+      - name: Clone sin-cmake
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+      - name: Clone sin-cpp
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+
+      # Dependencies
+      - name: Google Benchmark
+        shell: bash
+        run: |
+          cd benchmark
+          cmake \
+            -B build \
+            -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd googletest
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd zlib
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd sin-cpp
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+                                                -GNinja \
+                                                -DCMAKE_INSTALL_PREFIX=../_install \
+                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+      - name: Build
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Test
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  debian13-ppc64el-ninja-gcc:
+    continue-on-error: true
+    runs-on: [ self-hosted, debian13-ppc64el-vmx ]
+    name: debian13-ppc64el-ninja-gcc
+    steps:
+
+      # Clean
+      - name: Clean
+        run: rm -rf *
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v3
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+      - name: Clone Google Test
+        uses: actions/checkout@v3
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+      - name: Clone zlib
+        uses: actions/checkout@v3
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+      - name: Clone sin-cmake
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+      - name: Clone sin-cpp
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+
+      # Dependencies
+      - name: Google Benchmark
+        shell: bash
+        run: |
+          cd benchmark
+          cmake \
+            -B build \
+            -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd googletest
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd zlib
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd sin-cpp
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+                                                -GNinja \
+                                                -DCMAKE_INSTALL_PREFIX=../_install \
+                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+                                                -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+      - name: Build
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Test
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  debian13-ppc64el-make-clang:
+    continue-on-error: true
+    runs-on: [ self-hosted, debian13-ppc64el-vmx ]
+    name: debian13-ppc64el-make-clang
+    steps:
+
+      # Clean
+      - name: Clean
+        run: rm -rf *
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v3
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+      - name: Clone Google Test
+        uses: actions/checkout@v3
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+      - name: Clone zlib
+        uses: actions/checkout@v3
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+      - name: Clone sin-cmake
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+      - name: Clone sin-cpp
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+
+      # Dependencies
+      - name: Google Benchmark
+        shell: bash
+        run: |
+          cd benchmark
+          cmake \
+            -B build \
+            -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd googletest
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd zlib
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd sin-cpp
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+                                                -G"Unix Makefiles" \
+                                                -DCMAKE_INSTALL_PREFIX=../_install \
+                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+      - name: Build
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Test
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  debian13-ppc64el-make-gcc:
+    continue-on-error: true
+    runs-on: [ self-hosted, debian13-ppc64el-vmx ]
+    name: debian13-ppc64el-make-gcc
+    steps:
+
+      # Clean
+      - name: Clean
+        run: rm -rf *
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v3
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+      - name: Clone Google Test
+        uses: actions/checkout@v3
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+      - name: Clone zlib
+        uses: actions/checkout@v3
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+      - name: Clone sin-cmake
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+      - name: Clone sin-cpp
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+
+      # Dependencies
+      - name: Google Benchmark
+        shell: bash
+        run: |
+          cd benchmark
+          cmake \
+            -B build \
+            -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd googletest
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd zlib
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd sin-cpp
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+                                                -G"Unix Makefiles" \
+                                                -DCMAKE_INSTALL_PREFIX=../_install \
+                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+                                                -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+      - name: Build
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Test
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  # raspios12-armhf
+
+  raspios12-armhf-ninja-clang:
     continue-on-error: true
     runs-on: [ self-hosted, raspios12-armhf-neon ]
-    name: raspios12-armhf-neon-ninja-clang
+    name: raspios12-armhf-ninja-clang
     steps:
 
       # Clean
@@ -906,10 +2498,10 @@ jobs:
           cd sin-cpp/build
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
-  raspios12-armhf-neon-ninja-gcc:
+  raspios12-armhf-ninja-gcc:
     continue-on-error: true
     runs-on: [ self-hosted, raspios12-armhf-neon ]
-    name: raspios12-armhf-neon-ninja-gcc
+    name: raspios12-armhf-ninja-gcc
     steps:
 
       # Clean
@@ -1005,10 +2597,10 @@ jobs:
           cd sin-cpp/build
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
-  raspios12-armhf-neon-make-clang:
+  raspios12-armhf-make-clang:
     continue-on-error: true
     runs-on: [ self-hosted, raspios12-armhf-neon ]
-    name: raspios12-armhf-neon-make-clang
+    name: raspios12-armhf-make-clang
     steps:
 
       # Clean
@@ -1104,10 +2696,10 @@ jobs:
           cd sin-cpp/build
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
-  raspios12-armhf-neon-make-gcc:
+  raspios12-armhf-make-gcc:
     continue-on-error: true
     runs-on: [ self-hosted, raspios12-armhf-neon ]
-    name: raspios12-armhf-neon-make-gcc
+    name: raspios12-armhf-make-gcc
     steps:
 
       # Clean
@@ -1203,12 +2795,12 @@ jobs:
           cd sin-cpp/build
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
-  # raspios12-arm64-asimd
+  # raspios12-arm64
 
-  raspios12-arm64-asimd-ninja-clang:
+  raspios12-arm64-ninja-clang:
     continue-on-error: true
     runs-on: [ self-hosted, raspios12-arm64-asimd ]
-    name: raspios12-arm64-asimd-ninja-clang
+    name: raspios12-arm64-ninja-clang
     steps:
 
       # Clean
@@ -1304,10 +2896,10 @@ jobs:
           cd sin-cpp/build
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
-  raspios12-arm64-asimd-ninja-gcc:
+  raspios12-arm64-ninja-gcc:
     continue-on-error: true
     runs-on: [ self-hosted, raspios12-arm64-asimd ]
-    name: raspios12-arm64-asimd-ninja-gcc
+    name: raspios12-arm64-ninja-gcc
     steps:
 
       # Clean
@@ -1403,10 +2995,10 @@ jobs:
           cd sin-cpp/build
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
-  raspios12-arm64-asimd-make-clang:
+  raspios12-arm64-make-clang:
     continue-on-error: true
     runs-on: [ self-hosted, raspios12-arm64-asimd ]
-    name: raspios12-arm64-asimd-make-clang
+    name: raspios12-arm64-make-clang
     steps:
 
       # Clean
@@ -1502,10 +3094,10 @@ jobs:
           cd sin-cpp/build
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
-  raspios12-arm64-asimd-make-gcc:
+  raspios12-arm64-make-gcc:
     continue-on-error: true
     runs-on: [ self-hosted, raspios12-arm64-asimd ]
-    name: raspios12-arm64-asimd-make-gcc
+    name: raspios12-arm64-make-gcc
     steps:
 
       # Clean
@@ -1601,12 +3193,12 @@ jobs:
           cd sin-cpp/build
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
-  # manjaro-aarch64-asimd
+  # manjaro-aarch64
 
-  manjaro-aarch64-asimd-ninja-clang:
+  manjaro-aarch64-ninja-clang:
     continue-on-error: true
     runs-on: [ self-hosted, manjaro-aarch64-asimd ]
-    name: manjaro-aarch64-asimd-ninja-clang
+    name: manjaro-aarch64-ninja-clang
     steps:
 
       # Clean
@@ -1702,10 +3294,10 @@ jobs:
           cd sin-cpp/build
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
-  manjaro-aarch64-asimd-ninja-gcc:
+  manjaro-aarch64-ninja-gcc:
     continue-on-error: true
     runs-on: [ self-hosted, manjaro-aarch64-asimd ]
-    name: manjaro-aarch64-asimd-ninja-gcc
+    name: manjaro-aarch64-ninja-gcc
     steps:
 
       # Clean
@@ -1801,10 +3393,10 @@ jobs:
           cd sin-cpp/build
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
-  manjaro-aarch64-asimd-make-clang:
+  manjaro-aarch64-make-clang:
     continue-on-error: true
     runs-on: [ self-hosted, manjaro-aarch64-asimd ]
-    name: manjaro-aarch64-asimd-make-clang
+    name: manjaro-aarch64-make-clang
     steps:
 
       # Clean
@@ -1900,10 +3492,10 @@ jobs:
           cd sin-cpp/build
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
-  manjaro-aarch64-asimd-make-gcc:
+  manjaro-aarch64-make-gcc:
     continue-on-error: true
     runs-on: [ self-hosted, manjaro-aarch64-asimd ]
-    name: manjaro-aarch64-asimd-make-gcc
+    name: manjaro-aarch64-make-gcc
     steps:
 
       # Clean
@@ -1999,12 +3591,12 @@ jobs:
           cd sin-cpp/build
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
-  # macOS-arm64-asimd
+  # macOS-arm64
 
-  macos-arm64-asimd-ninja-clang:
+  macos-arm64-ninja-clang:
     continue-on-error: true
     runs-on: [ self-hosted, macOS-arm64-asimd ]
-    name: macos-arm64-asimd-ninja-clang
+    name: macos-arm64-ninja-clang
     steps:
 
       # Clean
@@ -2100,10 +3692,10 @@ jobs:
           cd sin-cpp/build
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
-  macos-arm64-asimd-make-clang:
+  macos-arm64-make-clang:
     continue-on-error: true
     runs-on: [ self-hosted, macOS-arm64-asimd ]
-    name: macos-arm64-asimd-make-clang
+    name: macos-arm64-make-clang
     steps:
 
       # Clean
@@ -2199,12 +3791,12 @@ jobs:
           cd sin-cpp/build
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
-  # windows10-amd64-sse42
+  # windows10-amd64
 
-  windows10-amd64-sse42-ninja-msvc:
+  windows10-amd64-ninja-msvc:
     continue-on-error: true
     runs-on: [ self-hosted, windows10-amd64-sse42 ]
-    name: windows10-amd64-sse42-ninja-msvc
+    name: windows10-amd64-ninja-msvc
     steps:
 
       # Clean
@@ -2242,14 +3834,14 @@ jobs:
       - name: Compile & Test
         run: |
           cd sin-cpp
-          cmd.exe /c "ci\windows.bat" "windows10-amd64-sse42"
+          cmd.exe /c "ci\windows.bat" "windows10-amd64"
 
-  # windows11-amd64-sse42
+  # windows11-amd64
 
-  windows11-amd64-sse42-ninja-msvc:
+  windows11-amd64-ninja-msvc:
     continue-on-error: true
     runs-on: [ self-hosted, windows11-amd64-sse42 ]
-    name: windows11-amd64-sse42-ninja-msvc
+    name: windows11-amd64-ninja-msvc
     steps:
 
       # Clean
@@ -2287,4 +3879,4 @@ jobs:
       - name: Compile & Test
         run: |
           cd sin-cpp
-          cmd.exe /c "ci\windows.bat" "windows11-amd64-sse42"
+          cmd.exe /c "ci\windows.bat" "windows11-amd64"

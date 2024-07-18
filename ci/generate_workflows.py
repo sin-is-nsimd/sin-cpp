@@ -33,6 +33,10 @@ config = {}
 for system in [
     "debian12-amd64-sse42",
     "debian13-amd64-sse42",
+    "debian13-i386-sse2",
+    "debian13-armhf-neon",
+    "debian13-arm64-asimd",
+    "debian13-ppc64el-vmx",
     "raspios12-armhf-neon",
     "raspios12-arm64-asimd",
     "manjaro-aarch64-asimd",
@@ -114,7 +118,7 @@ jobs:
 runner = """
   {runner}:
     continue-on-error: true
-    runs-on: [ self-hosted, {os} ]
+    runs-on: [ self-hosted, {label} ]
     name: {runner}
     steps:
 """
@@ -243,7 +247,9 @@ if __name__ == "__main__":
         print("Writing file", output_path)
         f.write(header)
 
-        for os, configs in config.items():
+        for label, configs in config.items():
+
+            os = label[: label.rfind("-")]
 
             f.write(f"\n  # {os}\n")
 
@@ -254,7 +260,7 @@ if __name__ == "__main__":
                     f.write(
                         runner.format(
                             runner=f"{os}-{build_system['name']}-{compilers_args['name']}".lower(),
-                            os=os,
+                            label=label,
                         )
                     )
 
