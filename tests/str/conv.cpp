@@ -301,14 +301,18 @@ TEST(to_chars, float_hex) {
                                               "0p+0",    // clang
                                               "0p-16385" // gcc
                                           });
-  test_hex(static_cast<long double>(21.42), {
-                                                "a.b5c28f5c28f6p+1", // amd64
-                                                "1.56b851eb851ecp+4" // arm
-                                            });
-  test_hex(static_cast<long double>(-0.4), {
-                                               "-c.cccccccccccdp-5", // amd64
-                                               "-1.999999999999ap-2" // arm
-                                           });
+  test_hex(static_cast<long double>(21.42),
+           {
+               "a.b5c28f5c28f6p+1",    // amd64
+               "a.b5c28f5c28f5c29p+1", // i386, gcc
+               "1.56b851eb851ecp+4"    // arm
+           });
+  test_hex(static_cast<long double>(-0.4),
+           {
+               "-c.cccccccccccdp-5",    // amd64
+               "-c.ccccccccccccccdp-5", // i386, gcc
+               "-1.999999999999ap-2"    // arm
+           });
   test_hex(std::numeric_limits<long double>::max(),
            {
                "f.fffffffffffffffp+16380",             // amd64, clang
