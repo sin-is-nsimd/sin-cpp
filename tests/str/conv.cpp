@@ -138,34 +138,38 @@ TEST(to_chars, float) {
   test_float(
       std::numeric_limits<long double>::max(),
       {
-          "1.189731495357231765e+4932",               // clang
-          "Infinity",                                 // gcc
-          "1.7976931348623157e+308",                  // armhf
-          "1.189731495357231765085759326628007e+4932" // arm64 raspberry pi
+          "1.189731495357231765e+4932",                // clang
+          "Infinity",                                  // gcc
+          "1.7976931348623157e+308",                   // armhf
+          "1.189731495357231765085759326628007e+4932", // arm64 raspberry pi
+          "1.79769313486231580793728971405301e+308"    // ppc64el
       });
   test_float(
       std::numeric_limits<long double>::min(),
       {
-          "3.3621031431120935063e-4932",               // clang
-          "0",                                         // gcc
-          "2.2250738585072014e-308",                   // armhf
-          "3.3621031431120935062626778173217526e-4932" // arm64 raspberry pi
+          "3.3621031431120935063e-4932",                // clang
+          "0",                                          // gcc
+          "2.2250738585072014e-308",                    // armhf
+          "3.3621031431120935062626778173217526e-4932", // arm64 raspberry pi
+          "2.00416836000897277799610805135016e-292"     // ppc64el
       });
   test_float(
       -std::numeric_limits<long double>::min(),
       {
-          "-3.3621031431120935063e-4932",               // clang
-          "-0",                                         // gcc
-          "-2.2250738585072014e-308",                   // armhf
-          "-3.3621031431120935062626778173217526e-4932" // arm64 raspberry pi
+          "-3.3621031431120935063e-4932",                // clang
+          "-0",                                          // gcc
+          "-2.2250738585072014e-308",                    // armhf
+          "-3.3621031431120935062626778173217526e-4932", // arm64 raspberry pi
+          "-2.00416836000897277799610805135016e-292"     // ppc64el
       });
   test_float(
       std::numeric_limits<long double>::lowest(),
       {
-          "-1.189731495357231765e+4932",               // clang
-          "-Infinity",                                 // gcc
-          "-1.7976931348623157e+308",                  // armhf
-          "-1.189731495357231765085759326628007e+4932" // arm64 raspberry pi
+          "-1.189731495357231765e+4932",                // clang
+          "-Infinity",                                  // gcc
+          "-1.7976931348623157e+308",                   // armhf
+          "-1.189731495357231765085759326628007e+4932", // arm64 raspberry pi
+          "-1.79769313486231580793728971405301e+308"    // ppc64el
       });
 }
 
@@ -193,34 +197,38 @@ TEST(to_chars, float_scientific) {
   test_scientific(
       std::numeric_limits<long double>::max(),
       {
-          "1.189731495357231765e+4932",               // clang
-          "Infinity",                                 // gcc
-          "1.7976931348623157e+308",                  // armhf
-          "1.189731495357231765085759326628007e+4932" // arm64 raspberry pi
+          "1.189731495357231765e+4932",                // clang
+          "Infinity",                                  // gcc
+          "1.7976931348623157e+308",                   // armhf
+          "1.189731495357231765085759326628007e+4932", // arm64 raspberry pi
+          "1.79769313486231580793728971405301e+308"    // ppc64el
       });
   test_scientific(
       std::numeric_limits<long double>::min(),
       {
-          "3.3621031431120935063e-4932",               // clang
-          "0e+00",                                     // gcc
-          "2.2250738585072014e-308",                   // armhf
-          "3.3621031431120935062626778173217526e-4932" // arm64 raspberry pi
+          "3.3621031431120935063e-4932",                // clang
+          "0e+00",                                      // gcc
+          "2.2250738585072014e-308",                    // armhf
+          "3.3621031431120935062626778173217526e-4932", // arm64 raspberry pi
+          "2.00416836000897277799610805135016e-292"     // ppc64el
       });
   test_scientific(
       -std::numeric_limits<long double>::min(),
       {
-          "-3.3621031431120935063e-4932",               // clang
-          "-0e+00",                                     // gcc
-          "-2.2250738585072014e-308",                   // armhf
-          "-3.3621031431120935062626778173217526e-4932" // arm64 raspberry pi
+          "-3.3621031431120935063e-4932",                // clang
+          "-0e+00",                                      // gcc
+          "-2.2250738585072014e-308",                    // armhf
+          "-3.3621031431120935062626778173217526e-4932", // arm64 raspberry pi
+          "-2.00416836000897277799610805135016e-292"     // ppc64el
       });
   test_scientific(
       std::numeric_limits<long double>::lowest(),
       {
-          "-1.189731495357231765e+4932",               // clang
-          "-Infinity",                                 // gcc
-          "-1.7976931348623157e+308",                  // armhf
-          "-1.189731495357231765085759326628007e+4932" // arm64 raspberry pi
+          "-1.189731495357231765e+4932",                // clang
+          "-Infinity",                                  // gcc
+          "-1.7976931348623157e+308",                   // armhf
+          "-1.189731495357231765085759326628007e+4932", // arm64 raspberry pi
+          "-1.79769313486231580793728971405301e+308"    // ppc64el
       });
 }
 
@@ -315,30 +323,34 @@ TEST(to_chars, float_hex) {
            });
   test_hex(std::numeric_limits<long double>::max(),
            {
-               "f.fffffffffffffffp+16380",             // amd64, clang
-               "8p+16381",                             // amd64, gcc
-               "1.fffffffffffffp+1023",                // arm
-               "1.ffffffffffffffffffffffffffffp+16383" // arm64 raspberry pi
+               "f.fffffffffffffffp+16380",              // amd64, clang
+               "8p+16381",                              // amd64, gcc
+               "1.fffffffffffffp+1023",                 // arm
+               "1.ffffffffffffffffffffffffffffp+16383", // arm64 raspberry pi
+               "1.fffffffffffff7ffffffffffff8p+1023"    // ppc64el
            });
   test_hex(std::numeric_limits<long double>::min(),
            {
                "8p-16385", // amd64, clang
                "0p-16385", // amd64, gcc
                "1p-1022",  // arm
-               "1p-16382"  // arm64 raspberry pi
+               "1p-16382", // arm64 raspberry pi
+               "1p-969"    // ppc64el
            });
   test_hex(-std::numeric_limits<long double>::min(),
            {
                "-8p-16385", // amd64, clang
                "-0p-16385", // amd64, gcc
                "-1p-1022",  // arm
-               "-1p-16382"  // arm64 raspberry pi
+               "-1p-16382", // arm64 raspberry pi
+               "-1p-969"    // ppc64el
            });
   test_hex(std::numeric_limits<long double>::lowest(),
            {
-               "-f.fffffffffffffffp+16380",             // amd64, clang
-               "-8p+16381",                             // amd64, gcc
-               "-1.fffffffffffffp+1023",                // arm
-               "-1.ffffffffffffffffffffffffffffp+16383" // arm64 raspberry pi
+               "-f.fffffffffffffffp+16380",              // amd64, clang
+               "-8p+16381",                              // amd64, gcc
+               "-1.fffffffffffffp+1023",                 // arm
+               "-1.ffffffffffffffffffffffffffffp+16383", // arm64 raspberry pi
+               "-1.fffffffffffff7ffffffffffff8p+1023"    // ppc64el
            });
 }
