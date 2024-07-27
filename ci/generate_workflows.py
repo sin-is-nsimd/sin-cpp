@@ -31,15 +31,23 @@ config = {}
 
 # debian + raspios + manjaro
 for system in [
+    # debian12
     "debian12-amd64-sse42",
+    "debian12-i386-sse2",
+    "debian12-armhf-neon",
+    "debian12-arm64-asimd",
+    "debian12-ppc64el-vmx",
+    # debian13
     "debian13-amd64-sse42",
     "debian13-i386-sse2",
     "debian13-armhf-neon",
     "debian13-arm64-asimd",
     "debian13-ppc64el-vmx",
+    # raspios12
     "raspios12-armhf-neon",
     "raspios12-arm64-asimd",
-    "manjaro-aarch64-asimd",
+    # manjaro
+    "manjaro-arm64-asimd",
 ]:
     config.update(
         {
@@ -66,7 +74,7 @@ for system in [
 for arch in ["arm64-asimd"]:
     config.update(
         {
-            "macOS"
+            "macos14"
             + "-"
             + arch: {
                 "compilers_args": [

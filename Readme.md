@@ -55,7 +55,7 @@ git clone https://github.com/sin-is-nsimd/sin-cmake.git
 git clone https://github.com/sin-is-nsimd/sin-cpp.git
 ```
 
-## Build `gtest` and `benchmark`
+## Build `gtest`, `benchmark` and `zlib`
 
 Build `benchmark` (in the `benchmark` directory):
 ```sh
@@ -100,14 +100,31 @@ Under `Microsoft Windows`, you may add `-DSINCPP_LIB_TYPE=STATIC -DCMAKE_CXX_FLA
 With `GCC`-like compilers, you can add this option to the `cmake ..` command:
 `-DCMAKE_CXX_FLAGS="-fdiagnostics-color=always -fconcepts-diagnostics-depth=8"`.
 
+# CI
+
+| **Operating System**           | **Compiler**  |  `amd64`       | `i386`         | `armhf`        | `arm64`        | `ppc64el`      |
+| ------------------------------ | ------------  | -------------  | -------------  | -------------  | -------------  | -------------- |
+| Debian GNU/Linux 12 "Bookworm" | `clang` `gcc` | :green_circle: | :green_circle: | :green_circle: | :green_circle: | :green_circle: |
+| Debian GNU/Linux 13 "Trixie"   | `clang` `gcc` | :green_circle: | :green_circle: | :green_circle: | :green_circle: | :green_circle: |
+| Raspberry Pi OS 12             | `clang` `gcc` | :white_circle: | :white_circle: | :green_circle: | :green_circle: | :white_circle: |
+| Manjaro                        | `clang` `gcc` | :white_circle: | :white_circle: | :black_circle: | :green_circle: | :white_circle: |
+| macOS 14                       | `clang`       | :black_circle: | :white_circle: | :white_circle: | :green_circle: | :white_circle: |
+| Microsoft Windows 10           | `msvc 2022`   | :green_circle: | :black_circle: | :black_circle: | :black_circle: | :white_circle: |
+| Microsoft Windows 11           | `msvc 2022`   | :green_circle: | :black_circle: | :black_circle: | :black_circle: | :white_circle: |
+
+**Legend**:  
+:green_circle: Ok / :yellow_circle: In progress / :orange_circle: Stalled / :red_circle: Nok / :white_circle: Not applicable / :black_circle: Not tested
+
 # Development
 
 Project uses `clang-format` as `C++` code formatter.
 
+Project uses `black` as `Python` code formatter.
+
 Project uses [conventional-pre-commit](https://github.com/compilerla/conventional-pre-commit)
 to try to force good commit messages.
 The `.pre-commit-config.yaml` is already in the root folder of `sin-cmake`.
-Run this command in the `sin-cmake` directory:
+Run this command in the `sin-cpp` directory:
 ```sh
 pre-commit install --hook-type commit-msg
 ```
