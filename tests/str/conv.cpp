@@ -140,6 +140,7 @@ TEST(to_chars, float) {
       {
           "1.189731495357231765e+4932",                // clang
           "Infinity",                                  // gcc
+          "inf",                                       // amd64 macos14
           "1.7976931348623157e+308",                   // armhf
           "1.189731495357231765085759326628007e+4932", // arm64 raspberry pi
           "1.79769313486231580793728971405301e+308"    // ppc64el
@@ -167,6 +168,7 @@ TEST(to_chars, float) {
       {
           "-1.189731495357231765e+4932",                // clang
           "-Infinity",                                  // gcc
+          "-inf",                                       // amd64 macos14
           "-1.7976931348623157e+308",                   // armhf
           "-1.189731495357231765085759326628007e+4932", // arm64 raspberry pi
           "-1.79769313486231580793728971405301e+308"    // ppc64el
@@ -199,6 +201,7 @@ TEST(to_chars, float_scientific) {
       {
           "1.189731495357231765e+4932",                // clang
           "Infinity",                                  // gcc
+          "inf",                                       // amd64 macos14
           "1.7976931348623157e+308",                   // armhf
           "1.189731495357231765085759326628007e+4932", // arm64 raspberry pi
           "1.79769313486231580793728971405301e+308"    // ppc64el
@@ -226,6 +229,7 @@ TEST(to_chars, float_scientific) {
       {
           "-1.189731495357231765e+4932",                // clang
           "-Infinity",                                  // gcc
+          "-inf",                                       // amd64 macos14
           "-1.7976931348623157e+308",                   // armhf
           "-1.189731495357231765085759326628007e+4932", // arm64 raspberry pi
           "-1.79769313486231580793728971405301e+308"    // ppc64el
@@ -323,32 +327,36 @@ TEST(to_chars, float_hex) {
            });
   test_hex(std::numeric_limits<long double>::max(),
            {
-               "f.fffffffffffffffp+16380",              // amd64, clang
-               "8p+16381",                              // amd64, gcc
+               "f.fffffffffffffffp+16380",              // amd64 clang
+               "8p+16381",                              // amd64 gcc
+               "inf",                                   // amd64 macos14
                "1.fffffffffffffp+1023",                 // arm
                "1.ffffffffffffffffffffffffffffp+16383", // arm64 raspberry pi
                "1.fffffffffffff7ffffffffffff8p+1023"    // ppc64el
            });
   test_hex(std::numeric_limits<long double>::min(),
            {
-               "8p-16385", // amd64, clang
-               "0p-16385", // amd64, gcc
+               "8p-16385", // amd64 clang
+               "0p-16385", // amd64 gcc
+               "0p+0",     // amd64 macos14
                "1p-1022",  // arm
                "1p-16382", // arm64 raspberry pi
                "1p-969"    // ppc64el
            });
   test_hex(-std::numeric_limits<long double>::min(),
            {
-               "-8p-16385", // amd64, clang
-               "-0p-16385", // amd64, gcc
+               "-8p-16385", // amd64 clang
+               "-0p-16385", // amd64 gcc
+               "-0p+0",     // amd64 macos14
                "-1p-1022",  // arm
                "-1p-16382", // arm64 raspberry pi
                "-1p-969"    // ppc64el
            });
   test_hex(std::numeric_limits<long double>::lowest(),
            {
-               "-f.fffffffffffffffp+16380",              // amd64, clang
-               "-8p+16381",                              // amd64, gcc
+               "-f.fffffffffffffffp+16380",              // amd64 clang
+               "-8p+16381",                              // amd64 gcc
+               "-inf",                                   // amd64 macos14
                "-1.fffffffffffffp+1023",                 // arm
                "-1.ffffffffffffffffffffffffffffp+16383", // arm64 raspberry pi
                "-1.fffffffffffff7ffffffffffff8p+1023"    // ppc64el
