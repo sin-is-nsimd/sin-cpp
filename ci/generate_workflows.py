@@ -71,16 +71,22 @@ for system in [
     )
 
 # macOS
-for arch in ["arm64-asimd"]:
+for system in ["macos13-amd64-avx2", "macos14-amd64-avx2"]:
     config.update(
         {
-            "macos14"
-            + "-"
-            + arch: {
+            system: {
                 "compilers_args": [
                     {
                         "name": "clang",
-                        "args": "-DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang",
+                        "args": '-DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include',
+                    },
+                    {
+                        "name": "gcc13",
+                        "args": "-DCMAKE_CXX_COMPILER=/usr/local/bin/g++-13 -DCMAKE_C_COMPILER=/usr/local/bin/gcc-13",
+                    },
+                    {
+                        "name": "gcc14",
+                        "args": "-DCMAKE_CXX_COMPILER=/usr/local/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/bin/gcc-14",
                     },
                 ],
                 "build_system": [
@@ -90,6 +96,36 @@ for arch in ["arm64-asimd"]:
             },
         }
     )
+config["macos14-amd64-avx2"]["compilers_args"] += [
+    {
+        "name": "apple-clang",
+        "args": "-DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang",
+    }
+]
+config.update(
+    {
+        "macos14-arm64-asimd": {
+            "compilers_args": [
+                {
+                    "name": "apple-clang",
+                    "args": "-DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang",
+                },
+                {
+                    "name": "clang",
+                    "args": '-DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++" CPPFLAGS="-I/opt/homebrew/opt/llvm/include"',
+                },
+                {
+                    "name": "gcc14",
+                    "args": '-DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc@14/lib -Wl,-rpath,/usr/local/opt/gcc14/lib" CPPFLAGS="-I/usr/local/opt/gcc@14/include"',
+                },
+            ],
+            "build_system": [
+                {"name": "ninja", "args": "-GNinja"},
+                {"name": "make", "args": '-G"Unix Makefiles"'},
+            ],
+        },
+    }
+)
 
 # Windows
 for version in ["10", "11"]:

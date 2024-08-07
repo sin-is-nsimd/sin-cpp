@@ -102,18 +102,19 @@ With `GCC`-like compilers, you can add this option to the `cmake ..` command:
 
 # CI
 
-| **Operating System**           | **Compiler**  |  `amd64`       | `i386`         | `armhf`        | `arm64`        | `ppc64el`      |
-| ------------------------------ | ------------  | -------------  | -------------  | -------------  | -------------  | -------------- |
-| Debian GNU/Linux 12 "Bookworm" | `clang` `gcc` | :green_circle: | :green_circle: | :green_circle: | :green_circle: | :green_circle: |
-| Debian GNU/Linux 13 "Trixie"   | `clang` `gcc` | :green_circle: | :green_circle: | :green_circle: | :green_circle: | :green_circle: |
-| Raspberry Pi OS 12             | `clang` `gcc` | :white_circle: | :white_circle: | :green_circle: | :green_circle: | :white_circle: |
-| Manjaro                        | `clang` `gcc` | :white_circle: | :white_circle: | :black_circle: | :green_circle: | :white_circle: |
-| macOS 14                       | `clang`       | :black_circle: | :white_circle: | :white_circle: | :green_circle: | :white_circle: |
-| Microsoft Windows 10           | `msvc 2022`   | :green_circle: | :black_circle: | :black_circle: | :black_circle: | :white_circle: |
-| Microsoft Windows 11           | `msvc 2022`   | :green_circle: | :black_circle: | :black_circle: | :black_circle: | :white_circle: |
+| **Operating System** & **Compilers**                                      |  `amd64`           | `i386`             | `armhf`            | `arm64`        | `ppc64el`          |
+| ------------------------------------------------------------------------  | -----------------  | -----------------  | -----------------  | -------------  | ------------------ |
+| Debian GNU/Linux 12 "Bookworm" <br> `clang` `gcc`                         | :green_square:     | :green_square:     | :green_square:     | :green_square: | :green_square:     |
+| Debian GNU/Linux 13 "Trixie"   <br> `clang` `gcc`                         | :green_square:     | :green_square:     | :green_square:     | :green_square: | :green_square:     |
+| Raspberry Pi OS 12             <br> `clang` `gcc`                         | :heavy_minus_sign: | :heavy_minus_sign: | :green_square:     | :green_square: | :heavy_minus_sign: |
+| Manjaro                        <br> `clang` `gcc`                         | :blue_square:      | :blue_square:      | :blue_square:      | :green_square: | :heavy_minus_sign: |
+| macOS 13 "Ventura"             <br> `clang` `gcc13` `gcc14`               | :green_square:     | :heavy_minus_sign: | :heavy_minus_sign: | :green_square: | :heavy_minus_sign: |
+| macOS 14 "Sonoma"              <br> `apple-clang` `clang` `gcc13` `gcc14` | :green_square:     | :heavy_minus_sign: | :heavy_minus_sign: | :green_square: | :heavy_minus_sign: |
+| Microsoft Windows 10           <br> `msvc 2022`                           | :green_square:     | :blue_square:      | :heavy_minus_sign: | :blue_square:  | :heavy_minus_sign: |
+| Microsoft Windows 11           <br> `msvc 2022`                           | :green_square:     | :heavy_minus_sign: | :heavy_minus_sign: | :blue_square:  | :heavy_minus_sign: |
 
 **Legend**:  
-:green_circle: Ok / :yellow_circle: In progress / :orange_circle: Stalled / :red_circle: Nok / :white_circle: Not applicable / :black_circle: Not tested
+:green_square: Ok / :yellow_square: In progress / :orange_square: Stalled / :red_square: Nok / :heavy_minus_sign: Not applicable / :blue_square: Not tested
 
 # Development
 

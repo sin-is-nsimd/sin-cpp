@@ -5183,12 +5183,905 @@ jobs:
           cd sin-cpp/build
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
-  # macos14-arm64
+  # macos13-amd64
 
-  macos14-arm64-ninja-clang:
+  macos13-amd64-ninja-clang:
     continue-on-error: true
-    runs-on: [ self-hosted, macos14-arm64-asimd ]
-    name: macos14-arm64-ninja-clang
+    runs-on: [ self-hosted, macos13-amd64-avx2 ]
+    name: macos13-amd64-ninja-clang
+    steps:
+
+      # Clean
+      - name: Clean
+        run: rm -rf *
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v3
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+      - name: Clone Google Test
+        uses: actions/checkout@v3
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+      - name: Clone zlib
+        uses: actions/checkout@v3
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+      - name: Clone sin-cmake
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+      - name: Clone sin-cpp
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+
+      # Dependencies
+      - name: Google Benchmark
+        shell: bash
+        run: |
+          cd benchmark
+          cmake \
+            -B build \
+            -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+          cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd googletest
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd zlib
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd sin-cpp
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+                                                -GNinja \
+                                                -DCMAKE_INSTALL_PREFIX=../_install \
+                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+                                                -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+      - name: Build
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Test
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  macos13-amd64-ninja-gcc13:
+    continue-on-error: true
+    runs-on: [ self-hosted, macos13-amd64-avx2 ]
+    name: macos13-amd64-ninja-gcc13
+    steps:
+
+      # Clean
+      - name: Clean
+        run: rm -rf *
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v3
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+      - name: Clone Google Test
+        uses: actions/checkout@v3
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+      - name: Clone zlib
+        uses: actions/checkout@v3
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+      - name: Clone sin-cmake
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+      - name: Clone sin-cpp
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+
+      # Dependencies
+      - name: Google Benchmark
+        shell: bash
+        run: |
+          cd benchmark
+          cmake \
+            -B build \
+            -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-13 -DCMAKE_C_COMPILER=/usr/local/bin/gcc-13
+          cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd googletest
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-13 -DCMAKE_C_COMPILER=/usr/local/bin/gcc-13
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd zlib
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-13 -DCMAKE_C_COMPILER=/usr/local/bin/gcc-13
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd sin-cpp
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+                                                -GNinja \
+                                                -DCMAKE_INSTALL_PREFIX=../_install \
+                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+                                                -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-13 -DCMAKE_C_COMPILER=/usr/local/bin/gcc-13
+      - name: Build
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Test
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  macos13-amd64-ninja-gcc14:
+    continue-on-error: true
+    runs-on: [ self-hosted, macos13-amd64-avx2 ]
+    name: macos13-amd64-ninja-gcc14
+    steps:
+
+      # Clean
+      - name: Clean
+        run: rm -rf *
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v3
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+      - name: Clone Google Test
+        uses: actions/checkout@v3
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+      - name: Clone zlib
+        uses: actions/checkout@v3
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+      - name: Clone sin-cmake
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+      - name: Clone sin-cpp
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+
+      # Dependencies
+      - name: Google Benchmark
+        shell: bash
+        run: |
+          cd benchmark
+          cmake \
+            -B build \
+            -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/bin/gcc-14
+          cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd googletest
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/bin/gcc-14
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd zlib
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/bin/gcc-14
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd sin-cpp
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+                                                -GNinja \
+                                                -DCMAKE_INSTALL_PREFIX=../_install \
+                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+                                                -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/bin/gcc-14
+      - name: Build
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Test
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  macos13-amd64-make-clang:
+    continue-on-error: true
+    runs-on: [ self-hosted, macos13-amd64-avx2 ]
+    name: macos13-amd64-make-clang
+    steps:
+
+      # Clean
+      - name: Clean
+        run: rm -rf *
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v3
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+      - name: Clone Google Test
+        uses: actions/checkout@v3
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+      - name: Clone zlib
+        uses: actions/checkout@v3
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+      - name: Clone sin-cmake
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+      - name: Clone sin-cpp
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+
+      # Dependencies
+      - name: Google Benchmark
+        shell: bash
+        run: |
+          cd benchmark
+          cmake \
+            -B build \
+            -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+          cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd googletest
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd zlib
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd sin-cpp
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+                                                -G"Unix Makefiles" \
+                                                -DCMAKE_INSTALL_PREFIX=../_install \
+                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+                                                -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+      - name: Build
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Test
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  macos13-amd64-make-gcc13:
+    continue-on-error: true
+    runs-on: [ self-hosted, macos13-amd64-avx2 ]
+    name: macos13-amd64-make-gcc13
+    steps:
+
+      # Clean
+      - name: Clean
+        run: rm -rf *
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v3
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+      - name: Clone Google Test
+        uses: actions/checkout@v3
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+      - name: Clone zlib
+        uses: actions/checkout@v3
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+      - name: Clone sin-cmake
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+      - name: Clone sin-cpp
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+
+      # Dependencies
+      - name: Google Benchmark
+        shell: bash
+        run: |
+          cd benchmark
+          cmake \
+            -B build \
+            -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-13 -DCMAKE_C_COMPILER=/usr/local/bin/gcc-13
+          cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd googletest
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-13 -DCMAKE_C_COMPILER=/usr/local/bin/gcc-13
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd zlib
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-13 -DCMAKE_C_COMPILER=/usr/local/bin/gcc-13
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd sin-cpp
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+                                                -G"Unix Makefiles" \
+                                                -DCMAKE_INSTALL_PREFIX=../_install \
+                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+                                                -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-13 -DCMAKE_C_COMPILER=/usr/local/bin/gcc-13
+      - name: Build
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Test
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  macos13-amd64-make-gcc14:
+    continue-on-error: true
+    runs-on: [ self-hosted, macos13-amd64-avx2 ]
+    name: macos13-amd64-make-gcc14
+    steps:
+
+      # Clean
+      - name: Clean
+        run: rm -rf *
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v3
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+      - name: Clone Google Test
+        uses: actions/checkout@v3
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+      - name: Clone zlib
+        uses: actions/checkout@v3
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+      - name: Clone sin-cmake
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+      - name: Clone sin-cpp
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+
+      # Dependencies
+      - name: Google Benchmark
+        shell: bash
+        run: |
+          cd benchmark
+          cmake \
+            -B build \
+            -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/bin/gcc-14
+          cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd googletest
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/bin/gcc-14
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd zlib
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/bin/gcc-14
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd sin-cpp
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+                                                -G"Unix Makefiles" \
+                                                -DCMAKE_INSTALL_PREFIX=../_install \
+                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+                                                -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/bin/gcc-14
+      - name: Build
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Test
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  # macos14-amd64
+
+  macos14-amd64-ninja-clang:
+    continue-on-error: true
+    runs-on: [ self-hosted, macos14-amd64-avx2 ]
+    name: macos14-amd64-ninja-clang
+    steps:
+
+      # Clean
+      - name: Clean
+        run: rm -rf *
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v3
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+      - name: Clone Google Test
+        uses: actions/checkout@v3
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+      - name: Clone zlib
+        uses: actions/checkout@v3
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+      - name: Clone sin-cmake
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+      - name: Clone sin-cpp
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+
+      # Dependencies
+      - name: Google Benchmark
+        shell: bash
+        run: |
+          cd benchmark
+          cmake \
+            -B build \
+            -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+          cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd googletest
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd zlib
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd sin-cpp
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+                                                -GNinja \
+                                                -DCMAKE_INSTALL_PREFIX=../_install \
+                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+                                                -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+      - name: Build
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Test
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  macos14-amd64-ninja-gcc13:
+    continue-on-error: true
+    runs-on: [ self-hosted, macos14-amd64-avx2 ]
+    name: macos14-amd64-ninja-gcc13
+    steps:
+
+      # Clean
+      - name: Clean
+        run: rm -rf *
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v3
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+      - name: Clone Google Test
+        uses: actions/checkout@v3
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+      - name: Clone zlib
+        uses: actions/checkout@v3
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+      - name: Clone sin-cmake
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+      - name: Clone sin-cpp
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+
+      # Dependencies
+      - name: Google Benchmark
+        shell: bash
+        run: |
+          cd benchmark
+          cmake \
+            -B build \
+            -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-13 -DCMAKE_C_COMPILER=/usr/local/bin/gcc-13
+          cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd googletest
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-13 -DCMAKE_C_COMPILER=/usr/local/bin/gcc-13
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd zlib
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-13 -DCMAKE_C_COMPILER=/usr/local/bin/gcc-13
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd sin-cpp
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+                                                -GNinja \
+                                                -DCMAKE_INSTALL_PREFIX=../_install \
+                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+                                                -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-13 -DCMAKE_C_COMPILER=/usr/local/bin/gcc-13
+      - name: Build
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Test
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  macos14-amd64-ninja-gcc14:
+    continue-on-error: true
+    runs-on: [ self-hosted, macos14-amd64-avx2 ]
+    name: macos14-amd64-ninja-gcc14
+    steps:
+
+      # Clean
+      - name: Clean
+        run: rm -rf *
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v3
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+      - name: Clone Google Test
+        uses: actions/checkout@v3
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+      - name: Clone zlib
+        uses: actions/checkout@v3
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+      - name: Clone sin-cmake
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+      - name: Clone sin-cpp
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+
+      # Dependencies
+      - name: Google Benchmark
+        shell: bash
+        run: |
+          cd benchmark
+          cmake \
+            -B build \
+            -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/bin/gcc-14
+          cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd googletest
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/bin/gcc-14
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd zlib
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/bin/gcc-14
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd sin-cpp
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+                                                -GNinja \
+                                                -DCMAKE_INSTALL_PREFIX=../_install \
+                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+                                                -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/bin/gcc-14
+      - name: Build
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Test
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  macos14-amd64-ninja-apple-clang:
+    continue-on-error: true
+    runs-on: [ self-hosted, macos14-amd64-avx2 ]
+    name: macos14-amd64-ninja-apple-clang
     steps:
 
       # Clean
@@ -5284,10 +6177,307 @@ jobs:
           cd sin-cpp/build
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
-  macos14-arm64-make-clang:
+  macos14-amd64-make-clang:
     continue-on-error: true
-    runs-on: [ self-hosted, macos14-arm64-asimd ]
-    name: macos14-arm64-make-clang
+    runs-on: [ self-hosted, macos14-amd64-avx2 ]
+    name: macos14-amd64-make-clang
+    steps:
+
+      # Clean
+      - name: Clean
+        run: rm -rf *
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v3
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+      - name: Clone Google Test
+        uses: actions/checkout@v3
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+      - name: Clone zlib
+        uses: actions/checkout@v3
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+      - name: Clone sin-cmake
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+      - name: Clone sin-cpp
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+
+      # Dependencies
+      - name: Google Benchmark
+        shell: bash
+        run: |
+          cd benchmark
+          cmake \
+            -B build \
+            -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+          cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd googletest
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd zlib
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd sin-cpp
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+                                                -G"Unix Makefiles" \
+                                                -DCMAKE_INSTALL_PREFIX=../_install \
+                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+                                                -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+      - name: Build
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Test
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  macos14-amd64-make-gcc13:
+    continue-on-error: true
+    runs-on: [ self-hosted, macos14-amd64-avx2 ]
+    name: macos14-amd64-make-gcc13
+    steps:
+
+      # Clean
+      - name: Clean
+        run: rm -rf *
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v3
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+      - name: Clone Google Test
+        uses: actions/checkout@v3
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+      - name: Clone zlib
+        uses: actions/checkout@v3
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+      - name: Clone sin-cmake
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+      - name: Clone sin-cpp
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+
+      # Dependencies
+      - name: Google Benchmark
+        shell: bash
+        run: |
+          cd benchmark
+          cmake \
+            -B build \
+            -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-13 -DCMAKE_C_COMPILER=/usr/local/bin/gcc-13
+          cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd googletest
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-13 -DCMAKE_C_COMPILER=/usr/local/bin/gcc-13
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd zlib
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-13 -DCMAKE_C_COMPILER=/usr/local/bin/gcc-13
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd sin-cpp
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+                                                -G"Unix Makefiles" \
+                                                -DCMAKE_INSTALL_PREFIX=../_install \
+                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+                                                -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-13 -DCMAKE_C_COMPILER=/usr/local/bin/gcc-13
+      - name: Build
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Test
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  macos14-amd64-make-gcc14:
+    continue-on-error: true
+    runs-on: [ self-hosted, macos14-amd64-avx2 ]
+    name: macos14-amd64-make-gcc14
+    steps:
+
+      # Clean
+      - name: Clean
+        run: rm -rf *
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v3
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+      - name: Clone Google Test
+        uses: actions/checkout@v3
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+      - name: Clone zlib
+        uses: actions/checkout@v3
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+      - name: Clone sin-cmake
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+      - name: Clone sin-cpp
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+
+      # Dependencies
+      - name: Google Benchmark
+        shell: bash
+        run: |
+          cd benchmark
+          cmake \
+            -B build \
+            -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/bin/gcc-14
+          cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd googletest
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/bin/gcc-14
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd zlib
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/bin/gcc-14
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd sin-cpp
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+                                                -G"Unix Makefiles" \
+                                                -DCMAKE_INSTALL_PREFIX=../_install \
+                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+                                                -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/bin/gcc-14
+      - name: Build
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Test
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  macos14-amd64-make-apple-clang:
+    continue-on-error: true
+    runs-on: [ self-hosted, macos14-amd64-avx2 ]
+    name: macos14-amd64-make-apple-clang
     steps:
 
       # Clean
@@ -5371,6 +6561,602 @@ jobs:
                                                 -DCMAKE_INSTALL_PREFIX=../_install \
                                                 -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
                                                 -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+      - name: Build
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Test
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  # macos14-arm64
+
+  macos14-arm64-ninja-apple-clang:
+    continue-on-error: true
+    runs-on: [ self-hosted, macos14-arm64-asimd ]
+    name: macos14-arm64-ninja-apple-clang
+    steps:
+
+      # Clean
+      - name: Clean
+        run: rm -rf *
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v3
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+      - name: Clone Google Test
+        uses: actions/checkout@v3
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+      - name: Clone zlib
+        uses: actions/checkout@v3
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+      - name: Clone sin-cmake
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+      - name: Clone sin-cpp
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+
+      # Dependencies
+      - name: Google Benchmark
+        shell: bash
+        run: |
+          cd benchmark
+          cmake \
+            -B build \
+            -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd googletest
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd zlib
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd sin-cpp
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+                                                -GNinja \
+                                                -DCMAKE_INSTALL_PREFIX=../_install \
+                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+      - name: Build
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Test
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  macos14-arm64-ninja-clang:
+    continue-on-error: true
+    runs-on: [ self-hosted, macos14-arm64-asimd ]
+    name: macos14-arm64-ninja-clang
+    steps:
+
+      # Clean
+      - name: Clean
+        run: rm -rf *
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v3
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+      - name: Clone Google Test
+        uses: actions/checkout@v3
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+      - name: Clone zlib
+        uses: actions/checkout@v3
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+      - name: Clone sin-cmake
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+      - name: Clone sin-cpp
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+
+      # Dependencies
+      - name: Google Benchmark
+        shell: bash
+        run: |
+          cd benchmark
+          cmake \
+            -B build \
+            -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++" CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+          cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd googletest
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++" CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd zlib
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++" CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd sin-cpp
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+                                                -GNinja \
+                                                -DCMAKE_INSTALL_PREFIX=../_install \
+                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+                                                -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++" CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+      - name: Build
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Test
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  macos14-arm64-ninja-gcc14:
+    continue-on-error: true
+    runs-on: [ self-hosted, macos14-arm64-asimd ]
+    name: macos14-arm64-ninja-gcc14
+    steps:
+
+      # Clean
+      - name: Clean
+        run: rm -rf *
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v3
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+      - name: Clone Google Test
+        uses: actions/checkout@v3
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+      - name: Clone zlib
+        uses: actions/checkout@v3
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+      - name: Clone sin-cmake
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+      - name: Clone sin-cpp
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+
+      # Dependencies
+      - name: Google Benchmark
+        shell: bash
+        run: |
+          cd benchmark
+          cmake \
+            -B build \
+            -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc@14/lib -Wl,-rpath,/usr/local/opt/gcc14/lib" CPPFLAGS="-I/usr/local/opt/gcc@14/include"
+          cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd googletest
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc@14/lib -Wl,-rpath,/usr/local/opt/gcc14/lib" CPPFLAGS="-I/usr/local/opt/gcc@14/include"
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd zlib
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc@14/lib -Wl,-rpath,/usr/local/opt/gcc14/lib" CPPFLAGS="-I/usr/local/opt/gcc@14/include"
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd sin-cpp
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+                                                -GNinja \
+                                                -DCMAKE_INSTALL_PREFIX=../_install \
+                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+                                                -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc@14/lib -Wl,-rpath,/usr/local/opt/gcc14/lib" CPPFLAGS="-I/usr/local/opt/gcc@14/include"
+      - name: Build
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Test
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  macos14-arm64-make-apple-clang:
+    continue-on-error: true
+    runs-on: [ self-hosted, macos14-arm64-asimd ]
+    name: macos14-arm64-make-apple-clang
+    steps:
+
+      # Clean
+      - name: Clean
+        run: rm -rf *
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v3
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+      - name: Clone Google Test
+        uses: actions/checkout@v3
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+      - name: Clone zlib
+        uses: actions/checkout@v3
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+      - name: Clone sin-cmake
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+      - name: Clone sin-cpp
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+
+      # Dependencies
+      - name: Google Benchmark
+        shell: bash
+        run: |
+          cd benchmark
+          cmake \
+            -B build \
+            -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd googletest
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd zlib
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd sin-cpp
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+                                                -G"Unix Makefiles" \
+                                                -DCMAKE_INSTALL_PREFIX=../_install \
+                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+      - name: Build
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Test
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  macos14-arm64-make-clang:
+    continue-on-error: true
+    runs-on: [ self-hosted, macos14-arm64-asimd ]
+    name: macos14-arm64-make-clang
+    steps:
+
+      # Clean
+      - name: Clean
+        run: rm -rf *
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v3
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+      - name: Clone Google Test
+        uses: actions/checkout@v3
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+      - name: Clone zlib
+        uses: actions/checkout@v3
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+      - name: Clone sin-cmake
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+      - name: Clone sin-cpp
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+
+      # Dependencies
+      - name: Google Benchmark
+        shell: bash
+        run: |
+          cd benchmark
+          cmake \
+            -B build \
+            -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++" CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+          cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd googletest
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++" CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd zlib
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++" CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd sin-cpp
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+                                                -G"Unix Makefiles" \
+                                                -DCMAKE_INSTALL_PREFIX=../_install \
+                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+                                                -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++" CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+      - name: Build
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Test
+        shell: bash
+        run: |
+          cd sin-cpp/build
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  macos14-arm64-make-gcc14:
+    continue-on-error: true
+    runs-on: [ self-hosted, macos14-arm64-asimd ]
+    name: macos14-arm64-make-gcc14
+    steps:
+
+      # Clean
+      - name: Clean
+        run: rm -rf *
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v3
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+      - name: Clone Google Test
+        uses: actions/checkout@v3
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+      - name: Clone zlib
+        uses: actions/checkout@v3
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+      - name: Clone sin-cmake
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+      - name: Clone sin-cpp
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+
+      # Dependencies
+      - name: Google Benchmark
+        shell: bash
+        run: |
+          cd benchmark
+          cmake \
+            -B build \
+            -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc@14/lib -Wl,-rpath,/usr/local/opt/gcc14/lib" CPPFLAGS="-I/usr/local/opt/gcc@14/include"
+          cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd googletest
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc@14/lib -Wl,-rpath,/usr/local/opt/gcc14/lib" CPPFLAGS="-I/usr/local/opt/gcc@14/include"
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd zlib
+          cmake \
+            -B build \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc@14/lib -Wl,-rpath,/usr/local/opt/gcc14/lib" CPPFLAGS="-I/usr/local/opt/gcc@14/include"
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd sin-cpp
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+                                                -G"Unix Makefiles" \
+                                                -DCMAKE_INSTALL_PREFIX=../_install \
+                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+                                                -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc@14/lib -Wl,-rpath,/usr/local/opt/gcc14/lib" CPPFLAGS="-I/usr/local/opt/gcc@14/include"
       - name: Build
         shell: bash
         run: |
