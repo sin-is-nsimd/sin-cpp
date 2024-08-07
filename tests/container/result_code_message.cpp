@@ -26,14 +26,14 @@
 #include <gtest/gtest.h>
 
 TEST(result_code_message, default_contructor) {
-  sincpp::result_code_message_t<char, int, std::string_view> r;
+  sincpp::result_code_message_t<char, int, std::string_view> const r;
   EXPECT_EQ(r.result, char());
   EXPECT_EQ(r.code, 0);
   EXPECT_TRUE(r.message.empty());
 }
 
-TEST(vector_pair, contructor) {
-  sincpp::result_code_message_t<std::string, bool, std::string_view> r = {
+TEST(result_code_message, contructor) {
+  sincpp::result_code_message_t<std::string, bool, std::string_view> const r = {
       "Result", true, "Success"};
   EXPECT_EQ(r.result, "Result");
   EXPECT_EQ(r.code, true);
