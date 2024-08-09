@@ -107,11 +107,11 @@ With `GCC`-like compilers, you can add this option to the `cmake ..` command:
 | Debian GNU/Linux 12 "Bookworm" <br> `clang` `gcc`                         | :green_square:     | :green_square:     | :green_square:     | :green_square: | :green_square:     |
 | Debian GNU/Linux 13 "Trixie"   <br> `clang` `gcc`                         | :green_square:     | :green_square:     | :green_square:     | :green_square: | :green_square:     |
 | Raspberry Pi OS 12             <br> `clang` `gcc`                         | :heavy_minus_sign: | :heavy_minus_sign: | :green_square:     | :green_square: | :heavy_minus_sign: |
-| Manjaro                        <br> `clang` `gcc`                         | :blue_square:      | :blue_square:      | :blue_square:      | :green_square: | :heavy_minus_sign: |
+| Manjaro                        <br> `clang` `gcc`                         | :blue_square:      | :heavy_minus_sign: | :heavy_minus_sign: | :green_square: | :heavy_minus_sign: |
 | macOS 13 "Ventura"             <br> `clang` `gcc13` `gcc14`               | :green_square:     | :heavy_minus_sign: | :heavy_minus_sign: | :green_square: | :heavy_minus_sign: |
 | macOS 14 "Sonoma"              <br> `apple-clang` `clang` `gcc13` `gcc14` | :green_square:     | :heavy_minus_sign: | :heavy_minus_sign: | :green_square: | :heavy_minus_sign: |
-| Microsoft Windows 10           <br> `msvc 2022`                           | :green_square:     | :blue_square:      | :heavy_minus_sign: | :blue_square:  | :heavy_minus_sign: |
-| Microsoft Windows 11           <br> `msvc 2022`                           | :green_square:     | :heavy_minus_sign: | :heavy_minus_sign: | :blue_square:  | :heavy_minus_sign: |
+| Microsoft Windows 10           <br> `msvc2022`                            | :green_square:     | :green_square:     | :heavy_minus_sign: | :blue_square:  | :heavy_minus_sign: |
+| Microsoft Windows 11           <br> `msvc2022`                            | :green_square:     | :heavy_minus_sign: | :heavy_minus_sign: | :blue_square:  | :heavy_minus_sign: |
 
 **Legend**:  
 :green_square: Ok / :yellow_square: In progress / :orange_square: Stalled / :red_square: Nok / :heavy_minus_sign: Not applicable / :blue_square: Not tested
