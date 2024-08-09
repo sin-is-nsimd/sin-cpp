@@ -132,12 +132,10 @@ config.update(
 )
 
 # Windows
-for version in ["10", "11"]:
+for system in ["windows10-amd64-sse42", "windows10-i386-sse2", "windows11-amd64-sse42"]:
     config.update(
         {
-            "windows"
-            + version
-            + "-amd64-sse42": {
+            system: {
                 "compilers_args": [
                     {
                         "name": "msvc",

@@ -7412,6 +7412,51 @@ jobs:
           cd sin-cpp
           cmd.exe /c "ci\windows.bat" "windows10-amd64"
 
+  # windows10-i386
+
+  windows10-i386-ninja-msvc:
+    continue-on-error: true
+    runs-on: [ self-hosted, windows10-i386-sse2 ]
+    name: windows10-i386-ninja-msvc
+    steps:
+
+      # Clean
+      - name: Clean
+        run: rd -r *
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v3
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+      - name: Clone Google Test
+        uses: actions/checkout@v3
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+      - name: Clone zlib
+        uses: actions/checkout@v3
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+      - name: Clone sin-cmake
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+      - name: Clone sin-cpp
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+
+      # sin-cpp
+      - name: Compile & Test
+        run: |
+          cd sin-cpp
+          cmd.exe /c "ci\windows.bat" "windows10-i386"
+
   # windows11-amd64
 
   windows11-amd64-ninja-msvc:
