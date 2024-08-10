@@ -36,13 +36,13 @@ for system in [
     "debian12-i386-sse2",
     "debian12-armhf-neon",
     "debian12-arm64-asimd",
-    "debian12-ppc64el-vmx",
+    "debian12-ppc64el-vsx",
     # debian13
     "debian13-amd64-sse42",
     "debian13-i386-sse2",
     "debian13-armhf-neon",
     "debian13-arm64-asimd",
-    "debian13-ppc64el-vmx",
+    "debian13-ppc64el-vsx",
     # raspios12
     "raspios12-armhf-neon",
     "raspios12-arm64-asimd",
