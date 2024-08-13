@@ -18,23 +18,31 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#ifndef SINCPP_SINCPP_HPP
-#define SINCPP_SINCPP_HPP
+#include <sincpp/json/to_json_value.hpp>
 
-/**
- * @defgroup sincpp_compression Compression and decompression operations.
- */
+#include <gtest/gtest.h>
 
-/**
- * @defgroup sincpp_json JSON.
- */
+// numbers
 
-/**
- * @defgroup sincpp_str String operations.
- */
+TEST(to_json_value, int) {
+  sincpp::number_str_t<sincpp::to_chars_max_size<int>()> const v = 42;
+  EXPECT_EQ(v.to_json_size(), 2);
+  EXPECT_EQ(v.to_json(), "42");
+}
 
-/**
- * @defgroup sincpp_type_traits Type traits.
- */
+TEST(to_json_value, float) {
+  sincpp::number_str_t<sincpp::to_chars_max_size<float>()> const v =
+      sincpp::make_number_str(3.14f);
+  EXPECT_EQ(v.to_json_size(), 4);
+  EXPECT_EQ(v.to_json(), "3.14");
+}
 
-#endif
+TEST(to_json_value, double) {
+  auto const v = sincpp::make_number_str(21.42);
+  static_assert(
+      std::is_same_v<
+          decltype(v),
+          sincpp::number_str_t<sincpp::to_chars_max_size<double>()> const>);
+  EXPECT_EQ(v.to_json_size(), 5);
+  EXPECT_EQ(v.to_json(), "21.42");
+}
