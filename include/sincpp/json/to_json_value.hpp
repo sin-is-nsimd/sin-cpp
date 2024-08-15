@@ -22,6 +22,8 @@
 #define SINCPP_JSON_TO_JSON_VALUE_HPP
 
 #include "../str/conv.hpp"
+#include "../type_traits/is_char.hpp"
+#include "../type_traits/is_string.hpp"
 
 #include <string_view>
 #include <type_traits>
@@ -91,6 +93,46 @@ template <class T, size_t N = to_chars_max_size<T>()>
   requires(std::is_arithmetic_v<T>)
 number_str_t<N> make_number_str(T const t) {
   return number_str_t<N>(t);
+}
+
+// to_json_value: string & number
+
+/**
+ * @brief Get the JSON value of a string.
+ *
+ * Leading and trailing quotes (`"`) are not added and no character is escaped.
+ *
+ * @tparam T String type.
+ *
+ * @param t A string.
+ *
+ * @returns the JSON value of the string.
+ *
+ * **Example:**
+ * @include examples/json/to_json_value.cpp
+ */
+template <class T>
+  requires(is_string_v<T> || is_char_v<T>)
+T const &to_json_value(T const &t) {
+  return t;
+}
+
+/**
+ * @brief Get the JSON value of a number (integer or floating-point).
+ *
+ * @tparam T Integer or floating-point type.
+ *
+ * @param t A number.
+ *
+ * @returns the JSON value of the number.
+ *
+ * **Example:**
+ * @include examples/json/to_json_value.cpp
+ */
+template <class T>
+  requires(std::is_arithmetic_v<T> && is_char_v<T> == false)
+number_str_t<sincpp::to_chars_max_size<T>()> to_json_value(T const t) {
+  return number_str_t<sincpp::to_chars_max_size<T>()>(t);
 }
 
 } // namespace sincpp
