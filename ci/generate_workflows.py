@@ -116,7 +116,7 @@ config.update(
                 },
                 {
                     "name": "gcc14",
-                    "args": '-DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc@14/lib -Wl,-rpath,/usr/local/opt/gcc14/lib" CPPFLAGS="-I/usr/local/opt/gcc@14/include"',
+                    "args": '-DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc@14/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc@14/bin/gcc-14 LDFLAGS="-L/opt/homebrew/opt/gcc@14/lib -Wl,-rpath,/opt/homebrew/opt/gcc@14/lib" CPPFLAGS="-I/opt/homebrew/opt/gcc@14/include"',
                 },
             ],
             "build_system": [
