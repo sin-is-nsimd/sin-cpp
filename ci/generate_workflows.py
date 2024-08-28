@@ -149,6 +149,14 @@ for system in ["windows10-amd64-sse42", "windows10-i386-sse2", "windows11-amd64-
         },
     )
 
+
+def get_vcvars_paths(system):
+    if system == "windows10-i386-sse2":
+        return "C:\\Program Files\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Auxiliary\\Build\\vcvars32.bat"
+    else:
+        return "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Auxiliary\\Build\\vcvars64.bat"
+
+
 header = """# THIS FILE IS GENERATED!
 
 name: ci
@@ -198,6 +206,11 @@ step_clone = """
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -275,11 +288,27 @@ step_unix = """
 """
 
 step_windows = """
-      # sin-cpp
-      - name: Compile & Test
+      # Dependencies
+      - name: Google Benchmark
         run: |
-          cd sin-cpp
-          cmd.exe /c "ci\\windows.bat" "{os}"
+          python "sin-cpp\\ci\\windows.py" --vcvars-path "{vcvars_path}" --build-google-benchmark
+      - name: Google Test
+        run: |
+          python "sin-cpp\\ci\\windows.py" --vcvars-path "{vcvars_path}" --build-google-test
+      - name: zlib
+        run: |
+          python "sin-cpp\\ci\\windows.py" --vcvars-path "{vcvars_path}" --build-zlib
+
+      # sin-cpp
+      - name: CMake
+        run: |
+          python "sin-cpp\\ci\\windows.py" --vcvars-path "{vcvars_path}" --cmake
+      - name: Build
+        run: |
+          python "sin-cpp\\ci\\windows.py" --vcvars-path "{vcvars_path}" --build
+      - name: Test
+        run: |
+          python "sin-cpp\\ci\\windows.py" --vcvars-path "{vcvars_path}" --test
 """
 
 if __name__ == "__main__":
@@ -321,7 +350,9 @@ if __name__ == "__main__":
 
                     # Dependencies & sin-cpp
                     if os.startswith("windows"):
-                        f.write(step_windows.format(os=os))
+                        f.write(
+                            step_windows.format(vcvars_path=get_vcvars_paths(label))
+                        )
                     else:
                         f.write(
                             step_unix.format(

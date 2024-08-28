@@ -37,6 +37,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -136,6 +141,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -235,6 +245,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -334,6 +349,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -435,6 +455,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -534,6 +559,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -633,6 +663,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -732,6 +767,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -833,6 +873,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -932,6 +977,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -1031,6 +1081,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -1130,6 +1185,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -1231,6 +1291,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -1330,6 +1395,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -1429,6 +1499,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -1528,6 +1603,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -1629,6 +1709,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -1728,6 +1813,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -1827,6 +1917,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -1926,6 +2021,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -2027,6 +2127,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -2126,6 +2231,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -2225,6 +2335,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -2324,6 +2439,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -2425,6 +2545,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -2524,6 +2649,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -2623,6 +2753,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -2722,6 +2857,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -2823,6 +2963,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -2922,6 +3067,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -3021,6 +3171,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -3120,6 +3275,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -3221,6 +3381,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -3320,6 +3485,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -3419,6 +3589,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -3518,6 +3693,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -3619,6 +3799,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -3718,6 +3903,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -3817,6 +4007,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -3916,6 +4111,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -4017,6 +4217,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -4116,6 +4321,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -4215,6 +4425,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -4314,6 +4529,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -4415,6 +4635,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -4514,6 +4739,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -4613,6 +4843,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -4712,6 +4947,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -4813,6 +5053,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -4912,6 +5157,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -5011,6 +5261,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -5110,6 +5365,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -5211,6 +5471,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -5310,6 +5575,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -5409,6 +5679,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -5508,6 +5783,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -5607,6 +5887,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -5706,6 +5991,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -5807,6 +6097,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -5906,6 +6201,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -6005,6 +6305,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -6104,6 +6409,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -6203,6 +6513,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -6302,6 +6617,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -6401,6 +6721,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -6500,6 +6825,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -6601,6 +6931,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -6700,6 +7035,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -6799,6 +7139,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -6898,6 +7243,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -6997,6 +7347,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -7096,6 +7451,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -7195,6 +7555,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -7294,6 +7659,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -7395,6 +7765,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -7406,11 +7781,27 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
-      # sin-cpp
-      - name: Compile & Test
+      # Dependencies
+      - name: Google Benchmark
         run: |
-          cd sin-cpp
-          cmd.exe /c "ci\windows.bat" "windows10-amd64"
+          python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars64.bat" --build-google-benchmark
+      - name: Google Test
+        run: |
+          python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars64.bat" --build-google-test
+      - name: zlib
+        run: |
+          python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars64.bat" --build-zlib
+
+      # sin-cpp
+      - name: CMake
+        run: |
+          python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars64.bat" --cmake
+      - name: Build
+        run: |
+          python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars64.bat" --build
+      - name: Test
+        run: |
+          python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars64.bat" --test
 
   # windows10-i386
 
@@ -7440,6 +7831,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -7451,11 +7847,27 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
-      # sin-cpp
-      - name: Compile & Test
+      # Dependencies
+      - name: Google Benchmark
         run: |
-          cd sin-cpp
-          cmd.exe /c "ci\windows.bat" "windows10-i386"
+          python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars32.bat" --build-google-benchmark
+      - name: Google Test
+        run: |
+          python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars32.bat" --build-google-test
+      - name: zlib
+        run: |
+          python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars32.bat" --build-zlib
+
+      # sin-cpp
+      - name: CMake
+        run: |
+          python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars32.bat" --cmake
+      - name: Build
+        run: |
+          python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars32.bat" --build
+      - name: Test
+        run: |
+          python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars32.bat" --test
 
   # windows11-amd64
 
@@ -7485,6 +7897,11 @@ jobs:
         with:
           repository: "madler/zlib"
           path: 'zlib'
+      - name: Clone sin-python
+        uses: actions/checkout@v3
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
       - name: Clone sin-cmake
         uses: actions/checkout@v3
         with:
@@ -7496,8 +7913,24 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
-      # sin-cpp
-      - name: Compile & Test
+      # Dependencies
+      - name: Google Benchmark
         run: |
-          cd sin-cpp
-          cmd.exe /c "ci\windows.bat" "windows11-amd64"
+          python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars64.bat" --build-google-benchmark
+      - name: Google Test
+        run: |
+          python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars64.bat" --build-google-test
+      - name: zlib
+        run: |
+          python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars64.bat" --build-zlib
+
+      # sin-cpp
+      - name: CMake
+        run: |
+          python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars64.bat" --cmake
+      - name: Build
+        run: |
+          python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars64.bat" --build
+      - name: Test
+        run: |
+          python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars64.bat" --test
