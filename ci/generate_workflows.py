@@ -162,8 +162,6 @@ header = """# THIS FILE IS GENERATED!
 name: ci
 
 on:
-  # push:
-  #   branches: [ main ]
   pull_request:
 
 jobs:
@@ -172,6 +170,7 @@ jobs:
 runner = """
   {runner}:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, {label} ]
     name: {runner}
     steps:
