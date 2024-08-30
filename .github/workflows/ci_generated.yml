@@ -3,8 +3,6 @@
 name: ci
 
 on:
-  # push:
-  #   branches: [ main ]
   pull_request:
 
 jobs:
@@ -13,6 +11,7 @@ jobs:
 
   debian12-amd64-ninja-clang:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian12-amd64-sse42 ]
     name: debian12-amd64-ninja-clang
     steps:
@@ -117,6 +116,7 @@ jobs:
 
   debian12-amd64-ninja-gcc:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian12-amd64-sse42 ]
     name: debian12-amd64-ninja-gcc
     steps:
@@ -221,6 +221,7 @@ jobs:
 
   debian12-amd64-make-clang:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian12-amd64-sse42 ]
     name: debian12-amd64-make-clang
     steps:
@@ -325,6 +326,7 @@ jobs:
 
   debian12-amd64-make-gcc:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian12-amd64-sse42 ]
     name: debian12-amd64-make-gcc
     steps:
@@ -431,6 +433,7 @@ jobs:
 
   debian12-i386-ninja-clang:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian12-i386-sse2 ]
     name: debian12-i386-ninja-clang
     steps:
@@ -535,6 +538,7 @@ jobs:
 
   debian12-i386-ninja-gcc:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian12-i386-sse2 ]
     name: debian12-i386-ninja-gcc
     steps:
@@ -639,6 +643,7 @@ jobs:
 
   debian12-i386-make-clang:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian12-i386-sse2 ]
     name: debian12-i386-make-clang
     steps:
@@ -743,6 +748,7 @@ jobs:
 
   debian12-i386-make-gcc:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian12-i386-sse2 ]
     name: debian12-i386-make-gcc
     steps:
@@ -849,6 +855,7 @@ jobs:
 
   debian12-armhf-ninja-clang:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian12-armhf-neon ]
     name: debian12-armhf-ninja-clang
     steps:
@@ -953,6 +960,7 @@ jobs:
 
   debian12-armhf-ninja-gcc:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian12-armhf-neon ]
     name: debian12-armhf-ninja-gcc
     steps:
@@ -1057,6 +1065,7 @@ jobs:
 
   debian12-armhf-make-clang:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian12-armhf-neon ]
     name: debian12-armhf-make-clang
     steps:
@@ -1161,6 +1170,7 @@ jobs:
 
   debian12-armhf-make-gcc:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian12-armhf-neon ]
     name: debian12-armhf-make-gcc
     steps:
@@ -1267,6 +1277,7 @@ jobs:
 
   debian12-arm64-ninja-clang:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian12-arm64-asimd ]
     name: debian12-arm64-ninja-clang
     steps:
@@ -1371,6 +1382,7 @@ jobs:
 
   debian12-arm64-ninja-gcc:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian12-arm64-asimd ]
     name: debian12-arm64-ninja-gcc
     steps:
@@ -1475,6 +1487,7 @@ jobs:
 
   debian12-arm64-make-clang:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian12-arm64-asimd ]
     name: debian12-arm64-make-clang
     steps:
@@ -1579,6 +1592,7 @@ jobs:
 
   debian12-arm64-make-gcc:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian12-arm64-asimd ]
     name: debian12-arm64-make-gcc
     steps:
@@ -1685,6 +1699,7 @@ jobs:
 
   debian12-ppc64el-ninja-clang:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian12-ppc64el-vsx ]
     name: debian12-ppc64el-ninja-clang
     steps:
@@ -1789,6 +1804,7 @@ jobs:
 
   debian12-ppc64el-ninja-gcc:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian12-ppc64el-vsx ]
     name: debian12-ppc64el-ninja-gcc
     steps:
@@ -1893,6 +1909,7 @@ jobs:
 
   debian12-ppc64el-make-clang:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian12-ppc64el-vsx ]
     name: debian12-ppc64el-make-clang
     steps:
@@ -1997,6 +2014,7 @@ jobs:
 
   debian12-ppc64el-make-gcc:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian12-ppc64el-vsx ]
     name: debian12-ppc64el-make-gcc
     steps:
@@ -2103,6 +2121,7 @@ jobs:
 
   debian13-amd64-ninja-clang:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian13-amd64-sse42 ]
     name: debian13-amd64-ninja-clang
     steps:
@@ -2207,6 +2226,7 @@ jobs:
 
   debian13-amd64-ninja-gcc:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian13-amd64-sse42 ]
     name: debian13-amd64-ninja-gcc
     steps:
@@ -2311,6 +2331,7 @@ jobs:
 
   debian13-amd64-make-clang:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian13-amd64-sse42 ]
     name: debian13-amd64-make-clang
     steps:
@@ -2415,6 +2436,7 @@ jobs:
 
   debian13-amd64-make-gcc:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian13-amd64-sse42 ]
     name: debian13-amd64-make-gcc
     steps:
@@ -2521,6 +2543,7 @@ jobs:
 
   debian13-i386-ninja-clang:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian13-i386-sse2 ]
     name: debian13-i386-ninja-clang
     steps:
@@ -2625,6 +2648,7 @@ jobs:
 
   debian13-i386-ninja-gcc:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian13-i386-sse2 ]
     name: debian13-i386-ninja-gcc
     steps:
@@ -2729,6 +2753,7 @@ jobs:
 
   debian13-i386-make-clang:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian13-i386-sse2 ]
     name: debian13-i386-make-clang
     steps:
@@ -2833,6 +2858,7 @@ jobs:
 
   debian13-i386-make-gcc:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian13-i386-sse2 ]
     name: debian13-i386-make-gcc
     steps:
@@ -2939,6 +2965,7 @@ jobs:
 
   debian13-armhf-ninja-clang:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian13-armhf-neon ]
     name: debian13-armhf-ninja-clang
     steps:
@@ -3043,6 +3070,7 @@ jobs:
 
   debian13-armhf-ninja-gcc:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian13-armhf-neon ]
     name: debian13-armhf-ninja-gcc
     steps:
@@ -3147,6 +3175,7 @@ jobs:
 
   debian13-armhf-make-clang:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian13-armhf-neon ]
     name: debian13-armhf-make-clang
     steps:
@@ -3251,6 +3280,7 @@ jobs:
 
   debian13-armhf-make-gcc:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian13-armhf-neon ]
     name: debian13-armhf-make-gcc
     steps:
@@ -3357,6 +3387,7 @@ jobs:
 
   debian13-arm64-ninja-clang:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian13-arm64-asimd ]
     name: debian13-arm64-ninja-clang
     steps:
@@ -3461,6 +3492,7 @@ jobs:
 
   debian13-arm64-ninja-gcc:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian13-arm64-asimd ]
     name: debian13-arm64-ninja-gcc
     steps:
@@ -3565,6 +3597,7 @@ jobs:
 
   debian13-arm64-make-clang:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian13-arm64-asimd ]
     name: debian13-arm64-make-clang
     steps:
@@ -3669,6 +3702,7 @@ jobs:
 
   debian13-arm64-make-gcc:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian13-arm64-asimd ]
     name: debian13-arm64-make-gcc
     steps:
@@ -3775,6 +3809,7 @@ jobs:
 
   debian13-ppc64el-ninja-clang:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian13-ppc64el-vsx ]
     name: debian13-ppc64el-ninja-clang
     steps:
@@ -3879,6 +3914,7 @@ jobs:
 
   debian13-ppc64el-ninja-gcc:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian13-ppc64el-vsx ]
     name: debian13-ppc64el-ninja-gcc
     steps:
@@ -3983,6 +4019,7 @@ jobs:
 
   debian13-ppc64el-make-clang:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian13-ppc64el-vsx ]
     name: debian13-ppc64el-make-clang
     steps:
@@ -4087,6 +4124,7 @@ jobs:
 
   debian13-ppc64el-make-gcc:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, debian13-ppc64el-vsx ]
     name: debian13-ppc64el-make-gcc
     steps:
@@ -4193,6 +4231,7 @@ jobs:
 
   raspios12-armhf-ninja-clang:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, raspios12-armhf-neon ]
     name: raspios12-armhf-ninja-clang
     steps:
@@ -4297,6 +4336,7 @@ jobs:
 
   raspios12-armhf-ninja-gcc:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, raspios12-armhf-neon ]
     name: raspios12-armhf-ninja-gcc
     steps:
@@ -4401,6 +4441,7 @@ jobs:
 
   raspios12-armhf-make-clang:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, raspios12-armhf-neon ]
     name: raspios12-armhf-make-clang
     steps:
@@ -4505,6 +4546,7 @@ jobs:
 
   raspios12-armhf-make-gcc:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, raspios12-armhf-neon ]
     name: raspios12-armhf-make-gcc
     steps:
@@ -4611,6 +4653,7 @@ jobs:
 
   raspios12-arm64-ninja-clang:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, raspios12-arm64-asimd ]
     name: raspios12-arm64-ninja-clang
     steps:
@@ -4715,6 +4758,7 @@ jobs:
 
   raspios12-arm64-ninja-gcc:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, raspios12-arm64-asimd ]
     name: raspios12-arm64-ninja-gcc
     steps:
@@ -4819,6 +4863,7 @@ jobs:
 
   raspios12-arm64-make-clang:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, raspios12-arm64-asimd ]
     name: raspios12-arm64-make-clang
     steps:
@@ -4923,6 +4968,7 @@ jobs:
 
   raspios12-arm64-make-gcc:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, raspios12-arm64-asimd ]
     name: raspios12-arm64-make-gcc
     steps:
@@ -5029,6 +5075,7 @@ jobs:
 
   manjaro-arm64-ninja-clang:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, manjaro-arm64-asimd ]
     name: manjaro-arm64-ninja-clang
     steps:
@@ -5133,6 +5180,7 @@ jobs:
 
   manjaro-arm64-ninja-gcc:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, manjaro-arm64-asimd ]
     name: manjaro-arm64-ninja-gcc
     steps:
@@ -5237,6 +5285,7 @@ jobs:
 
   manjaro-arm64-make-clang:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, manjaro-arm64-asimd ]
     name: manjaro-arm64-make-clang
     steps:
@@ -5341,6 +5390,7 @@ jobs:
 
   manjaro-arm64-make-gcc:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, manjaro-arm64-asimd ]
     name: manjaro-arm64-make-gcc
     steps:
@@ -5447,6 +5497,7 @@ jobs:
 
   macos13-amd64-ninja-clang:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, macos13-amd64-avx2 ]
     name: macos13-amd64-ninja-clang
     steps:
@@ -5551,6 +5602,7 @@ jobs:
 
   macos13-amd64-ninja-gcc13:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, macos13-amd64-avx2 ]
     name: macos13-amd64-ninja-gcc13
     steps:
@@ -5655,6 +5707,7 @@ jobs:
 
   macos13-amd64-ninja-gcc14:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, macos13-amd64-avx2 ]
     name: macos13-amd64-ninja-gcc14
     steps:
@@ -5759,6 +5812,7 @@ jobs:
 
   macos13-amd64-make-clang:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, macos13-amd64-avx2 ]
     name: macos13-amd64-make-clang
     steps:
@@ -5863,6 +5917,7 @@ jobs:
 
   macos13-amd64-make-gcc13:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, macos13-amd64-avx2 ]
     name: macos13-amd64-make-gcc13
     steps:
@@ -5967,6 +6022,7 @@ jobs:
 
   macos13-amd64-make-gcc14:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, macos13-amd64-avx2 ]
     name: macos13-amd64-make-gcc14
     steps:
@@ -6073,6 +6129,7 @@ jobs:
 
   macos14-amd64-ninja-clang:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, macos14-amd64-avx2 ]
     name: macos14-amd64-ninja-clang
     steps:
@@ -6177,6 +6234,7 @@ jobs:
 
   macos14-amd64-ninja-gcc13:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, macos14-amd64-avx2 ]
     name: macos14-amd64-ninja-gcc13
     steps:
@@ -6281,6 +6339,7 @@ jobs:
 
   macos14-amd64-ninja-gcc14:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, macos14-amd64-avx2 ]
     name: macos14-amd64-ninja-gcc14
     steps:
@@ -6385,6 +6444,7 @@ jobs:
 
   macos14-amd64-ninja-apple-clang:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, macos14-amd64-avx2 ]
     name: macos14-amd64-ninja-apple-clang
     steps:
@@ -6489,6 +6549,7 @@ jobs:
 
   macos14-amd64-make-clang:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, macos14-amd64-avx2 ]
     name: macos14-amd64-make-clang
     steps:
@@ -6593,6 +6654,7 @@ jobs:
 
   macos14-amd64-make-gcc13:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, macos14-amd64-avx2 ]
     name: macos14-amd64-make-gcc13
     steps:
@@ -6697,6 +6759,7 @@ jobs:
 
   macos14-amd64-make-gcc14:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, macos14-amd64-avx2 ]
     name: macos14-amd64-make-gcc14
     steps:
@@ -6801,6 +6864,7 @@ jobs:
 
   macos14-amd64-make-apple-clang:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, macos14-amd64-avx2 ]
     name: macos14-amd64-make-apple-clang
     steps:
@@ -6907,6 +6971,7 @@ jobs:
 
   macos14-arm64-ninja-apple-clang:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, macos14-arm64-asimd ]
     name: macos14-arm64-ninja-apple-clang
     steps:
@@ -7011,6 +7076,7 @@ jobs:
 
   macos14-arm64-ninja-clang:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, macos14-arm64-asimd ]
     name: macos14-arm64-ninja-clang
     steps:
@@ -7115,6 +7181,7 @@ jobs:
 
   macos14-arm64-ninja-gcc13:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, macos14-arm64-asimd ]
     name: macos14-arm64-ninja-gcc13
     steps:
@@ -7219,6 +7286,7 @@ jobs:
 
   macos14-arm64-ninja-gcc14:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, macos14-arm64-asimd ]
     name: macos14-arm64-ninja-gcc14
     steps:
@@ -7323,6 +7391,7 @@ jobs:
 
   macos14-arm64-make-apple-clang:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, macos14-arm64-asimd ]
     name: macos14-arm64-make-apple-clang
     steps:
@@ -7427,6 +7496,7 @@ jobs:
 
   macos14-arm64-make-clang:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, macos14-arm64-asimd ]
     name: macos14-arm64-make-clang
     steps:
@@ -7531,6 +7601,7 @@ jobs:
 
   macos14-arm64-make-gcc13:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, macos14-arm64-asimd ]
     name: macos14-arm64-make-gcc13
     steps:
@@ -7635,6 +7706,7 @@ jobs:
 
   macos14-arm64-make-gcc14:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, macos14-arm64-asimd ]
     name: macos14-arm64-make-gcc14
     steps:
@@ -7741,6 +7813,7 @@ jobs:
 
   windows10-amd64-ninja-msvc:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, windows10-amd64-sse42 ]
     name: windows10-amd64-ninja-msvc
     steps:
@@ -7807,6 +7880,7 @@ jobs:
 
   windows10-i386-ninja-msvc:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, windows10-i386-sse2 ]
     name: windows10-i386-ninja-msvc
     steps:
@@ -7873,6 +7947,7 @@ jobs:
 
   windows11-amd64-ninja-msvc:
     continue-on-error: true
+    timeout-minutes: 600
     runs-on: [ self-hosted, windows11-amd64-sse42 ]
     name: windows11-amd64-ninja-msvc
     steps:
