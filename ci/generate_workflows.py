@@ -126,6 +126,26 @@ config.update(
         },
     }
 )
+config.update(
+    {
+        "macos15-arm64-asimd": {
+            "compilers_args": [
+                {
+                    "name": "apple-clang",
+                    "args": "-DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang",
+                },
+                {
+                    "name": "clang",
+                    "args": '-DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++" CPPFLAGS="-I/opt/homebrew/opt/llvm/include"',
+                }
+            ],
+            "build_system": [
+                {"name": "ninja", "args": "-GNinja"},
+                {"name": "make", "args": '-G"Unix Makefiles"'},
+            ],
+        },
+    }
+)
 
 # Windows
 for system in ["windows10-amd64-sse42", "windows10-i386-sse2", "windows11-amd64-sse42"]:
