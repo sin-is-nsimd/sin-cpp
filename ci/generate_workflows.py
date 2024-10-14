@@ -115,12 +115,8 @@ config.update(
                     "args": '-DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++" CPPFLAGS="-I/opt/homebrew/opt/llvm/include"',
                 },
                 {
-                    "name": "gcc13",
-                    "args": '-DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc@13/bin/g++-13 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc@13/bin/gcc-13 LDFLAGS="-L/opt/homebrew/opt/gcc@13/lib -Wl,-rpath,/opt/homebrew/opt/gcc@13/lib" CPPFLAGS="-I/opt/homebrew/opt/gcc@13/include"',
-                },
-                {
-                    "name": "gcc14",
-                    "args": '-DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc@14/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc@14/bin/gcc-14 LDFLAGS="-L/opt/homebrew/opt/gcc@14/lib -Wl,-rpath,/opt/homebrew/opt/gcc@14/lib" CPPFLAGS="-I/opt/homebrew/opt/gcc@14/include"',
+                    "name": "gcc",
+                    "args": '-DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk',
                 },
             ],
             "build_system": [
