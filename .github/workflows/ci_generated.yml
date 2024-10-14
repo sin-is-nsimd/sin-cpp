@@ -7179,11 +7179,11 @@ jobs:
           cd sin-cpp/build
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
-  macos14-arm64-ninja-gcc13:
+  macos14-arm64-ninja-gcc:
     continue-on-error: true
     timeout-minutes: 600
     runs-on: [ self-hosted, macos14-arm64-asimd ]
-    name: macos14-arm64-ninja-gcc13
+    name: macos14-arm64-ninja-gcc
     steps:
 
       # Clean
@@ -7234,7 +7234,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc@13/bin/g++-13 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc@13/bin/gcc-13 LDFLAGS="-L/opt/homebrew/opt/gcc@13/lib -Wl,-rpath,/opt/homebrew/opt/gcc@13/lib" CPPFLAGS="-I/opt/homebrew/opt/gcc@13/include"
+            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk
           cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -7246,7 +7246,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc@13/bin/g++-13 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc@13/bin/gcc-13 LDFLAGS="-L/opt/homebrew/opt/gcc@13/lib -Wl,-rpath,/opt/homebrew/opt/gcc@13/lib" CPPFLAGS="-I/opt/homebrew/opt/gcc@13/include"
+            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -7258,7 +7258,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc@13/bin/g++-13 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc@13/bin/gcc-13 LDFLAGS="-L/opt/homebrew/opt/gcc@13/lib -Wl,-rpath,/opt/homebrew/opt/gcc@13/lib" CPPFLAGS="-I/opt/homebrew/opt/gcc@13/include"
+            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk
           cmake --build build --target install
 
       # sin-cpp
@@ -7271,112 +7271,7 @@ jobs:
                                                 -GNinja \
                                                 -DCMAKE_INSTALL_PREFIX=../_install \
                                                 -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc@13/bin/g++-13 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc@13/bin/gcc-13 LDFLAGS="-L/opt/homebrew/opt/gcc@13/lib -Wl,-rpath,/opt/homebrew/opt/gcc@13/lib" CPPFLAGS="-I/opt/homebrew/opt/gcc@13/include"
-      - name: Build
-        shell: bash
-        run: |
-          cd sin-cpp/build
-          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
-          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
-        shell: bash
-        run: |
-          cd sin-cpp/build
-          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
-
-  macos14-arm64-ninja-gcc14:
-    continue-on-error: true
-    timeout-minutes: 600
-    runs-on: [ self-hosted, macos14-arm64-asimd ]
-    name: macos14-arm64-ninja-gcc14
-    steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
-
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
-      # Dependencies
-      - name: Google Benchmark
-        shell: bash
-        run: |
-          cd benchmark
-          cmake \
-            -B build \
-            -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
-            -DCMAKE_BUILD_TYPE=Release \
-            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-            -GNinja \
-            -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc@14/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc@14/bin/gcc-14 LDFLAGS="-L/opt/homebrew/opt/gcc@14/lib -Wl,-rpath,/opt/homebrew/opt/gcc@14/lib" CPPFLAGS="-I/opt/homebrew/opt/gcc@14/include"
-          cmake --build build --target install
-      - name: Google Test
-        shell: bash
-        run: |
-          cd googletest
-          cmake \
-            -B build \
-            -DCMAKE_BUILD_TYPE=Release \
-            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-            -GNinja \
-            -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc@14/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc@14/bin/gcc-14 LDFLAGS="-L/opt/homebrew/opt/gcc@14/lib -Wl,-rpath,/opt/homebrew/opt/gcc@14/lib" CPPFLAGS="-I/opt/homebrew/opt/gcc@14/include"
-          cmake --build build --target install
-      - name: zlib
-        shell: bash
-        run: |
-          cd zlib
-          cmake \
-            -B build \
-            -DCMAKE_BUILD_TYPE=Release \
-            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-            -GNinja \
-            -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc@14/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc@14/bin/gcc-14 LDFLAGS="-L/opt/homebrew/opt/gcc@14/lib -Wl,-rpath,/opt/homebrew/opt/gcc@14/lib" CPPFLAGS="-I/opt/homebrew/opt/gcc@14/include"
-          cmake --build build --target install
-
-      # sin-cpp
-      - name: CMake
-        shell: bash
-        run: |
-          cd sin-cpp
-          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
-          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -GNinja \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc@14/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc@14/bin/gcc-14 LDFLAGS="-L/opt/homebrew/opt/gcc@14/lib -Wl,-rpath,/opt/homebrew/opt/gcc@14/lib" CPPFLAGS="-I/opt/homebrew/opt/gcc@14/include"
+                                                -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk
       - name: Build
         shell: bash
         run: |
@@ -7599,11 +7494,11 @@ jobs:
           cd sin-cpp/build
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
-  macos14-arm64-make-gcc13:
+  macos14-arm64-make-gcc:
     continue-on-error: true
     timeout-minutes: 600
     runs-on: [ self-hosted, macos14-arm64-asimd ]
-    name: macos14-arm64-make-gcc13
+    name: macos14-arm64-make-gcc
     steps:
 
       # Clean
@@ -7654,7 +7549,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc@13/bin/g++-13 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc@13/bin/gcc-13 LDFLAGS="-L/opt/homebrew/opt/gcc@13/lib -Wl,-rpath,/opt/homebrew/opt/gcc@13/lib" CPPFLAGS="-I/opt/homebrew/opt/gcc@13/include"
+            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk
           cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -7666,7 +7561,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc@13/bin/g++-13 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc@13/bin/gcc-13 LDFLAGS="-L/opt/homebrew/opt/gcc@13/lib -Wl,-rpath,/opt/homebrew/opt/gcc@13/lib" CPPFLAGS="-I/opt/homebrew/opt/gcc@13/include"
+            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -7678,7 +7573,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc@13/bin/g++-13 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc@13/bin/gcc-13 LDFLAGS="-L/opt/homebrew/opt/gcc@13/lib -Wl,-rpath,/opt/homebrew/opt/gcc@13/lib" CPPFLAGS="-I/opt/homebrew/opt/gcc@13/include"
+            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk
           cmake --build build --target install
 
       # sin-cpp
@@ -7691,112 +7586,7 @@ jobs:
                                                 -G"Unix Makefiles" \
                                                 -DCMAKE_INSTALL_PREFIX=../_install \
                                                 -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc@13/bin/g++-13 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc@13/bin/gcc-13 LDFLAGS="-L/opt/homebrew/opt/gcc@13/lib -Wl,-rpath,/opt/homebrew/opt/gcc@13/lib" CPPFLAGS="-I/opt/homebrew/opt/gcc@13/include"
-      - name: Build
-        shell: bash
-        run: |
-          cd sin-cpp/build
-          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
-          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
-        shell: bash
-        run: |
-          cd sin-cpp/build
-          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
-
-  macos14-arm64-make-gcc14:
-    continue-on-error: true
-    timeout-minutes: 600
-    runs-on: [ self-hosted, macos14-arm64-asimd ]
-    name: macos14-arm64-make-gcc14
-    steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
-
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
-      # Dependencies
-      - name: Google Benchmark
-        shell: bash
-        run: |
-          cd benchmark
-          cmake \
-            -B build \
-            -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
-            -DCMAKE_BUILD_TYPE=Release \
-            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-            -GNinja \
-            -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc@14/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc@14/bin/gcc-14 LDFLAGS="-L/opt/homebrew/opt/gcc@14/lib -Wl,-rpath,/opt/homebrew/opt/gcc@14/lib" CPPFLAGS="-I/opt/homebrew/opt/gcc@14/include"
-          cmake --build build --target install
-      - name: Google Test
-        shell: bash
-        run: |
-          cd googletest
-          cmake \
-            -B build \
-            -DCMAKE_BUILD_TYPE=Release \
-            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-            -GNinja \
-            -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc@14/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc@14/bin/gcc-14 LDFLAGS="-L/opt/homebrew/opt/gcc@14/lib -Wl,-rpath,/opt/homebrew/opt/gcc@14/lib" CPPFLAGS="-I/opt/homebrew/opt/gcc@14/include"
-          cmake --build build --target install
-      - name: zlib
-        shell: bash
-        run: |
-          cd zlib
-          cmake \
-            -B build \
-            -DCMAKE_BUILD_TYPE=Release \
-            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-            -GNinja \
-            -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc@14/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc@14/bin/gcc-14 LDFLAGS="-L/opt/homebrew/opt/gcc@14/lib -Wl,-rpath,/opt/homebrew/opt/gcc@14/lib" CPPFLAGS="-I/opt/homebrew/opt/gcc@14/include"
-          cmake --build build --target install
-
-      # sin-cpp
-      - name: CMake
-        shell: bash
-        run: |
-          cd sin-cpp
-          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
-          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -G"Unix Makefiles" \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc@14/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc@14/bin/gcc-14 LDFLAGS="-L/opt/homebrew/opt/gcc@14/lib -Wl,-rpath,/opt/homebrew/opt/gcc@14/lib" CPPFLAGS="-I/opt/homebrew/opt/gcc@14/include"
+                                                -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk
       - name: Build
         shell: bash
         run: |
