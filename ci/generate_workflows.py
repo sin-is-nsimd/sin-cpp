@@ -24,10 +24,11 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+from typing import Any
 import os
 import sys
 
-config = {}
+config: dict[str, Any] = {}
 
 # debian + raspios + manjaro
 for system in [
@@ -166,7 +167,7 @@ for system in ["windows10-amd64-sse42", "windows10-i386-sse2", "windows11-amd64-
     )
 
 
-def get_vcvars_paths(system):
+def get_vcvars_paths(system: str):
     if system == "windows10-i386-sse2":
         return "C:\\Program Files\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Auxiliary\\Build\\vcvars32.bat"
     else:
