@@ -47,8 +47,6 @@ for system in [
     # raspios12
     "raspios12-armhf-neon",
     "raspios12-arm64-asimd",
-    # manjaro
-    "manjaro-arm64-asimd",
 ]:
     config.update(
         {
@@ -117,7 +115,7 @@ config.update(
                 },
                 {
                     "name": "gcc",
-                    "args": '-DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk',
+                    "args": "-DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk",
                 },
             ],
             "build_system": [
@@ -138,7 +136,7 @@ config.update(
                 {
                     "name": "clang",
                     "args": '-DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++" CPPFLAGS="-I/opt/homebrew/opt/llvm/include"',
-                }
+                },
             ],
             "build_system": [
                 {"name": "ninja", "args": "-GNinja"},
