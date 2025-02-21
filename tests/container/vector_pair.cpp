@@ -42,6 +42,14 @@ TEST(vector_pair, reserve) {
   EXPECT_EQ(vp.capacity(), 4096);
 }
 
+TEST(vector_pair, vector_pair_init_list) {
+  sincpp::vector_pair_t<int, std::string> vp{
+      {0, "Zero"}, {1, "One"}, {2, "Two"}};
+  EXPECT_EQ(vp[0], "Zero");
+  EXPECT_EQ(vp[1], "One");
+  EXPECT_EQ(vp[2], "Two");
+}
+
 TEST(vector_pair, vector_pair) {
   sincpp::vector_pair_t<std::string, int> vp;
 
