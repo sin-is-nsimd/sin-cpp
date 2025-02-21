@@ -21,8 +21,9 @@
 #ifndef SINCPP_CONTAINER_VECTOR_PAIR_HPP
 #define SINCPP_CONTAINER_VECTOR_PAIR_HPP
 
+#include <algorithm>
+#include <initializer_list>
 #include <iostream>
-#include <ranges>
 #include <utility>
 #include <vector>
 
@@ -33,6 +34,11 @@ namespace sincpp {
  *
  * This container contains key-value pairs with unique keys. The underlying
  * container is a `std::vector<std::pair<Key, T>>`.
+ *
+ * Constructors from size and from `std::initializer_list` allow multiple
+ * key-value pairs with the same key. In such cases, key-access member functions
+ * like `find`, `emplace`, and `erase` will operate on the first key-value pair
+ * with the given key.
  *
  * @tparam Key Key type.
  * @tparam T Mapped type.
@@ -98,19 +104,25 @@ public:
   /// @brief Default constructor.
   vector_pair_t() = default;
 
-  /// @brief Constructor.
+  /// @brief Constructor from size and default value.
   /// @details This constructor is available for performance reason.
   /// @param size Size.
-  /// @param default_value Default value.
-  vector_pair_t(size_t const size, std::pair<Key, T> const &default_value = {})
+  /// @param default_value Default value (`{}` by default).
+  explicit vector_pair_t(size_t const size,
+                         std::pair<Key, T> const &default_value = {})
       : data(size, default_value) {}
+
+  /// @brief Constructor from `std::initializer_list`.
+  /// @param il An initializer list.
+  vector_pair_t(std::initializer_list<std::pair<Key, T>> il)
+      : data(std::move(il)) {}
 
   // Element access
 
   /// @brief Finds the mapped value of the key.
   /// @details If the key does not exist, the element is inserted.
   /// @param key Key of the element.
-  /// @return a reference to the mapped value.
+  /// @returns a reference to the mapped value.
   T &operator[](Key const &key) {
     auto it = find(key);
     if (it != end()) {
