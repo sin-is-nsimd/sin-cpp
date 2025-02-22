@@ -1,4 +1,4 @@
-// Copyright © 2024 Lénaïc Bagnères, lenaicb@singularity.fr
+// Copyright © 2024-2025 Lénaïc Bagnères, lenaicb@singularity.fr
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,6 +24,7 @@
 #include "../str/conv.hpp"
 #include "../type_traits/is_char.hpp"
 #include "../type_traits/is_container_1d.hpp"
+#include "../type_traits/is_container_key_value.hpp"
 #include "../type_traits/is_string.hpp"
 
 #include <algorithm>
@@ -80,6 +81,20 @@ public:
   /// @param n A number.
   friend std::ostream &operator<<(std::ostream &o, number_str_t const &n) {
     return o << n.to_json();
+  }
+
+  /// @brief Equality comparison between two sincpp::number_str_t.
+  /// @returns true if the numbers have the same value, false otherwise.
+  bool operator==(number_str_t const &n) const {
+    if (m_size != n.m_size) {
+      return false;
+    }
+    for (size_t i = 0; i < m_size; ++i) {
+      if (m_str[i] != n.m_str[i]) {
+        return false;
+      }
+    }
+    return true;
   }
 };
 
@@ -306,6 +321,76 @@ template <class C>
 auto to_json_value(C const &c)
     -> decltype(container_1d_to_json_value<typename C::value_type>(c)) {
   return container_1d_to_json_value<typename C::value_type>(c);
+}
+
+// to_json_value: key-value container
+
+/**
+ * @brief Get the JSON value of a key-value container (key and value are
+ * strings).
+ *
+ * @tparam C Key-value container type (key and value are strings).
+ *
+ * @param c A Key-value container (key and value are strings).
+ *
+ * @returns the JSON value of the key-value container (key and value are
+ * strings).
+ *
+ * **Example:**
+ * @include examples/json/to_json_value.cpp
+ */
+template <class Key, class T, class C>
+  requires((is_string_v<Key> || is_char_v<Key>) &&
+           (is_string_v<T> || is_char_v<T>))
+C const &container_key_value_to_json_value(C const &c) {
+  return c;
+}
+
+/**
+ * @brief Get the JSON value of a key-value container (key is a string, value is
+ * a number).
+ *
+ * @tparam C Key-value container type (key is a string, value is a number).
+ *
+ * @param c A Key-value container (key is a string, value is a number).
+ *
+ * @returns the JSON value of the key-value container (key is a string, value is
+ * a number).
+ *
+ * **Example:**
+ * @include examples/json/to_json_value.cpp
+ */
+template <class Key, class T, class C>
+  requires((is_string_v<Key> || is_char_v<Key>) && std::is_arithmetic_v<T>)
+vector_pair_t<std::string_view, number_str_t<to_chars_max_size<T>()>>
+container_key_value_to_json_value(C const &c) {
+  vector_pair_t<std::string_view, number_str_t<to_chars_max_size<T>()>> r;
+  r.reserve(c.size());
+  for (auto const &[key, value] : c) {
+    r.emplace(std::string_view(key), make_number_str(value));
+  }
+  return r;
+}
+
+/**
+ * @brief Get the JSON value of a key-value container (key is a string).
+ *
+ * @tparam C Key-value container type (key is a string).
+ *
+ * @param c A Key-value container (key is a string).
+ *
+ * @returns the JSON value of the key-value container (key is a string).
+ *
+ * **Example:**
+ * @include examples/json/to_json_value.cpp
+ */
+template <class C>
+  requires(is_container_key_value_v<C>)
+auto to_json_value(C const &c)
+    -> decltype(container_key_value_to_json_value<typename C::key_type,
+                                                  typename C::mapped_type>(c)) {
+  return container_key_value_to_json_value<typename C::key_type,
+                                           typename C::mapped_type>(c);
 }
 
 } // namespace sincpp
