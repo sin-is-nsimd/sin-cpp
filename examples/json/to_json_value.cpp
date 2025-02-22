@@ -9,6 +9,13 @@ template <class C> void print(C const &c) {
   std::cout << std::endl;
 }
 
+template <class K, class V> void print(std::map<K, V> const &m) {
+  for (auto const &[k, v] : m) {
+    std::cout << k << ":" << v << " ";
+  }
+  std::cout << std::endl;
+}
+
 int main() {
   std::cout << sincpp::to_json_value(3.14f).to_json() << std::endl; // 3.14
   std::cout << sincpp::to_json_value('c') << std::endl;             // c
@@ -29,6 +36,10 @@ int main() {
   print(sincpp::to_json_value(vector)); // A std::vector
   print(sincpp::to_json_value(list));   // A std::list
   print(sincpp::to_json_value(set));    // A std::set
+
+  std::map<std::string, std::string> const map = {
+      {"1", "one"}, {"2", "two"}, {"3", "three"}};
+  print(sincpp::to_json_value(map)); // 1:one 2:two 3:three
 
   return 0;
 }

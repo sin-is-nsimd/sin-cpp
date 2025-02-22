@@ -1,4 +1,4 @@
-// Copyright © 2024 Lénaïc Bagnères, lenaicb@singularity.fr
+// Copyright © 2024-2025 Lénaïc Bagnères, lenaicb@singularity.fr
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -23,13 +23,74 @@
 #include <sstream>
 
 #include <gtest/gtest.h>
+#include <unordered_map>
 
 // number
 
 TEST(number_str, int) {
-  sincpp::number_str_t<sincpp::to_chars_max_size<int>()> const v = 42;
-  EXPECT_EQ(v.to_json_size(), 2);
-  EXPECT_EQ(v.to_json(), "42");
+  sincpp::number_str_t<sincpp::to_chars_max_size<int>()> const a0 = 7;
+  EXPECT_EQ(a0.to_json_size(), 1);
+  EXPECT_EQ(a0.to_json(), "7");
+
+  sincpp::number_str_t<sincpp::to_chars_max_size<int>()> const b0 = 42;
+  EXPECT_EQ(b0.to_json_size(), 2);
+  EXPECT_EQ(b0.to_json(), "42");
+
+  sincpp::number_str_t<sincpp::to_chars_max_size<int>()> const c0 = 1138;
+  EXPECT_EQ(c0.to_json_size(), 4);
+  EXPECT_EQ(c0.to_json(), "1138");
+
+  sincpp::number_str_t<sincpp::to_chars_max_size<int>()> const a1 = 7;
+  EXPECT_EQ(a1.to_json_size(), 1);
+  EXPECT_EQ(a1.to_json(), "7");
+
+  sincpp::number_str_t<sincpp::to_chars_max_size<int>()> const b1 = 42;
+  EXPECT_EQ(b1.to_json_size(), 2);
+  EXPECT_EQ(b1.to_json(), "42");
+
+  sincpp::number_str_t<sincpp::to_chars_max_size<int>()> const c1 = 1138;
+  EXPECT_EQ(c1.to_json_size(), 4);
+  EXPECT_EQ(c1.to_json(), "1138");
+
+  EXPECT_EQ(a0, a0);
+  EXPECT_EQ(a0, a1);
+  EXPECT_EQ(a1, a0);
+  EXPECT_EQ(a1, a1);
+  EXPECT_EQ(b0, b0);
+  EXPECT_EQ(b0, b1);
+  EXPECT_EQ(b1, b0);
+  EXPECT_EQ(b1, b1);
+  EXPECT_EQ(c0, c0);
+  EXPECT_EQ(c0, c1);
+  EXPECT_EQ(c1, c0);
+  EXPECT_EQ(c1, c1);
+
+  EXPECT_NE(a0, b0);
+  EXPECT_NE(a0, c0);
+  EXPECT_NE(a0, b1);
+  EXPECT_NE(a0, c1);
+  EXPECT_NE(a1, b0);
+  EXPECT_NE(a1, c0);
+  EXPECT_NE(a1, b1);
+  EXPECT_NE(a1, c1);
+
+  EXPECT_NE(b0, a0);
+  EXPECT_NE(b0, c0);
+  EXPECT_NE(b0, a1);
+  EXPECT_NE(b0, c1);
+  EXPECT_NE(b1, a0);
+  EXPECT_NE(b1, c0);
+  EXPECT_NE(b1, a1);
+  EXPECT_NE(b1, c1);
+
+  EXPECT_NE(c0, a0);
+  EXPECT_NE(c0, b0);
+  EXPECT_NE(c0, a1);
+  EXPECT_NE(c0, b1);
+  EXPECT_NE(c1, a0);
+  EXPECT_NE(c1, b0);
+  EXPECT_NE(c1, a1);
+  EXPECT_NE(c1, b1);
 }
 
 TEST(number_str, float) {
@@ -256,4 +317,47 @@ TEST(to_json_value, container_string) {
       {"A", "std::unordered_set", "of", "std::string_view"}));
   test_container_string(std::unordered_set<char const *>(
       {"A", "std::unordered_set", "of", "char const *"}));
+}
+
+// map, unordered_map, sincpp::vector_pair_t
+
+template <class C> void test_container_key_value_string_string(C const &c) {
+  C const &r = sincpp::to_json_value(c);
+  EXPECT_EQ(&r, &c);
+}
+
+TEST(to_json_value, container_key_value_string_string) {
+  test_container_key_value_string_string<std::map<std::string, std::string>>(
+      {{"1", "one"}, {"2", "two"}, {"3", "three"}});
+  test_container_key_value_string_string<
+      std::unordered_map<std::string_view, char const *>>(
+      {{"1", "one"}, {"2", "two"}, {"3", "three"}});
+  test_container_key_value_string_string<
+      sincpp::vector_pair_t<std::string_view, std::string_view>>(
+      {{"1", "one"}, {"2", "two"}, {"3", "three"}});
+}
+
+template <class C> void test_container_key_value_string_number(C const &c) {
+  using T = typename C::mapped_type;
+  sincpp::vector_pair_t<
+      std::string_view,
+      sincpp::number_str_t<sincpp::to_chars_max_size<T>()>> const r =
+      sincpp::to_json_value(c);
+  EXPECT_EQ(r.size(), c.size());
+  for (auto const &[key, value] : c) {
+    auto const it = r.find(key);
+    EXPECT_NE(it, r.end());
+    EXPECT_EQ(it->second, sincpp::to_json_value(value));
+  }
+}
+
+TEST(to_json_value, container_key_value_string_number) {
+  test_container_key_value_string_number<std::map<std::string, int>>(
+      {{"1", 2}, {"2", 2}, {"3", 3}});
+  test_container_key_value_string_number<
+      std::unordered_map<std::string_view, float>>(
+      {{"1", 1.f}, {"2", 2.f}, {"3", 3.f}});
+  test_container_key_value_string_number<
+      sincpp::vector_pair_t<std::string_view, double>>(
+      {{"1", 1.f}, {"2", 2.f}, {"3", 3.0}});
 }
