@@ -33,20 +33,20 @@ config: dict[str, Any] = {}
 # debian + raspios + manjaro
 for system in [
     # debian12
-    "debian12-amd64-sse42",
-    "debian12-i386-sse2",
-    "debian12-armhf-neon",
-    "debian12-arm64-asimd",
-    "debian12-ppc64el-vsx",
+    "debian12-amd64",
+    "debian12-i386",
+    "debian12-armhf",
+    "debian12-arm64",
+    "debian12-ppc64el",
     # debian13
-    "debian13-amd64-sse42",
-    "debian13-i386-sse2",
-    "debian13-armhf-neon",
-    "debian13-arm64-asimd",
-    "debian13-ppc64el-vsx",
+    "debian13-amd64",
+    "debian13-i386",
+    "debian13-armhf",
+    "debian13-arm64",
+    "debian13-ppc64el",
     # raspios12
-    "raspios12-armhf-neon",
-    "raspios12-arm64-asimd",
+    "raspios12-armhf",
+    "raspios12-arm64",
 ]:
     config.update(
         {
@@ -70,22 +70,22 @@ for system in [
     )
 
 # macOS
-for system in ["macos13-amd64-avx2", "macos14-amd64-avx2"]:
+for system in ["macos14-amd64", "macos15-amd64", "macos14-arm64", "macos15-arm64"]:
     config.update(
         {
             system: {
                 "compilers_args": [
                     {
+                        "name": "apple-clang",
+                        "args": "-DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang",
+                    },
+                    {
                         "name": "clang",
                         "args": '-DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include',
                     },
                     {
-                        "name": "gcc13",
-                        "args": "-DCMAKE_CXX_COMPILER=/usr/local/bin/g++-13 -DCMAKE_C_COMPILER=/usr/local/bin/gcc-13",
-                    },
-                    {
-                        "name": "gcc14",
-                        "args": "-DCMAKE_CXX_COMPILER=/usr/local/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/bin/gcc-14",
+                        "name": "gcc",
+                        "args": '-DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"',
                     },
                 ],
                 "build_system": [
@@ -95,59 +95,9 @@ for system in ["macos13-amd64-avx2", "macos14-amd64-avx2"]:
             },
         }
     )
-config["macos14-amd64-avx2"]["compilers_args"] += [
-    {
-        "name": "apple-clang",
-        "args": "-DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang",
-    }
-]
-config.update(
-    {
-        "macos14-arm64-asimd": {
-            "compilers_args": [
-                {
-                    "name": "apple-clang",
-                    "args": "-DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang",
-                },
-                {
-                    "name": "clang",
-                    "args": '-DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++" CPPFLAGS="-I/opt/homebrew/opt/llvm/include"',
-                },
-                {
-                    "name": "gcc",
-                    "args": "-DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk",
-                },
-            ],
-            "build_system": [
-                {"name": "ninja", "args": "-GNinja"},
-                {"name": "make", "args": '-G"Unix Makefiles"'},
-            ],
-        },
-    }
-)
-config.update(
-    {
-        "macos15-arm64-asimd": {
-            "compilers_args": [
-                {
-                    "name": "apple-clang",
-                    "args": "-DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang",
-                },
-                {
-                    "name": "clang",
-                    "args": '-DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++" CPPFLAGS="-I/opt/homebrew/opt/llvm/include"',
-                },
-            ],
-            "build_system": [
-                {"name": "ninja", "args": "-GNinja"},
-                {"name": "make", "args": '-G"Unix Makefiles"'},
-            ],
-        },
-    }
-)
 
 # Windows
-for system in ["windows10-amd64-sse42", "windows10-i386-sse2", "windows11-amd64-sse42"]:
+for system in ["windows10-amd64", "windows10-i386", "windows11-amd64"]:
     config.update(
         {
             system: {
@@ -186,7 +136,7 @@ runner = """
   {runner}:
     continue-on-error: true
     timeout-minutes: 600
-    runs-on: [ self-hosted, {label} ]
+    runs-on: [ self-hosted, {system} ]
     name: {runner}
     steps:
 """
@@ -336,11 +286,9 @@ if __name__ == "__main__":
         print("Writing file", output_path)
         f.write(header)
 
-        for label, configs in config.items():
+        for system, configs in config.items():
 
-            os = label[: label.rfind("-")]
-
-            f.write(f"\n  # {os}\n")
+            f.write(f"\n  # {system}\n")
 
             for build_system in configs["build_system"]:
                 for compilers_args in configs["compilers_args"]:
@@ -348,13 +296,13 @@ if __name__ == "__main__":
                     # Header
                     f.write(
                         runner.format(
-                            runner=f"{os}-{build_system['name']}-{compilers_args['name']}".lower(),
-                            label=label,
+                            runner=f"{system}-{build_system['name']}-{compilers_args['name']}".lower(),
+                            system=system,
                         )
                     )
 
                     # Clean
-                    if os.startswith("windows"):
+                    if system.startswith("windows"):
                         f.write(step_clean_windows)
                     else:
                         f.write(step_clean_unix)
@@ -363,14 +311,13 @@ if __name__ == "__main__":
                     f.write(step_clone)
 
                     # Dependencies & sin-cpp
-                    if os.startswith("windows"):
+                    if system.startswith("windows"):
                         f.write(
-                            step_windows.format(vcvars_path=get_vcvars_paths(label))
+                            step_windows.format(vcvars_path=get_vcvars_paths(system))
                         )
                     else:
                         f.write(
                             step_unix.format(
-                                os=os,
                                 build_system=build_system["args"],
                                 compilers_args=compilers_args["args"],
                             )
