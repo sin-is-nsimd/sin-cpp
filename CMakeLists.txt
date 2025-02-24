@@ -44,7 +44,7 @@ endif()
 find_package(benchmark REQUIRED)
 find_package(GTest REQUIRED)
 find_path(zlib_include PATH "zlib.h" REQUIRED)
-find_library(zlib_lib NAMES z zlibstatic REQUIRED)
+find_library(zlib_lib NAMES z zs REQUIRED)
 message(STATUS "zlib = ${zlib_include} | ${zlib_lib}")
 
 # LIBRARY

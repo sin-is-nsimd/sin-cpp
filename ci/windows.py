@@ -99,11 +99,11 @@ if __name__ == "__main__":
 
     if args.build_google_test:
         print("BUILD GOOGLE TEST")
-        build_dep("googletest/build")
+        build_dep("googletest/build", "-DBUILD_GMOCK=OFF -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded")
 
     if args.build_zlib:
         print("BUILD ZLIB")
-        build_dep("zlib/build", "-DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded")
+        build_dep("zlib/build", "-DZLIB_BUILD_SHARED=OFF -DZLIB_BUILD_TESTING=OFF -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded")
 
     if args.cmake:
         print("CMAKE SIN-CPP")
