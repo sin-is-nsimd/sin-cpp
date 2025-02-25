@@ -57,7 +57,7 @@ def build_dep(build_dir, cmake_args=""):
     os.mkdir(build_dir)
     with sin.fs.pushd(build_dir):
         run_cmake(cmake_args)
-        sin.sh.run_cmd("ninja")
+        sin.sh.run_cmd("ninja -v")
         sin.sh.run_cmd("ninja install")
 
 
@@ -114,7 +114,7 @@ if __name__ == "__main__":
     if args.build:
         print("BUILD SIN-CPP")
         with sin.fs.pushd("sin-cpp/build"):
-            sin.sh.run_cmd("ninja")
+            sin.sh.run_cmd("ninja -v")
 
     if args.test:
         print("TEST SIN-CPP")
