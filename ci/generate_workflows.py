@@ -85,7 +85,7 @@ for system in ["macos14-amd64", "macos15-amd64", "macos14-arm64", "macos15-arm64
                     },
                     {
                         "name": "gcc",
-                        "args": '-DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"',
+                        "args": '-DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"',
                     },
                 ],
                 "build_system": [

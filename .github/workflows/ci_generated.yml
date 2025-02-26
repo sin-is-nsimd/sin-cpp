@@ -5539,7 +5539,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
           cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -5553,7 +5553,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -5566,7 +5566,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
           cmake --build build --target install
 
       # sin-cpp
@@ -5579,7 +5579,7 @@ jobs:
           -GNinja \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+          -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
       - name: Build
         shell: bash
         run: |
@@ -5866,7 +5866,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
           cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -5880,7 +5880,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -5893,7 +5893,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
           cmake --build build --target install
 
       # sin-cpp
@@ -5906,7 +5906,7 @@ jobs:
           -G"Unix Makefiles" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+          -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
       - name: Build
         shell: bash
         run: |
@@ -6195,7 +6195,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
           cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -6209,7 +6209,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -6222,7 +6222,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
           cmake --build build --target install
 
       # sin-cpp
@@ -6235,7 +6235,7 @@ jobs:
           -GNinja \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+          -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
       - name: Build
         shell: bash
         run: |
@@ -6522,7 +6522,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
           cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -6536,7 +6536,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -6549,7 +6549,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
           cmake --build build --target install
 
       # sin-cpp
@@ -6562,7 +6562,7 @@ jobs:
           -G"Unix Makefiles" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+          -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
       - name: Build
         shell: bash
         run: |
@@ -6851,7 +6851,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
           cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -6865,7 +6865,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -6878,7 +6878,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
           cmake --build build --target install
 
       # sin-cpp
@@ -6891,7 +6891,7 @@ jobs:
           -GNinja \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+          -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
       - name: Build
         shell: bash
         run: |
@@ -7178,7 +7178,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
           cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -7192,7 +7192,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -7205,7 +7205,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
           cmake --build build --target install
 
       # sin-cpp
@@ -7218,7 +7218,7 @@ jobs:
           -G"Unix Makefiles" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+          -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
       - name: Build
         shell: bash
         run: |
@@ -7507,7 +7507,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
           cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -7521,7 +7521,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -7534,7 +7534,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
           cmake --build build --target install
 
       # sin-cpp
@@ -7547,7 +7547,7 @@ jobs:
           -GNinja \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+          -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
       - name: Build
         shell: bash
         run: |
@@ -7834,7 +7834,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
           cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -7848,7 +7848,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -7861,7 +7861,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
           cmake --build build --target install
 
       # sin-cpp
@@ -7874,7 +7874,7 @@ jobs:
           -G"Unix Makefiles" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+          -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
       - name: Build
         shell: bash
         run: |
