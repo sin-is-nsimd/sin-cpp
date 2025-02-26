@@ -59,6 +59,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -72,6 +73,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -84,6 +87,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -98,10 +102,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -GNinja \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -GNinja \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
       - name: Build
         shell: bash
         run: |
@@ -164,6 +168,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -177,6 +182,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -189,6 +196,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -203,10 +211,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -GNinja \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          -GNinja \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
       - name: Build
         shell: bash
         run: |
@@ -269,6 +277,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -282,6 +291,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -294,6 +305,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -308,10 +320,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -G"Unix Makefiles" \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -G"Unix Makefiles" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
       - name: Build
         shell: bash
         run: |
@@ -374,6 +386,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -387,6 +400,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -399,6 +414,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -413,10 +429,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -G"Unix Makefiles" \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          -G"Unix Makefiles" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
       - name: Build
         shell: bash
         run: |
@@ -481,6 +497,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -494,6 +511,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -506,6 +525,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -520,10 +540,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -GNinja \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -GNinja \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
       - name: Build
         shell: bash
         run: |
@@ -586,6 +606,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -599,6 +620,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -611,6 +634,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -625,10 +649,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -GNinja \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          -GNinja \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
       - name: Build
         shell: bash
         run: |
@@ -691,6 +715,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -704,6 +729,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -716,6 +743,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -730,10 +758,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -G"Unix Makefiles" \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -G"Unix Makefiles" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
       - name: Build
         shell: bash
         run: |
@@ -796,6 +824,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -809,6 +838,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -821,6 +852,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -835,10 +867,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -G"Unix Makefiles" \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          -G"Unix Makefiles" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
       - name: Build
         shell: bash
         run: |
@@ -903,6 +935,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -916,6 +949,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -928,6 +963,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -942,10 +978,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -GNinja \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -GNinja \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
       - name: Build
         shell: bash
         run: |
@@ -1008,6 +1044,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -1021,6 +1058,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -1033,6 +1072,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -1047,10 +1087,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -GNinja \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          -GNinja \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
       - name: Build
         shell: bash
         run: |
@@ -1113,6 +1153,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -1126,6 +1167,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -1138,6 +1181,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -1152,10 +1196,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -G"Unix Makefiles" \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -G"Unix Makefiles" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
       - name: Build
         shell: bash
         run: |
@@ -1218,6 +1262,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -1231,6 +1276,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -1243,6 +1290,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -1257,10 +1305,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -G"Unix Makefiles" \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          -G"Unix Makefiles" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
       - name: Build
         shell: bash
         run: |
@@ -1325,6 +1373,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -1338,6 +1387,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -1350,6 +1401,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -1364,10 +1416,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -GNinja \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -GNinja \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
       - name: Build
         shell: bash
         run: |
@@ -1430,6 +1482,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -1443,6 +1496,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -1455,6 +1510,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -1469,10 +1525,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -GNinja \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          -GNinja \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
       - name: Build
         shell: bash
         run: |
@@ -1535,6 +1591,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -1548,6 +1605,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -1560,6 +1619,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -1574,10 +1634,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -G"Unix Makefiles" \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -G"Unix Makefiles" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
       - name: Build
         shell: bash
         run: |
@@ -1640,6 +1700,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -1653,6 +1714,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -1665,6 +1728,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -1679,10 +1743,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -G"Unix Makefiles" \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          -G"Unix Makefiles" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
       - name: Build
         shell: bash
         run: |
@@ -1747,6 +1811,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -1760,6 +1825,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -1772,6 +1839,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -1786,10 +1854,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -GNinja \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -GNinja \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
       - name: Build
         shell: bash
         run: |
@@ -1852,6 +1920,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -1865,6 +1934,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -1877,6 +1948,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -1891,10 +1963,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -GNinja \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          -GNinja \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
       - name: Build
         shell: bash
         run: |
@@ -1957,6 +2029,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -1970,6 +2043,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -1982,6 +2057,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -1996,10 +2072,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -G"Unix Makefiles" \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -G"Unix Makefiles" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
       - name: Build
         shell: bash
         run: |
@@ -2062,6 +2138,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -2075,6 +2152,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -2087,6 +2166,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -2101,10 +2181,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -G"Unix Makefiles" \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          -G"Unix Makefiles" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
       - name: Build
         shell: bash
         run: |
@@ -2169,6 +2249,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -2182,6 +2263,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -2194,6 +2277,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -2208,10 +2292,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -GNinja \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -GNinja \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
       - name: Build
         shell: bash
         run: |
@@ -2274,6 +2358,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -2287,6 +2372,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -2299,6 +2386,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -2313,10 +2401,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -GNinja \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          -GNinja \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
       - name: Build
         shell: bash
         run: |
@@ -2379,6 +2467,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -2392,6 +2481,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -2404,6 +2495,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -2418,10 +2510,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -G"Unix Makefiles" \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -G"Unix Makefiles" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
       - name: Build
         shell: bash
         run: |
@@ -2484,6 +2576,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -2497,6 +2590,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -2509,6 +2604,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -2523,10 +2619,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -G"Unix Makefiles" \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          -G"Unix Makefiles" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
       - name: Build
         shell: bash
         run: |
@@ -2591,6 +2687,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -2604,6 +2701,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -2616,6 +2715,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -2630,10 +2730,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -GNinja \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -GNinja \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
       - name: Build
         shell: bash
         run: |
@@ -2696,6 +2796,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -2709,6 +2810,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -2721,6 +2824,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -2735,10 +2839,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -GNinja \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          -GNinja \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
       - name: Build
         shell: bash
         run: |
@@ -2801,6 +2905,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -2814,6 +2919,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -2826,6 +2933,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -2840,10 +2948,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -G"Unix Makefiles" \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -G"Unix Makefiles" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
       - name: Build
         shell: bash
         run: |
@@ -2906,6 +3014,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -2919,6 +3028,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -2931,6 +3042,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -2945,10 +3057,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -G"Unix Makefiles" \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          -G"Unix Makefiles" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
       - name: Build
         shell: bash
         run: |
@@ -3013,6 +3125,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -3026,6 +3139,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -3038,6 +3153,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -3052,10 +3168,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -GNinja \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -GNinja \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
       - name: Build
         shell: bash
         run: |
@@ -3118,6 +3234,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -3131,6 +3248,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -3143,6 +3262,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -3157,10 +3277,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -GNinja \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          -GNinja \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
       - name: Build
         shell: bash
         run: |
@@ -3223,6 +3343,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -3236,6 +3357,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -3248,6 +3371,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -3262,10 +3386,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -G"Unix Makefiles" \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -G"Unix Makefiles" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
       - name: Build
         shell: bash
         run: |
@@ -3328,6 +3452,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -3341,6 +3466,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -3353,6 +3480,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -3367,10 +3495,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -G"Unix Makefiles" \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          -G"Unix Makefiles" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
       - name: Build
         shell: bash
         run: |
@@ -3435,6 +3563,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -3448,6 +3577,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -3460,6 +3591,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -3474,10 +3606,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -GNinja \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -GNinja \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
       - name: Build
         shell: bash
         run: |
@@ -3540,6 +3672,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -3553,6 +3686,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -3565,6 +3700,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -3579,10 +3715,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -GNinja \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          -GNinja \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
       - name: Build
         shell: bash
         run: |
@@ -3645,6 +3781,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -3658,6 +3795,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -3670,6 +3809,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -3684,10 +3824,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -G"Unix Makefiles" \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -G"Unix Makefiles" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
       - name: Build
         shell: bash
         run: |
@@ -3750,6 +3890,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -3763,6 +3904,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -3775,6 +3918,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -3789,10 +3933,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -G"Unix Makefiles" \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          -G"Unix Makefiles" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
       - name: Build
         shell: bash
         run: |
@@ -3857,6 +4001,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -3870,6 +4015,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -3882,6 +4029,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -3896,10 +4044,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -GNinja \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -GNinja \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
       - name: Build
         shell: bash
         run: |
@@ -3962,6 +4110,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -3975,6 +4124,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -3987,6 +4138,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -4001,10 +4153,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -GNinja \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          -GNinja \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
       - name: Build
         shell: bash
         run: |
@@ -4067,6 +4219,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -4080,6 +4233,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -4092,6 +4247,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -4106,10 +4262,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -G"Unix Makefiles" \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -G"Unix Makefiles" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
       - name: Build
         shell: bash
         run: |
@@ -4172,6 +4328,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -4185,6 +4342,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -4197,6 +4356,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -4211,10 +4371,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -G"Unix Makefiles" \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          -G"Unix Makefiles" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
       - name: Build
         shell: bash
         run: |
@@ -4279,6 +4439,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -4292,6 +4453,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -4304,6 +4467,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -4318,10 +4482,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -GNinja \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -GNinja \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
       - name: Build
         shell: bash
         run: |
@@ -4384,6 +4548,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -4397,6 +4562,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -4409,6 +4576,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -4423,10 +4591,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -GNinja \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          -GNinja \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
       - name: Build
         shell: bash
         run: |
@@ -4489,6 +4657,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -4502,6 +4671,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -4514,6 +4685,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -4528,10 +4700,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -G"Unix Makefiles" \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -G"Unix Makefiles" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
       - name: Build
         shell: bash
         run: |
@@ -4594,6 +4766,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -4607,6 +4780,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -4619,6 +4794,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -4633,10 +4809,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -G"Unix Makefiles" \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          -G"Unix Makefiles" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
       - name: Build
         shell: bash
         run: |
@@ -4701,6 +4877,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -4714,6 +4891,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -4726,6 +4905,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -4740,10 +4920,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -GNinja \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -GNinja \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
       - name: Build
         shell: bash
         run: |
@@ -4806,6 +4986,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -4819,6 +5000,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -4831,6 +5014,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -4845,10 +5029,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -GNinja \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          -GNinja \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
       - name: Build
         shell: bash
         run: |
@@ -4911,6 +5095,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -4924,6 +5109,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -4936,6 +5123,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -4950,10 +5138,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -G"Unix Makefiles" \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -G"Unix Makefiles" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
       - name: Build
         shell: bash
         run: |
@@ -5016,6 +5204,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -5029,6 +5218,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -5041,6 +5232,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -5055,10 +5247,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -G"Unix Makefiles" \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          -G"Unix Makefiles" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
       - name: Build
         shell: bash
         run: |
@@ -5123,6 +5315,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -5136,6 +5329,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -5148,6 +5343,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -5162,10 +5358,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -GNinja \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -GNinja \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
       - name: Build
         shell: bash
         run: |
@@ -5228,6 +5424,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -5241,6 +5438,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -5253,6 +5452,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -5267,10 +5467,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -GNinja \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+          -GNinja \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
       - name: Build
         shell: bash
         run: |
@@ -5333,6 +5533,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -5346,6 +5547,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -5358,6 +5561,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -5372,10 +5576,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -GNinja \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+          -GNinja \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
       - name: Build
         shell: bash
         run: |
@@ -5438,6 +5642,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -5451,6 +5656,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -5463,6 +5670,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -5477,10 +5685,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -G"Unix Makefiles" \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -G"Unix Makefiles" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
       - name: Build
         shell: bash
         run: |
@@ -5543,6 +5751,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -5556,6 +5765,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -5568,6 +5779,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -5582,10 +5794,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -G"Unix Makefiles" \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+          -G"Unix Makefiles" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
       - name: Build
         shell: bash
         run: |
@@ -5648,6 +5860,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -5661,6 +5874,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -5673,6 +5888,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -5687,10 +5903,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -G"Unix Makefiles" \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+          -G"Unix Makefiles" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
       - name: Build
         shell: bash
         run: |
@@ -5755,6 +5971,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -5768,6 +5985,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -5780,6 +5999,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -5794,10 +6014,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -GNinja \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -GNinja \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
       - name: Build
         shell: bash
         run: |
@@ -5860,6 +6080,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -5873,6 +6094,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -5885,6 +6108,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -5899,10 +6123,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -GNinja \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+          -GNinja \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
       - name: Build
         shell: bash
         run: |
@@ -5965,6 +6189,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -5978,6 +6203,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -5990,6 +6217,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -6004,10 +6232,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -GNinja \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+          -GNinja \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
       - name: Build
         shell: bash
         run: |
@@ -6070,6 +6298,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -6083,6 +6312,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -6095,6 +6326,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -6109,10 +6341,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -G"Unix Makefiles" \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -G"Unix Makefiles" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
       - name: Build
         shell: bash
         run: |
@@ -6175,6 +6407,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -6188,6 +6421,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -6200,6 +6435,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -6214,10 +6450,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -G"Unix Makefiles" \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+          -G"Unix Makefiles" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
       - name: Build
         shell: bash
         run: |
@@ -6280,6 +6516,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -6293,6 +6530,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -6305,6 +6544,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -6319,10 +6559,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -G"Unix Makefiles" \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+          -G"Unix Makefiles" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
       - name: Build
         shell: bash
         run: |
@@ -6387,6 +6627,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -6400,6 +6641,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -6412,6 +6655,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -6426,10 +6670,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -GNinja \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -GNinja \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
       - name: Build
         shell: bash
         run: |
@@ -6492,6 +6736,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -6505,6 +6750,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -6517,6 +6764,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -6531,10 +6779,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -GNinja \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+          -GNinja \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
       - name: Build
         shell: bash
         run: |
@@ -6597,6 +6845,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -6610,6 +6859,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -6622,6 +6873,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -6636,10 +6888,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -GNinja \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+          -GNinja \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
       - name: Build
         shell: bash
         run: |
@@ -6702,6 +6954,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -6715,6 +6968,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -6727,6 +6982,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -6741,10 +6997,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -G"Unix Makefiles" \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -G"Unix Makefiles" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
       - name: Build
         shell: bash
         run: |
@@ -6807,6 +7063,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -6820,6 +7077,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -6832,6 +7091,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -6846,10 +7106,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -G"Unix Makefiles" \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+          -G"Unix Makefiles" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
       - name: Build
         shell: bash
         run: |
@@ -6912,6 +7172,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -6925,6 +7186,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -6937,6 +7200,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -6951,10 +7215,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -G"Unix Makefiles" \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+          -G"Unix Makefiles" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
       - name: Build
         shell: bash
         run: |
@@ -7019,6 +7283,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -7032,6 +7297,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -7044,6 +7311,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -7058,10 +7326,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -GNinja \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -GNinja \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
       - name: Build
         shell: bash
         run: |
@@ -7124,6 +7392,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -7137,6 +7406,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -7149,6 +7420,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -7163,10 +7435,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -GNinja \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+          -GNinja \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
       - name: Build
         shell: bash
         run: |
@@ -7229,6 +7501,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -7242,6 +7515,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -7254,6 +7529,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -7268,10 +7544,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -GNinja \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+          -GNinja \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
       - name: Build
         shell: bash
         run: |
@@ -7334,6 +7610,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -7347,6 +7624,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -7359,6 +7638,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -7373,10 +7653,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -G"Unix Makefiles" \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -G"Unix Makefiles" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
       - name: Build
         shell: bash
         run: |
@@ -7439,6 +7719,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -7452,6 +7733,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -7464,6 +7747,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -7478,10 +7762,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -G"Unix Makefiles" \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+          -G"Unix Makefiles" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
       - name: Build
         shell: bash
         run: |
@@ -7544,6 +7828,7 @@ jobs:
           cd benchmark
           cmake \
             -B build \
+            -DBENCHMARK_ENABLE_TESTING=OFF \
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
@@ -7557,6 +7842,8 @@ jobs:
           cd googletest
           cmake \
             -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -7569,6 +7856,7 @@ jobs:
           cd zlib
           cmake \
             -B build \
+            -DZLIB_BUILD_TESTING=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
@@ -7583,10 +7871,10 @@ jobs:
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-                                                -G"Unix Makefiles" \
-                                                -DCMAKE_INSTALL_PREFIX=../_install \
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-                                                -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
+          -G"Unix Makefiles" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-14 LDFLAGS="-L/usr/local/opt/gcc/lib/gcc/14" CPPFLAGS="-I/usr/local/opt/gcc/include/c++/14"
       - name: Build
         shell: bash
         run: |

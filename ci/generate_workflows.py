@@ -195,6 +195,7 @@ step_unix = """
           cd benchmark
           cmake \\
             -B build \\
+            -DBENCHMARK_ENABLE_TESTING=OFF \\
             -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \\
             -DCMAKE_BUILD_TYPE=Release \\
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \\
@@ -208,6 +209,8 @@ step_unix = """
           cd googletest
           cmake \\
             -B build \\
+            -DBUILD_GMOCK=OFF \\
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \\
             -DCMAKE_BUILD_TYPE=Release \\
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \\
             -GNinja \\
@@ -220,6 +223,7 @@ step_unix = """
           cd zlib
           cmake \\
             -B build \\
+            -DZLIB_BUILD_TESTING=OFF \\
             -DCMAKE_BUILD_TYPE=Release \\
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \\
             -GNinja \\
@@ -234,10 +238,10 @@ step_unix = """
           cd sin-cpp
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \\
-                                                {build_system} \\
-                                                -DCMAKE_INSTALL_PREFIX=../_install \\
-                                                -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \\
-                                                {compilers_args}
+          {build_system} \\
+          -DCMAKE_INSTALL_PREFIX=../_install \\
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \\
+          {compilers_args}
       - name: Build
         shell: bash
         run: |
