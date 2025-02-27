@@ -189,20 +189,20 @@ step_clone = """
 
 step_unix = """
       # Dependencies
-      - name: Google Benchmark
-        shell: bash
-        run: |
-          cd benchmark
-          cmake \\
-            -B build \\
-            -DBENCHMARK_ENABLE_TESTING=OFF \\
-            -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \\
-            -DCMAKE_BUILD_TYPE=Release \\
-            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \\
-            -GNinja \\
-            -DCMAKE_INSTALL_PREFIX=../_install \\
-            {compilers_args}
-          cmake --build build --target install
+      #- name: Google Benchmark
+      #  shell: bash
+      #  run: |
+      #    cd benchmark
+      #    cmake \\
+      #      -B build \\
+      #      -DBENCHMARK_ENABLE_TESTING=OFF \\
+      #      -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \\
+      #      -DCMAKE_BUILD_TYPE=Release \\
+      #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \\
+      #      -GNinja \\
+      #      -DCMAKE_INSTALL_PREFIX=../_install \\
+      #      {compilers_args}
+      #    cmake --build build --target install
       - name: Google Test
         shell: bash
         run: |
