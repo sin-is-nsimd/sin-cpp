@@ -41,7 +41,7 @@ endif()
 
 # DEPENDENCIES
 
-find_package(benchmark REQUIRED)
+#find_package(benchmark REQUIRED)
 find_package(GTest REQUIRED)
 find_path(zlib_include PATH "zlib.h" REQUIRED)
 find_library(zlib_lib NAMES z zs REQUIRED)
