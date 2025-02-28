@@ -5430,7 +5430,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+      #      -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -5444,7 +5444,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -5457,7 +5457,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
           cmake --build build --target install
 
       # sin-cpp
@@ -5470,7 +5470,7 @@ jobs:
           -GNinja \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+          -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
       - name: Build
         shell: bash
         run: |
@@ -5539,7 +5539,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
+      #      -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -5553,7 +5553,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
+            -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -5566,7 +5566,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
+            -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk
           cmake --build build --target install
 
       # sin-cpp
@@ -5579,7 +5579,7 @@ jobs:
           -GNinja \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
+          -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk
       - name: Build
         shell: bash
         run: |
@@ -5757,7 +5757,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+      #      -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -5771,7 +5771,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -5784,7 +5784,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
           cmake --build build --target install
 
       # sin-cpp
@@ -5797,7 +5797,7 @@ jobs:
           -G"Unix Makefiles" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+          -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
       - name: Build
         shell: bash
         run: |
@@ -5866,7 +5866,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
+      #      -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -5880,7 +5880,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
+            -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -5893,7 +5893,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
+            -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk
           cmake --build build --target install
 
       # sin-cpp
@@ -5906,7 +5906,7 @@ jobs:
           -G"Unix Makefiles" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
+          -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk
       - name: Build
         shell: bash
         run: |
@@ -6086,7 +6086,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+      #      -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -6100,7 +6100,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -6113,7 +6113,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
           cmake --build build --target install
 
       # sin-cpp
@@ -6126,7 +6126,7 @@ jobs:
           -GNinja \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+          -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
       - name: Build
         shell: bash
         run: |
@@ -6195,7 +6195,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
+      #      -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -6209,7 +6209,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
+            -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -6222,7 +6222,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
+            -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk
           cmake --build build --target install
 
       # sin-cpp
@@ -6235,7 +6235,7 @@ jobs:
           -GNinja \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
+          -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk
       - name: Build
         shell: bash
         run: |
@@ -6413,7 +6413,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+      #      -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -6427,7 +6427,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -6440,7 +6440,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
           cmake --build build --target install
 
       # sin-cpp
@@ -6453,7 +6453,7 @@ jobs:
           -G"Unix Makefiles" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+          -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
       - name: Build
         shell: bash
         run: |
@@ -6522,7 +6522,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
+      #      -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -6536,7 +6536,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
+            -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -6549,7 +6549,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
+            -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk
           cmake --build build --target install
 
       # sin-cpp
@@ -6562,7 +6562,7 @@ jobs:
           -G"Unix Makefiles" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
+          -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk
       - name: Build
         shell: bash
         run: |
@@ -6742,7 +6742,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+      #      -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++" CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -6756,7 +6756,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++" CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -6769,7 +6769,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++" CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
           cmake --build build --target install
 
       # sin-cpp
@@ -6782,7 +6782,7 @@ jobs:
           -GNinja \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+          -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++" CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
       - name: Build
         shell: bash
         run: |
@@ -6851,7 +6851,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
+      #      -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -6865,7 +6865,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
+            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -6878,7 +6878,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
+            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk
           cmake --build build --target install
 
       # sin-cpp
@@ -6891,7 +6891,7 @@ jobs:
           -GNinja \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
+          -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk
       - name: Build
         shell: bash
         run: |
@@ -7069,7 +7069,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+      #      -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++" CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -7083,7 +7083,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++" CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -7096,7 +7096,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++" CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
           cmake --build build --target install
 
       # sin-cpp
@@ -7109,7 +7109,7 @@ jobs:
           -G"Unix Makefiles" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+          -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++" CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
       - name: Build
         shell: bash
         run: |
@@ -7178,7 +7178,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
+      #      -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -7192,7 +7192,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
+            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -7205,7 +7205,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
+            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk
           cmake --build build --target install
 
       # sin-cpp
@@ -7218,7 +7218,7 @@ jobs:
           -G"Unix Makefiles" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
+          -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk
       - name: Build
         shell: bash
         run: |
@@ -7398,7 +7398,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+      #      -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++" CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -7412,7 +7412,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++" CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -7425,7 +7425,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++" CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
           cmake --build build --target install
 
       # sin-cpp
@@ -7438,7 +7438,7 @@ jobs:
           -GNinja \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+          -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++" CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
       - name: Build
         shell: bash
         run: |
@@ -7507,7 +7507,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
+      #      -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -7521,7 +7521,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
+            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -7534,7 +7534,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
+            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk
           cmake --build build --target install
 
       # sin-cpp
@@ -7547,7 +7547,7 @@ jobs:
           -GNinja \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
+          -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk
       - name: Build
         shell: bash
         run: |
@@ -7725,7 +7725,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+      #      -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++" CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -7739,7 +7739,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++" CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -7752,7 +7752,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++" CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
           cmake --build build --target install
 
       # sin-cpp
@@ -7765,7 +7765,7 @@ jobs:
           -G"Unix Makefiles" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+          -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++" CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
       - name: Build
         shell: bash
         run: |
@@ -7834,7 +7834,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
+      #      -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -7848,7 +7848,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
+            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -7861,7 +7861,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
+            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk
           cmake --build build --target install
 
       # sin-cpp
@@ -7874,7 +7874,7 @@ jobs:
           -G"Unix Makefiles" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER="/usr/local/opt/gcc/bin/g++-14" -DCMAKE_C_COMPILER="/usr/local/opt/gcc/bin/gcc-14"
+          -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk
       - name: Build
         shell: bash
         run: |
