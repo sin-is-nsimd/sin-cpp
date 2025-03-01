@@ -8002,24 +8002,24 @@ jobs:
       # Dependencies
       - name: Google Benchmark
         run: |
-          python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars64.bat" --build-google-benchmark
+          python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars32.bat" --build-google-benchmark
       - name: Google Test
         run: |
-          python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars64.bat" --build-google-test
+          python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars32.bat" --build-google-test
       - name: zlib
         run: |
-          python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars64.bat" --build-zlib
+          python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars32.bat" --build-zlib
 
       # sin-cpp
       - name: CMake
         run: |
-          python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars64.bat" --cmake
+          python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars32.bat" --cmake
       - name: Build
         run: |
-          python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars64.bat" --build
+          python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars32.bat" --build
       - name: Test
         run: |
-          python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars64.bat" --test
+          python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars32.bat" --test
 
   # windows11-amd64
 
