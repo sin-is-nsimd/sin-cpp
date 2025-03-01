@@ -143,7 +143,7 @@ for system in ["windows10-amd64", "windows10-i386", "windows11-amd64"]:
 
 
 def get_vcvars_paths(system: str):
-    if system == "windows10-i386-sse2":
+    if system == "windows10-i386":
         return "C:\\Program Files\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Auxiliary\\Build\\vcvars32.bat"
     else:
         return "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Auxiliary\\Build\\vcvars64.bat"
