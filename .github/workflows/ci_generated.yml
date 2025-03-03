@@ -16,10 +16,6 @@ jobs:
     name: debian12-amd64-ninja-clang
     steps:
 
-      # Clean
-      - name: Clean
-        run: rm -rf *
-
       # Clone
       - name: Clone Google Benchmark
         uses: actions/checkout@v3
@@ -52,11 +48,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -70,7 +75,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -84,7 +89,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -99,7 +104,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -GNinja \
@@ -109,13 +114,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   debian12-amd64-ninja-gcc:
@@ -125,10 +130,6 @@ jobs:
     name: debian12-amd64-ninja-gcc
     steps:
 
-      # Clean
-      - name: Clean
-        run: rm -rf *
-
       # Clone
       - name: Clone Google Benchmark
         uses: actions/checkout@v3
@@ -161,11 +162,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -179,7 +189,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -193,7 +203,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -208,7 +218,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -GNinja \
@@ -218,13 +228,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   debian12-amd64-make-clang:
@@ -233,10 +243,6 @@ jobs:
     runs-on: [ self-hosted, debian12-amd64 ]
     name: debian12-amd64-make-clang
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -270,11 +276,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -288,7 +303,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -302,7 +317,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -317,7 +332,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -G"Unix Makefiles" \
@@ -327,13 +342,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   debian12-amd64-make-gcc:
@@ -342,10 +357,6 @@ jobs:
     runs-on: [ self-hosted, debian12-amd64 ]
     name: debian12-amd64-make-gcc
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -379,11 +390,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -397,7 +417,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -411,7 +431,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -426,7 +446,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -G"Unix Makefiles" \
@@ -436,13 +456,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   # debian12-i386
@@ -454,10 +474,6 @@ jobs:
     name: debian12-i386-ninja-clang
     steps:
 
-      # Clean
-      - name: Clean
-        run: rm -rf *
-
       # Clone
       - name: Clone Google Benchmark
         uses: actions/checkout@v3
@@ -490,11 +506,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -508,7 +533,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -522,7 +547,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -537,7 +562,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -GNinja \
@@ -547,13 +572,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   debian12-i386-ninja-gcc:
@@ -563,10 +588,6 @@ jobs:
     name: debian12-i386-ninja-gcc
     steps:
 
-      # Clean
-      - name: Clean
-        run: rm -rf *
-
       # Clone
       - name: Clone Google Benchmark
         uses: actions/checkout@v3
@@ -599,11 +620,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -617,7 +647,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -631,7 +661,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -646,7 +676,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -GNinja \
@@ -656,13 +686,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   debian12-i386-make-clang:
@@ -671,10 +701,6 @@ jobs:
     runs-on: [ self-hosted, debian12-i386 ]
     name: debian12-i386-make-clang
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -708,11 +734,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -726,7 +761,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -740,7 +775,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -755,7 +790,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -G"Unix Makefiles" \
@@ -765,13 +800,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   debian12-i386-make-gcc:
@@ -780,10 +815,6 @@ jobs:
     runs-on: [ self-hosted, debian12-i386 ]
     name: debian12-i386-make-gcc
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -817,11 +848,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -835,7 +875,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -849,7 +889,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -864,7 +904,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -G"Unix Makefiles" \
@@ -874,13 +914,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   # debian12-armhf
@@ -892,10 +932,6 @@ jobs:
     name: debian12-armhf-ninja-clang
     steps:
 
-      # Clean
-      - name: Clean
-        run: rm -rf *
-
       # Clone
       - name: Clone Google Benchmark
         uses: actions/checkout@v3
@@ -928,11 +964,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -946,7 +991,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -960,7 +1005,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -975,7 +1020,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -GNinja \
@@ -985,13 +1030,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   debian12-armhf-ninja-gcc:
@@ -1001,10 +1046,6 @@ jobs:
     name: debian12-armhf-ninja-gcc
     steps:
 
-      # Clean
-      - name: Clean
-        run: rm -rf *
-
       # Clone
       - name: Clone Google Benchmark
         uses: actions/checkout@v3
@@ -1037,11 +1078,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -1055,7 +1105,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -1069,7 +1119,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -1084,7 +1134,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -GNinja \
@@ -1094,13 +1144,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   debian12-armhf-make-clang:
@@ -1109,10 +1159,6 @@ jobs:
     runs-on: [ self-hosted, debian12-armhf ]
     name: debian12-armhf-make-clang
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -1146,11 +1192,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -1164,7 +1219,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -1178,7 +1233,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -1193,7 +1248,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -G"Unix Makefiles" \
@@ -1203,13 +1258,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   debian12-armhf-make-gcc:
@@ -1218,10 +1273,6 @@ jobs:
     runs-on: [ self-hosted, debian12-armhf ]
     name: debian12-armhf-make-gcc
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -1255,11 +1306,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -1273,7 +1333,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -1287,7 +1347,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -1302,7 +1362,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -G"Unix Makefiles" \
@@ -1312,13 +1372,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   # debian12-arm64
@@ -1330,10 +1390,6 @@ jobs:
     name: debian12-arm64-ninja-clang
     steps:
 
-      # Clean
-      - name: Clean
-        run: rm -rf *
-
       # Clone
       - name: Clone Google Benchmark
         uses: actions/checkout@v3
@@ -1366,11 +1422,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -1384,7 +1449,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -1398,7 +1463,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -1413,7 +1478,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -GNinja \
@@ -1423,13 +1488,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   debian12-arm64-ninja-gcc:
@@ -1439,10 +1504,6 @@ jobs:
     name: debian12-arm64-ninja-gcc
     steps:
 
-      # Clean
-      - name: Clean
-        run: rm -rf *
-
       # Clone
       - name: Clone Google Benchmark
         uses: actions/checkout@v3
@@ -1475,11 +1536,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -1493,7 +1563,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -1507,7 +1577,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -1522,7 +1592,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -GNinja \
@@ -1532,13 +1602,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   debian12-arm64-make-clang:
@@ -1547,10 +1617,6 @@ jobs:
     runs-on: [ self-hosted, debian12-arm64 ]
     name: debian12-arm64-make-clang
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -1584,11 +1650,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -1602,7 +1677,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -1616,7 +1691,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -1631,7 +1706,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -G"Unix Makefiles" \
@@ -1641,13 +1716,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   debian12-arm64-make-gcc:
@@ -1656,10 +1731,6 @@ jobs:
     runs-on: [ self-hosted, debian12-arm64 ]
     name: debian12-arm64-make-gcc
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -1693,11 +1764,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -1711,7 +1791,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -1725,7 +1805,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -1740,7 +1820,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -G"Unix Makefiles" \
@@ -1750,13 +1830,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   # debian12-ppc64el
@@ -1768,10 +1848,6 @@ jobs:
     name: debian12-ppc64el-ninja-clang
     steps:
 
-      # Clean
-      - name: Clean
-        run: rm -rf *
-
       # Clone
       - name: Clone Google Benchmark
         uses: actions/checkout@v3
@@ -1804,11 +1880,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -1822,7 +1907,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -1836,7 +1921,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -1851,7 +1936,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -GNinja \
@@ -1861,13 +1946,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   debian12-ppc64el-ninja-gcc:
@@ -1877,10 +1962,6 @@ jobs:
     name: debian12-ppc64el-ninja-gcc
     steps:
 
-      # Clean
-      - name: Clean
-        run: rm -rf *
-
       # Clone
       - name: Clone Google Benchmark
         uses: actions/checkout@v3
@@ -1913,11 +1994,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -1931,7 +2021,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -1945,7 +2035,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -1960,7 +2050,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -GNinja \
@@ -1970,13 +2060,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   debian12-ppc64el-make-clang:
@@ -1985,10 +2075,6 @@ jobs:
     runs-on: [ self-hosted, debian12-ppc64el ]
     name: debian12-ppc64el-make-clang
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -2022,11 +2108,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -2040,7 +2135,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -2054,7 +2149,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -2069,7 +2164,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -G"Unix Makefiles" \
@@ -2079,13 +2174,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   debian12-ppc64el-make-gcc:
@@ -2094,10 +2189,6 @@ jobs:
     runs-on: [ self-hosted, debian12-ppc64el ]
     name: debian12-ppc64el-make-gcc
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -2131,11 +2222,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -2149,7 +2249,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -2163,7 +2263,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -2178,7 +2278,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -G"Unix Makefiles" \
@@ -2188,13 +2288,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   # debian13-amd64
@@ -2206,10 +2306,6 @@ jobs:
     name: debian13-amd64-ninja-clang
     steps:
 
-      # Clean
-      - name: Clean
-        run: rm -rf *
-
       # Clone
       - name: Clone Google Benchmark
         uses: actions/checkout@v3
@@ -2242,11 +2338,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -2260,7 +2365,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -2274,7 +2379,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -2289,7 +2394,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -GNinja \
@@ -2299,13 +2404,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   debian13-amd64-ninja-gcc:
@@ -2315,10 +2420,6 @@ jobs:
     name: debian13-amd64-ninja-gcc
     steps:
 
-      # Clean
-      - name: Clean
-        run: rm -rf *
-
       # Clone
       - name: Clone Google Benchmark
         uses: actions/checkout@v3
@@ -2351,11 +2452,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -2369,7 +2479,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -2383,7 +2493,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -2398,7 +2508,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -GNinja \
@@ -2408,13 +2518,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   debian13-amd64-make-clang:
@@ -2423,10 +2533,6 @@ jobs:
     runs-on: [ self-hosted, debian13-amd64 ]
     name: debian13-amd64-make-clang
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -2460,11 +2566,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -2478,7 +2593,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -2492,7 +2607,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -2507,7 +2622,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -G"Unix Makefiles" \
@@ -2517,13 +2632,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   debian13-amd64-make-gcc:
@@ -2532,10 +2647,6 @@ jobs:
     runs-on: [ self-hosted, debian13-amd64 ]
     name: debian13-amd64-make-gcc
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -2569,11 +2680,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -2587,7 +2707,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -2601,7 +2721,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -2616,7 +2736,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -G"Unix Makefiles" \
@@ -2626,13 +2746,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   # debian13-i386
@@ -2644,10 +2764,6 @@ jobs:
     name: debian13-i386-ninja-clang
     steps:
 
-      # Clean
-      - name: Clean
-        run: rm -rf *
-
       # Clone
       - name: Clone Google Benchmark
         uses: actions/checkout@v3
@@ -2680,11 +2796,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -2698,7 +2823,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -2712,7 +2837,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -2727,7 +2852,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -GNinja \
@@ -2737,13 +2862,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   debian13-i386-ninja-gcc:
@@ -2753,10 +2878,6 @@ jobs:
     name: debian13-i386-ninja-gcc
     steps:
 
-      # Clean
-      - name: Clean
-        run: rm -rf *
-
       # Clone
       - name: Clone Google Benchmark
         uses: actions/checkout@v3
@@ -2789,11 +2910,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -2807,7 +2937,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -2821,7 +2951,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -2836,7 +2966,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -GNinja \
@@ -2846,13 +2976,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   debian13-i386-make-clang:
@@ -2861,10 +2991,6 @@ jobs:
     runs-on: [ self-hosted, debian13-i386 ]
     name: debian13-i386-make-clang
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -2898,11 +3024,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -2916,7 +3051,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -2930,7 +3065,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -2945,7 +3080,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -G"Unix Makefiles" \
@@ -2955,13 +3090,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   debian13-i386-make-gcc:
@@ -2970,10 +3105,6 @@ jobs:
     runs-on: [ self-hosted, debian13-i386 ]
     name: debian13-i386-make-gcc
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -3007,11 +3138,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -3025,7 +3165,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -3039,7 +3179,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -3054,7 +3194,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -G"Unix Makefiles" \
@@ -3064,13 +3204,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   # debian13-armhf
@@ -3082,10 +3222,6 @@ jobs:
     name: debian13-armhf-ninja-clang
     steps:
 
-      # Clean
-      - name: Clean
-        run: rm -rf *
-
       # Clone
       - name: Clone Google Benchmark
         uses: actions/checkout@v3
@@ -3118,11 +3254,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -3136,7 +3281,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -3150,7 +3295,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -3165,7 +3310,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -GNinja \
@@ -3175,13 +3320,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   debian13-armhf-ninja-gcc:
@@ -3191,10 +3336,6 @@ jobs:
     name: debian13-armhf-ninja-gcc
     steps:
 
-      # Clean
-      - name: Clean
-        run: rm -rf *
-
       # Clone
       - name: Clone Google Benchmark
         uses: actions/checkout@v3
@@ -3227,11 +3368,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -3245,7 +3395,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -3259,7 +3409,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -3274,7 +3424,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -GNinja \
@@ -3284,13 +3434,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   debian13-armhf-make-clang:
@@ -3299,10 +3449,6 @@ jobs:
     runs-on: [ self-hosted, debian13-armhf ]
     name: debian13-armhf-make-clang
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -3336,11 +3482,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -3354,7 +3509,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -3368,7 +3523,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -3383,7 +3538,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -G"Unix Makefiles" \
@@ -3393,13 +3548,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   debian13-armhf-make-gcc:
@@ -3408,10 +3563,6 @@ jobs:
     runs-on: [ self-hosted, debian13-armhf ]
     name: debian13-armhf-make-gcc
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -3445,11 +3596,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -3463,7 +3623,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -3477,7 +3637,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -3492,7 +3652,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -G"Unix Makefiles" \
@@ -3502,13 +3662,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   # debian13-arm64
@@ -3520,10 +3680,6 @@ jobs:
     name: debian13-arm64-ninja-clang
     steps:
 
-      # Clean
-      - name: Clean
-        run: rm -rf *
-
       # Clone
       - name: Clone Google Benchmark
         uses: actions/checkout@v3
@@ -3556,11 +3712,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -3574,7 +3739,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -3588,7 +3753,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -3603,7 +3768,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -GNinja \
@@ -3613,13 +3778,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   debian13-arm64-ninja-gcc:
@@ -3629,10 +3794,6 @@ jobs:
     name: debian13-arm64-ninja-gcc
     steps:
 
-      # Clean
-      - name: Clean
-        run: rm -rf *
-
       # Clone
       - name: Clone Google Benchmark
         uses: actions/checkout@v3
@@ -3665,11 +3826,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -3683,7 +3853,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -3697,7 +3867,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -3712,7 +3882,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -GNinja \
@@ -3722,13 +3892,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   debian13-arm64-make-clang:
@@ -3737,10 +3907,6 @@ jobs:
     runs-on: [ self-hosted, debian13-arm64 ]
     name: debian13-arm64-make-clang
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -3774,11 +3940,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -3792,7 +3967,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -3806,7 +3981,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -3821,7 +3996,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -G"Unix Makefiles" \
@@ -3831,13 +4006,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   debian13-arm64-make-gcc:
@@ -3846,10 +4021,6 @@ jobs:
     runs-on: [ self-hosted, debian13-arm64 ]
     name: debian13-arm64-make-gcc
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -3883,11 +4054,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -3901,7 +4081,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -3915,7 +4095,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -3930,7 +4110,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -G"Unix Makefiles" \
@@ -3940,13 +4120,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   # debian13-ppc64el
@@ -3958,10 +4138,6 @@ jobs:
     name: debian13-ppc64el-ninja-clang
     steps:
 
-      # Clean
-      - name: Clean
-        run: rm -rf *
-
       # Clone
       - name: Clone Google Benchmark
         uses: actions/checkout@v3
@@ -3994,11 +4170,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -4012,7 +4197,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -4026,7 +4211,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -4041,7 +4226,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -GNinja \
@@ -4051,13 +4236,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   debian13-ppc64el-ninja-gcc:
@@ -4067,10 +4252,6 @@ jobs:
     name: debian13-ppc64el-ninja-gcc
     steps:
 
-      # Clean
-      - name: Clean
-        run: rm -rf *
-
       # Clone
       - name: Clone Google Benchmark
         uses: actions/checkout@v3
@@ -4103,11 +4284,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -4121,7 +4311,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -4135,7 +4325,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -4150,7 +4340,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -GNinja \
@@ -4160,13 +4350,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   debian13-ppc64el-make-clang:
@@ -4175,10 +4365,6 @@ jobs:
     runs-on: [ self-hosted, debian13-ppc64el ]
     name: debian13-ppc64el-make-clang
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -4212,11 +4398,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -4230,7 +4425,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -4244,7 +4439,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -4259,7 +4454,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -G"Unix Makefiles" \
@@ -4269,13 +4464,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   debian13-ppc64el-make-gcc:
@@ -4284,10 +4479,6 @@ jobs:
     runs-on: [ self-hosted, debian13-ppc64el ]
     name: debian13-ppc64el-make-gcc
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -4321,11 +4512,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -4339,7 +4539,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -4353,7 +4553,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -4368,7 +4568,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -G"Unix Makefiles" \
@@ -4378,13 +4578,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   # raspios12-armhf
@@ -4396,10 +4596,6 @@ jobs:
     name: raspios12-armhf-ninja-clang
     steps:
 
-      # Clean
-      - name: Clean
-        run: rm -rf *
-
       # Clone
       - name: Clone Google Benchmark
         uses: actions/checkout@v3
@@ -4432,11 +4628,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -4450,7 +4655,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -4464,7 +4669,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -4479,7 +4684,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -GNinja \
@@ -4489,13 +4694,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   raspios12-armhf-ninja-gcc:
@@ -4505,10 +4710,6 @@ jobs:
     name: raspios12-armhf-ninja-gcc
     steps:
 
-      # Clean
-      - name: Clean
-        run: rm -rf *
-
       # Clone
       - name: Clone Google Benchmark
         uses: actions/checkout@v3
@@ -4541,11 +4742,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -4559,7 +4769,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -4573,7 +4783,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -4588,7 +4798,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -GNinja \
@@ -4598,13 +4808,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   raspios12-armhf-make-clang:
@@ -4613,10 +4823,6 @@ jobs:
     runs-on: [ self-hosted, raspios12-armhf ]
     name: raspios12-armhf-make-clang
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -4650,11 +4856,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -4668,7 +4883,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -4682,7 +4897,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -4697,7 +4912,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -G"Unix Makefiles" \
@@ -4707,13 +4922,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   raspios12-armhf-make-gcc:
@@ -4722,10 +4937,6 @@ jobs:
     runs-on: [ self-hosted, raspios12-armhf ]
     name: raspios12-armhf-make-gcc
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -4759,11 +4970,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -4777,7 +4997,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -4791,7 +5011,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -4806,7 +5026,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -G"Unix Makefiles" \
@@ -4816,13 +5036,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   # raspios12-arm64
@@ -4834,10 +5054,6 @@ jobs:
     name: raspios12-arm64-ninja-clang
     steps:
 
-      # Clean
-      - name: Clean
-        run: rm -rf *
-
       # Clone
       - name: Clone Google Benchmark
         uses: actions/checkout@v3
@@ -4870,11 +5086,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -4888,7 +5113,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -4902,7 +5127,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -4917,7 +5142,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -GNinja \
@@ -4927,13 +5152,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   raspios12-arm64-ninja-gcc:
@@ -4943,10 +5168,6 @@ jobs:
     name: raspios12-arm64-ninja-gcc
     steps:
 
-      # Clean
-      - name: Clean
-        run: rm -rf *
-
       # Clone
       - name: Clone Google Benchmark
         uses: actions/checkout@v3
@@ -4979,11 +5200,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -4997,7 +5227,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -5011,7 +5241,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -5026,7 +5256,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -GNinja \
@@ -5036,13 +5266,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   raspios12-arm64-make-clang:
@@ -5051,10 +5281,6 @@ jobs:
     runs-on: [ self-hosted, raspios12-arm64 ]
     name: raspios12-arm64-make-clang
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -5088,11 +5314,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -5106,7 +5341,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -5120,7 +5355,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -5135,7 +5370,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -G"Unix Makefiles" \
@@ -5145,13 +5380,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   raspios12-arm64-make-gcc:
@@ -5160,10 +5395,6 @@ jobs:
     runs-on: [ self-hosted, raspios12-arm64 ]
     name: raspios12-arm64-make-gcc
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -5197,11 +5428,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -5215,7 +5455,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -5229,7 +5469,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -5244,7 +5484,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -G"Unix Makefiles" \
@@ -5254,13 +5494,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   # macos14-amd64
@@ -5272,10 +5512,6 @@ jobs:
     name: macos14-amd64-ninja-apple-clang
     steps:
 
-      # Clean
-      - name: Clean
-        run: rm -rf *
-
       # Clone
       - name: Clone Google Benchmark
         uses: actions/checkout@v3
@@ -5308,11 +5544,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -5326,7 +5571,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -5340,7 +5585,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -5355,7 +5600,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -GNinja \
@@ -5365,13 +5610,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   macos14-amd64-ninja-clang:
@@ -5381,10 +5626,6 @@ jobs:
     name: macos14-amd64-ninja-clang
     steps:
 
-      # Clean
-      - name: Clean
-        run: rm -rf *
-
       # Clone
       - name: Clone Google Benchmark
         uses: actions/checkout@v3
@@ -5417,11 +5658,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -5435,7 +5685,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -5449,7 +5699,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -5464,7 +5714,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -GNinja \
@@ -5474,13 +5724,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   macos14-amd64-ninja-gcc:
@@ -5489,10 +5739,6 @@ jobs:
     runs-on: [ self-hosted, macos14-amd64 ]
     name: macos14-amd64-ninja-gcc
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -5526,11 +5772,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -5544,7 +5799,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -5558,7 +5813,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -5573,7 +5828,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -GNinja \
@@ -5583,13 +5838,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   macos14-amd64-make-apple-clang:
@@ -5598,10 +5853,6 @@ jobs:
     runs-on: [ self-hosted, macos14-amd64 ]
     name: macos14-amd64-make-apple-clang
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -5635,11 +5886,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -5653,7 +5913,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -5667,7 +5927,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -5682,7 +5942,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -G"Unix Makefiles" \
@@ -5692,13 +5952,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   macos14-amd64-make-clang:
@@ -5707,10 +5967,6 @@ jobs:
     runs-on: [ self-hosted, macos14-amd64 ]
     name: macos14-amd64-make-clang
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -5744,11 +6000,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -5762,7 +6027,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -5776,7 +6041,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -5791,7 +6056,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -G"Unix Makefiles" \
@@ -5801,13 +6066,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   macos14-amd64-make-gcc:
@@ -5816,10 +6081,6 @@ jobs:
     runs-on: [ self-hosted, macos14-amd64 ]
     name: macos14-amd64-make-gcc
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -5853,11 +6114,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -5871,7 +6141,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -5885,7 +6155,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -5900,7 +6170,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -G"Unix Makefiles" \
@@ -5910,13 +6180,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   # macos15-amd64
@@ -5928,10 +6198,6 @@ jobs:
     name: macos15-amd64-ninja-apple-clang
     steps:
 
-      # Clean
-      - name: Clean
-        run: rm -rf *
-
       # Clone
       - name: Clone Google Benchmark
         uses: actions/checkout@v3
@@ -5964,11 +6230,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -5982,7 +6257,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -5996,7 +6271,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -6011,7 +6286,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -GNinja \
@@ -6021,13 +6296,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   macos15-amd64-ninja-clang:
@@ -6037,10 +6312,6 @@ jobs:
     name: macos15-amd64-ninja-clang
     steps:
 
-      # Clean
-      - name: Clean
-        run: rm -rf *
-
       # Clone
       - name: Clone Google Benchmark
         uses: actions/checkout@v3
@@ -6073,11 +6344,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -6091,7 +6371,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -6105,7 +6385,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -6120,7 +6400,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -GNinja \
@@ -6130,13 +6410,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   macos15-amd64-ninja-gcc:
@@ -6145,10 +6425,6 @@ jobs:
     runs-on: [ self-hosted, macos15-amd64 ]
     name: macos15-amd64-ninja-gcc
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -6182,11 +6458,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -6200,7 +6485,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -6214,7 +6499,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -6229,7 +6514,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -GNinja \
@@ -6239,13 +6524,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   macos15-amd64-make-apple-clang:
@@ -6254,10 +6539,6 @@ jobs:
     runs-on: [ self-hosted, macos15-amd64 ]
     name: macos15-amd64-make-apple-clang
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -6291,11 +6572,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -6309,7 +6599,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -6323,7 +6613,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -6338,7 +6628,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -G"Unix Makefiles" \
@@ -6348,13 +6638,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   macos15-amd64-make-clang:
@@ -6363,10 +6653,6 @@ jobs:
     runs-on: [ self-hosted, macos15-amd64 ]
     name: macos15-amd64-make-clang
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -6400,11 +6686,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -6418,7 +6713,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -6432,7 +6727,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -6447,7 +6742,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -G"Unix Makefiles" \
@@ -6457,13 +6752,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   macos15-amd64-make-gcc:
@@ -6472,10 +6767,6 @@ jobs:
     runs-on: [ self-hosted, macos15-amd64 ]
     name: macos15-amd64-make-gcc
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -6509,11 +6800,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -6527,7 +6827,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -6541,7 +6841,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -6556,7 +6856,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -G"Unix Makefiles" \
@@ -6566,13 +6866,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   # macos14-arm64
@@ -6584,10 +6884,6 @@ jobs:
     name: macos14-arm64-ninja-apple-clang
     steps:
 
-      # Clean
-      - name: Clean
-        run: rm -rf *
-
       # Clone
       - name: Clone Google Benchmark
         uses: actions/checkout@v3
@@ -6620,11 +6916,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -6638,7 +6943,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -6652,7 +6957,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -6667,7 +6972,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -GNinja \
@@ -6677,13 +6982,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   macos14-arm64-ninja-clang:
@@ -6693,10 +6998,6 @@ jobs:
     name: macos14-arm64-ninja-clang
     steps:
 
-      # Clean
-      - name: Clean
-        run: rm -rf *
-
       # Clone
       - name: Clone Google Benchmark
         uses: actions/checkout@v3
@@ -6729,11 +7030,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -6747,7 +7057,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -6761,7 +7071,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -6776,7 +7086,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -GNinja \
@@ -6786,13 +7096,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   macos14-arm64-ninja-gcc:
@@ -6801,10 +7111,6 @@ jobs:
     runs-on: [ self-hosted, macos14-arm64 ]
     name: macos14-arm64-ninja-gcc
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -6838,11 +7144,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -6856,7 +7171,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -6870,7 +7185,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -6885,7 +7200,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -GNinja \
@@ -6895,13 +7210,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   macos14-arm64-make-apple-clang:
@@ -6910,10 +7225,6 @@ jobs:
     runs-on: [ self-hosted, macos14-arm64 ]
     name: macos14-arm64-make-apple-clang
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -6947,11 +7258,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -6965,7 +7285,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -6979,7 +7299,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -6994,7 +7314,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -G"Unix Makefiles" \
@@ -7004,13 +7324,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   macos14-arm64-make-clang:
@@ -7019,10 +7339,6 @@ jobs:
     runs-on: [ self-hosted, macos14-arm64 ]
     name: macos14-arm64-make-clang
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -7056,11 +7372,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -7074,7 +7399,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -7088,7 +7413,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -7103,7 +7428,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -G"Unix Makefiles" \
@@ -7113,13 +7438,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   macos14-arm64-make-gcc:
@@ -7128,10 +7453,6 @@ jobs:
     runs-on: [ self-hosted, macos14-arm64 ]
     name: macos14-arm64-make-gcc
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -7165,11 +7486,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -7183,7 +7513,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -7197,7 +7527,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -7212,7 +7542,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -G"Unix Makefiles" \
@@ -7222,13 +7552,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   # macos15-arm64
@@ -7240,10 +7570,6 @@ jobs:
     name: macos15-arm64-ninja-apple-clang
     steps:
 
-      # Clean
-      - name: Clean
-        run: rm -rf *
-
       # Clone
       - name: Clone Google Benchmark
         uses: actions/checkout@v3
@@ -7276,11 +7602,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -7294,7 +7629,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -7308,7 +7643,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -7323,7 +7658,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -GNinja \
@@ -7333,13 +7668,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   macos15-arm64-ninja-clang:
@@ -7349,10 +7684,6 @@ jobs:
     name: macos15-arm64-ninja-clang
     steps:
 
-      # Clean
-      - name: Clean
-        run: rm -rf *
-
       # Clone
       - name: Clone Google Benchmark
         uses: actions/checkout@v3
@@ -7385,11 +7716,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -7403,7 +7743,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -7417,7 +7757,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -7432,7 +7772,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -GNinja \
@@ -7442,13 +7782,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   macos15-arm64-ninja-gcc:
@@ -7457,10 +7797,6 @@ jobs:
     runs-on: [ self-hosted, macos15-arm64 ]
     name: macos15-arm64-ninja-gcc
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -7494,11 +7830,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -7512,7 +7857,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -7526,7 +7871,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -7541,7 +7886,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -GNinja \
@@ -7551,13 +7896,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   macos15-arm64-make-apple-clang:
@@ -7566,10 +7911,6 @@ jobs:
     runs-on: [ self-hosted, macos15-arm64 ]
     name: macos15-arm64-make-apple-clang
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -7603,11 +7944,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -7621,7 +7971,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -7635,7 +7985,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -7650,7 +8000,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -G"Unix Makefiles" \
@@ -7660,13 +8010,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   macos15-arm64-make-clang:
@@ -7675,10 +8025,6 @@ jobs:
     runs-on: [ self-hosted, macos15-arm64 ]
     name: macos15-arm64-make-clang
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -7712,11 +8058,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -7730,7 +8085,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -7744,7 +8099,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -7759,7 +8114,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -G"Unix Makefiles" \
@@ -7769,13 +8124,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   macos15-arm64-make-gcc:
@@ -7784,10 +8139,6 @@ jobs:
     runs-on: [ self-hosted, macos15-arm64 ]
     name: macos15-arm64-make-gcc
     steps:
-
-      # Clean
-      - name: Clean
-        run: rm -rf *
 
       # Clone
       - name: Clone Google Benchmark
@@ -7821,11 +8172,20 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "$HOME/_ci_sin-cpp"
+
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
       #    cmake \
       #      -B build \
       #      -DBENCHMARK_ENABLE_TESTING=OFF \
@@ -7839,7 +8199,7 @@ jobs:
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "$HOME/_ci_sin-cpp/googletest"
           cmake \
             -B build \
             -DBUILD_GMOCK=OFF \
@@ -7853,7 +8213,7 @@ jobs:
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "$HOME/_ci_sin-cpp/zlib"
           cmake \
             -B build \
             -DZLIB_BUILD_TESTING=OFF \
@@ -7868,7 +8228,7 @@ jobs:
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
           -G"Unix Makefiles" \
@@ -7878,13 +8238,13 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
   # windows10-amd64
@@ -7896,10 +8256,6 @@ jobs:
     name: windows10-amd64-ninja-msvc
     steps:
 
-      # Clean
-      - name: Clean
-        run: rd -r *
-
       # Clone
       - name: Clone Google Benchmark
         uses: actions/checkout@v3
@@ -7932,26 +8288,45 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          if (Test-Path "$env:USERPROFILE\_ci_sin-cpp") {
+            Remove-Item -Path "$env:USERPROFILE\_ci_sin-cpp" -Recurse -Force
+          }
+          mkdir "$env:USERPROFILE\_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: |
+          dir
+          Move-Item -Path * -Destination "$env:USERPROFILE\_ci_sin-cpp"
+
       # Dependencies
       - name: Google Benchmark
         run: |
+          cd "$env:USERPROFILE\_ci_sin-cpp"
           python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars64.bat" --build-google-benchmark
       - name: Google Test
         run: |
+          cd "$env:USERPROFILE\_ci_sin-cpp"
           python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars64.bat" --build-google-test
       - name: zlib
         run: |
+          cd "$env:USERPROFILE\_ci_sin-cpp"
           python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars64.bat" --build-zlib
 
       # sin-cpp
       - name: CMake
         run: |
+          cd "$env:USERPROFILE\_ci_sin-cpp"
           python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars64.bat" --cmake
       - name: Build
         run: |
+          cd "$env:USERPROFILE\_ci_sin-cpp"
           python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars64.bat" --build
       - name: Test
         run: |
+          cd "$env:USERPROFILE\_ci_sin-cpp"
           python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars64.bat" --test
 
   # windows10-i386
@@ -7963,10 +8338,6 @@ jobs:
     name: windows10-i386-ninja-msvc
     steps:
 
-      # Clean
-      - name: Clean
-        run: rd -r *
-
       # Clone
       - name: Clone Google Benchmark
         uses: actions/checkout@v3
@@ -7999,26 +8370,45 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          if (Test-Path "$env:USERPROFILE\_ci_sin-cpp") {
+            Remove-Item -Path "$env:USERPROFILE\_ci_sin-cpp" -Recurse -Force
+          }
+          mkdir "$env:USERPROFILE\_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: |
+          dir
+          Move-Item -Path * -Destination "$env:USERPROFILE\_ci_sin-cpp"
+
       # Dependencies
       - name: Google Benchmark
         run: |
+          cd "$env:USERPROFILE\_ci_sin-cpp"
           python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars32.bat" --build-google-benchmark
       - name: Google Test
         run: |
+          cd "$env:USERPROFILE\_ci_sin-cpp"
           python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars32.bat" --build-google-test
       - name: zlib
         run: |
+          cd "$env:USERPROFILE\_ci_sin-cpp"
           python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars32.bat" --build-zlib
 
       # sin-cpp
       - name: CMake
         run: |
+          cd "$env:USERPROFILE\_ci_sin-cpp"
           python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars32.bat" --cmake
       - name: Build
         run: |
+          cd "$env:USERPROFILE\_ci_sin-cpp"
           python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars32.bat" --build
       - name: Test
         run: |
+          cd "$env:USERPROFILE\_ci_sin-cpp"
           python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars32.bat" --test
 
   # windows11-amd64
@@ -8030,10 +8420,6 @@ jobs:
     name: windows11-amd64-ninja-msvc
     steps:
 
-      # Clean
-      - name: Clean
-        run: rd -r *
-
       # Clone
       - name: Clone Google Benchmark
         uses: actions/checkout@v3
@@ -8066,24 +8452,43 @@ jobs:
           repository: 'sin-is-nsimd/sin-cpp'
           path: 'sin-cpp'
 
+      # Clean
+      - name: Clean
+        run: |
+          if (Test-Path "$env:USERPROFILE\_ci_sin-cpp") {
+            Remove-Item -Path "$env:USERPROFILE\_ci_sin-cpp" -Recurse -Force
+          }
+          mkdir "$env:USERPROFILE\_ci_sin-cpp"
+      # Move Repositories
+      - name: Move Repositories
+        run: |
+          dir
+          Move-Item -Path * -Destination "$env:USERPROFILE\_ci_sin-cpp"
+
       # Dependencies
       - name: Google Benchmark
         run: |
+          cd "$env:USERPROFILE\_ci_sin-cpp"
           python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars64.bat" --build-google-benchmark
       - name: Google Test
         run: |
+          cd "$env:USERPROFILE\_ci_sin-cpp"
           python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars64.bat" --build-google-test
       - name: zlib
         run: |
+          cd "$env:USERPROFILE\_ci_sin-cpp"
           python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars64.bat" --build-zlib
 
       # sin-cpp
       - name: CMake
         run: |
+          cd "$env:USERPROFILE\_ci_sin-cpp"
           python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars64.bat" --cmake
       - name: Build
         run: |
+          cd "$env:USERPROFILE\_ci_sin-cpp"
           python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars64.bat" --build
       - name: Test
         run: |
+          cd "$env:USERPROFILE\_ci_sin-cpp"
           python "sin-cpp\ci\windows.py" --vcvars-path "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvars64.bat" --test

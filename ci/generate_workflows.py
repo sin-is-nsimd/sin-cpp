@@ -142,6 +142,13 @@ for system in ["windows10-amd64", "windows10-i386", "windows11-amd64"]:
     )
 
 
+def get_working_dir(system: str):
+    if system.startswith("windows"):
+        return "$env:USERPROFILE\\_ci_sin-cpp"
+    else:
+        return "$HOME/_ci_sin-cpp"
+
+
 def get_vcvars_paths(system: str):
     if system == "windows10-i386":
         return "C:\\Program Files\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Auxiliary\\Build\\vcvars32.bat"
@@ -166,18 +173,6 @@ runner = """
     runs-on: [ self-hosted, {system} ]
     name: {runner}
     steps:
-"""
-
-step_clean_unix = """
-      # Clean
-      - name: Clean
-        run: rm -rf *
-"""
-
-step_clean_windows = """
-      # Clean
-      - name: Clean
-        run: rd -r *
 """
 
 step_clone = """
@@ -214,12 +209,38 @@ step_clone = """
           path: 'sin-cpp'
 """
 
+step_clean_and_move_repo_unix = """
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "{working_dir}"
+          mkdir -p "{working_dir}"
+      # Move Repositories
+      - name: Move Repositories
+        run: mv * "{working_dir}"
+"""
+
+step_clean_and_move_repo_windows = """
+      # Clean
+      - name: Clean
+        run: |
+          if (Test-Path "{working_dir}") {{
+            Remove-Item -Path "{working_dir}" -Recurse -Force
+          }}
+          mkdir "{working_dir}"
+      # Move Repositories
+      - name: Move Repositories
+        run: |
+          dir
+          Move-Item -Path * -Destination "{working_dir}"
+"""
+
 step_unix = """
       # Dependencies
       #- name: Google Benchmark
       #  shell: bash
       #  run: |
-      #    cd benchmark
+      #    cd "{working_dir}/benchmark"
       #    cmake \\
       #      -B build \\
       #      -DBENCHMARK_ENABLE_TESTING=OFF \\
@@ -233,7 +254,7 @@ step_unix = """
       - name: Google Test
         shell: bash
         run: |
-          cd googletest
+          cd "{working_dir}/googletest"
           cmake \\
             -B build \\
             -DBUILD_GMOCK=OFF \\
@@ -247,7 +268,7 @@ step_unix = """
       - name: zlib
         shell: bash
         run: |
-          cd zlib
+          cd "{working_dir}/zlib"
           cmake \\
             -B build \\
             -DZLIB_BUILD_TESTING=OFF \\
@@ -262,7 +283,7 @@ step_unix = """
       - name: CMake
         shell: bash
         run: |
-          cd sin-cpp
+          cd "{working_dir}/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \\
           {build_system} \\
@@ -272,13 +293,13 @@ step_unix = """
       - name: Build
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "{working_dir}/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Test
+      - name: Tests
         shell: bash
         run: |
-          cd sin-cpp/build
+          cd "{working_dir}/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 """
 
@@ -286,23 +307,29 @@ step_windows = """
       # Dependencies
       - name: Google Benchmark
         run: |
+          cd "{working_dir}"
           python "sin-cpp\\ci\\windows.py" --vcvars-path "{vcvars_path}" --build-google-benchmark
       - name: Google Test
         run: |
+          cd "{working_dir}"
           python "sin-cpp\\ci\\windows.py" --vcvars-path "{vcvars_path}" --build-google-test
       - name: zlib
         run: |
+          cd "{working_dir}"
           python "sin-cpp\\ci\\windows.py" --vcvars-path "{vcvars_path}" --build-zlib
 
       # sin-cpp
       - name: CMake
         run: |
+          cd "{working_dir}"
           python "sin-cpp\\ci\\windows.py" --vcvars-path "{vcvars_path}" --cmake
       - name: Build
         run: |
+          cd "{working_dir}"
           python "sin-cpp\\ci\\windows.py" --vcvars-path "{vcvars_path}" --build
       - name: Test
         run: |
+          cd "{working_dir}"
           python "sin-cpp\\ci\\windows.py" --vcvars-path "{vcvars_path}" --test
 """
 
@@ -332,25 +359,37 @@ if __name__ == "__main__":
                         )
                     )
 
+                    # Clone
+                    f.write(step_clone.format(working_dir=get_working_dir(system)))
+
                     # Clean
                     if system.startswith("windows"):
-                        f.write(step_clean_windows)
+                        f.write(
+                            step_clean_and_move_repo_windows.format(
+                                working_dir=get_working_dir(system)
+                            )
+                        )
                     else:
-                        f.write(step_clean_unix)
-
-                    # Clone
-                    f.write(step_clone)
+                        f.write(
+                            step_clean_and_move_repo_unix.format(
+                                working_dir=get_working_dir(system)
+                            )
+                        )
 
                     # Dependencies & sin-cpp
                     if system.startswith("windows"):
                         f.write(
-                            step_windows.format(vcvars_path=get_vcvars_paths(system))
+                            step_windows.format(
+                                vcvars_path=get_vcvars_paths(system),
+                                working_dir=get_working_dir(system),
+                            )
                         )
                     else:
                         f.write(
                             step_unix.format(
                                 build_system=build_system["args"],
                                 compilers_args=compilers_args["args"],
+                                working_dir=get_working_dir(system),
                             )
                         )
 
