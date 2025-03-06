@@ -273,7 +273,7 @@ step_unix = """
             -B build \\
             -DZLIB_BUILD_TESTING=OFF \\
             -DCMAKE_BUILD_TYPE=Release \\
-            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \\
+            -DCMAKE_C_COMPILER_LAUNCHER=ccache \\
             -GNinja \\
             -DCMAKE_INSTALL_PREFIX=../_install \\
             {compilers_args}
