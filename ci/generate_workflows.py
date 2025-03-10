@@ -167,11 +167,11 @@ jobs:
 """
 
 runner = """
-  {runner}:
+  {job}:
     continue-on-error: true
     timeout-minutes: 600
     runs-on: [ self-hosted, {system} ]
-    name: {runner}
+    name: {job}
     steps:
 """
 
@@ -286,7 +286,7 @@ step_unix = """
           cd "{working_dir}/sin-cpp"
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
           VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \\
-          {build_system} \\
+          -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \\
           -DCMAKE_INSTALL_PREFIX=../_install \\
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \\
           {compilers_args}
@@ -348,49 +348,47 @@ if __name__ == "__main__":
 
             f.write(f"\n  # {system}\n")
 
-            for build_system in configs["build_system"]:
-                for compilers_args in configs["compilers_args"]:
+            for compilers_args in configs["compilers_args"]:
 
-                    # Header
+                # Header
+                f.write(
+                    runner.format(
+                        job=f"{system}-{compilers_args['name']}".lower(),
+                        system=system,
+                    )
+                )
+
+                # Clone
+                f.write(step_clone.format(working_dir=get_working_dir(system)))
+
+                # Clean
+                if system.startswith("windows"):
                     f.write(
-                        runner.format(
-                            runner=f"{system}-{build_system['name']}-{compilers_args['name']}".lower(),
-                            system=system,
+                        step_clean_and_move_repo_windows.format(
+                            working_dir=get_working_dir(system)
+                        )
+                    )
+                else:
+                    f.write(
+                        step_clean_and_move_repo_unix.format(
+                            working_dir=get_working_dir(system)
                         )
                     )
 
-                    # Clone
-                    f.write(step_clone.format(working_dir=get_working_dir(system)))
-
-                    # Clean
-                    if system.startswith("windows"):
-                        f.write(
-                            step_clean_and_move_repo_windows.format(
-                                working_dir=get_working_dir(system)
-                            )
+                # Dependencies & sin-cpp
+                if system.startswith("windows"):
+                    f.write(
+                        step_windows.format(
+                            vcvars_path=get_vcvars_paths(system),
+                            working_dir=get_working_dir(system),
                         )
-                    else:
-                        f.write(
-                            step_clean_and_move_repo_unix.format(
-                                working_dir=get_working_dir(system)
-                            )
+                    )
+                else:
+                    f.write(
+                        step_unix.format(
+                            compilers_args=compilers_args["args"],
+                            working_dir=get_working_dir(system),
                         )
-
-                    # Dependencies & sin-cpp
-                    if system.startswith("windows"):
-                        f.write(
-                            step_windows.format(
-                                vcvars_path=get_vcvars_paths(system),
-                                working_dir=get_working_dir(system),
-                            )
-                        )
-                    else:
-                        f.write(
-                            step_unix.format(
-                                build_system=build_system["args"],
-                                compilers_args=compilers_args["args"],
-                                working_dir=get_working_dir(system),
-                            )
-                        )
+                    )
 
     sys.exit(0)
