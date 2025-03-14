@@ -3,7 +3,7 @@
 
 """Generate github action workflows."""
 
-# Copyright © 2023-2024 Lénaïc Bagnères, lenaicb@singularity.fr
+# Copyright © 2023-2025 Lénaïc Bagnères, lenaicb@singularity.fr
 # Copyright © 2024 Rodolphe Cargnello, rodolphe.cargnello@gmail.com
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -127,11 +127,18 @@ for system in ["windows10-amd64", "windows10-i386", "windows11-amd64"]:
     )
 
 
+def get_home_dir(system: str):
+    if system.startswith("windows"):
+        return "$env:USERPROFILE"
+    else:
+        return "$HOME"
+
+
 def get_working_dir(system: str):
     if system.startswith("windows"):
-        return "$env:USERPROFILE\\_ci_sin-cpp"
+        return get_home_dir(system) + "\\_ci_sin-cpp"
     else:
-        return "$HOME/_ci_sin-cpp"
+        return get_home_dir(system) + "/_ci_sin-cpp"
 
 
 def get_vcvars_paths(system: str):
@@ -160,52 +167,15 @@ runner = """
     steps:
 """
 
-step_clone = """
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-"""
-
-step_clean_and_move_repo_unix = """
+step_clean_unix = """
       # Clean
       - name: Clean
         run: |
           rm -rf "{working_dir}"
           mkdir -p "{working_dir}"
-      # Move Repositories
-      - name: Move Repositories
-        run: mv * "{working_dir}"
 """
 
-step_clean_and_move_repo_windows = """
+step_clean_windows = """
       # Clean
       - name: Clean
         run: |
@@ -213,11 +183,59 @@ step_clean_and_move_repo_windows = """
             Remove-Item -Path "{working_dir}" -Recurse -Force
           }}
           mkdir "{working_dir}"
+"""
+
+step_clone = """
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+"""
+
+step_move_repo_unix = """
+      # Move Repositories
+      - name: Move Repositories
+        run: cp -r * "{working_dir}"
+"""
+
+step_move_repo_windows = """
       # Move Repositories
       - name: Move Repositories
         run: |
-          dir
-          Move-Item -Path * -Destination "{working_dir}"
+          Copy-Item -Path * -Destination "{working_dir}" -Recurse -Force
 """
 
 step_unix = """
@@ -343,21 +361,37 @@ if __name__ == "__main__":
                     )
                 )
 
-                # Clone
-                f.write(step_clone.format(working_dir=get_working_dir(system)))
-
                 # Clean
                 if system.startswith("windows"):
                     f.write(
-                        step_clean_and_move_repo_windows.format(
+                        step_clean_windows.format(
+                            working_dir=get_working_dir(system),
+                        )
+                    )
+                else:
+                    f.write(
+                        step_clean_unix.format(
+                            working_dir=get_working_dir(system),
+                        )
+                    )
+
+                # Clone
+                f.write(
+                    step_clone.format(
+                        working_dir=get_working_dir(system),
+                    )
+                )
+
+                # Move Repositories
+                if system.startswith("windows"):
+                    f.write(
+                        step_move_repo_windows.format(
                             working_dir=get_working_dir(system)
                         )
                     )
                 else:
                     f.write(
-                        step_clean_and_move_repo_unix.format(
-                            working_dir=get_working_dir(system)
-                        )
+                        step_move_repo_unix.format(working_dir=get_working_dir(system))
                     )
 
                 # Dependencies & sin-cpp
