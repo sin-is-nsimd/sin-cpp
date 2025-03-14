@@ -16,46 +16,53 @@ jobs:
     name: debian12-amd64-clang
     steps:
 
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
       # Clean
       - name: Clean
         run: |
           rm -rf "$HOME/_ci_sin-cpp"
           mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
       # Move Repositories
       - name: Move Repositories
-        run: mv * "$HOME/_ci_sin-cpp"
+        run: cp -r * "$HOME/_ci_sin-cpp"
 
       # Dependencies
       #- name: Google Benchmark
@@ -130,46 +137,53 @@ jobs:
     name: debian12-amd64-gcc
     steps:
 
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
       # Clean
       - name: Clean
         run: |
           rm -rf "$HOME/_ci_sin-cpp"
           mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
       # Move Repositories
       - name: Move Repositories
-        run: mv * "$HOME/_ci_sin-cpp"
+        run: cp -r * "$HOME/_ci_sin-cpp"
 
       # Dependencies
       #- name: Google Benchmark
@@ -246,46 +260,53 @@ jobs:
     name: debian12-i386-clang
     steps:
 
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
       # Clean
       - name: Clean
         run: |
           rm -rf "$HOME/_ci_sin-cpp"
           mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
       # Move Repositories
       - name: Move Repositories
-        run: mv * "$HOME/_ci_sin-cpp"
+        run: cp -r * "$HOME/_ci_sin-cpp"
 
       # Dependencies
       #- name: Google Benchmark
@@ -360,46 +381,53 @@ jobs:
     name: debian12-i386-gcc
     steps:
 
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
       # Clean
       - name: Clean
         run: |
           rm -rf "$HOME/_ci_sin-cpp"
           mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
       # Move Repositories
       - name: Move Repositories
-        run: mv * "$HOME/_ci_sin-cpp"
+        run: cp -r * "$HOME/_ci_sin-cpp"
 
       # Dependencies
       #- name: Google Benchmark
@@ -476,46 +504,53 @@ jobs:
     name: debian12-armhf-clang
     steps:
 
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
       # Clean
       - name: Clean
         run: |
           rm -rf "$HOME/_ci_sin-cpp"
           mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
       # Move Repositories
       - name: Move Repositories
-        run: mv * "$HOME/_ci_sin-cpp"
+        run: cp -r * "$HOME/_ci_sin-cpp"
 
       # Dependencies
       #- name: Google Benchmark
@@ -590,46 +625,53 @@ jobs:
     name: debian12-armhf-gcc
     steps:
 
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
       # Clean
       - name: Clean
         run: |
           rm -rf "$HOME/_ci_sin-cpp"
           mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
       # Move Repositories
       - name: Move Repositories
-        run: mv * "$HOME/_ci_sin-cpp"
+        run: cp -r * "$HOME/_ci_sin-cpp"
 
       # Dependencies
       #- name: Google Benchmark
@@ -706,46 +748,53 @@ jobs:
     name: debian12-arm64-clang
     steps:
 
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
       # Clean
       - name: Clean
         run: |
           rm -rf "$HOME/_ci_sin-cpp"
           mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
       # Move Repositories
       - name: Move Repositories
-        run: mv * "$HOME/_ci_sin-cpp"
+        run: cp -r * "$HOME/_ci_sin-cpp"
 
       # Dependencies
       #- name: Google Benchmark
@@ -820,46 +869,53 @@ jobs:
     name: debian12-arm64-gcc
     steps:
 
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
       # Clean
       - name: Clean
         run: |
           rm -rf "$HOME/_ci_sin-cpp"
           mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
       # Move Repositories
       - name: Move Repositories
-        run: mv * "$HOME/_ci_sin-cpp"
+        run: cp -r * "$HOME/_ci_sin-cpp"
 
       # Dependencies
       #- name: Google Benchmark
@@ -936,46 +992,53 @@ jobs:
     name: debian12-ppc64el-clang
     steps:
 
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
       # Clean
       - name: Clean
         run: |
           rm -rf "$HOME/_ci_sin-cpp"
           mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
       # Move Repositories
       - name: Move Repositories
-        run: mv * "$HOME/_ci_sin-cpp"
+        run: cp -r * "$HOME/_ci_sin-cpp"
 
       # Dependencies
       #- name: Google Benchmark
@@ -1050,46 +1113,53 @@ jobs:
     name: debian12-ppc64el-gcc
     steps:
 
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
       # Clean
       - name: Clean
         run: |
           rm -rf "$HOME/_ci_sin-cpp"
           mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
       # Move Repositories
       - name: Move Repositories
-        run: mv * "$HOME/_ci_sin-cpp"
+        run: cp -r * "$HOME/_ci_sin-cpp"
 
       # Dependencies
       #- name: Google Benchmark
@@ -1166,46 +1236,53 @@ jobs:
     name: debian13-amd64-clang
     steps:
 
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
       # Clean
       - name: Clean
         run: |
           rm -rf "$HOME/_ci_sin-cpp"
           mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
       # Move Repositories
       - name: Move Repositories
-        run: mv * "$HOME/_ci_sin-cpp"
+        run: cp -r * "$HOME/_ci_sin-cpp"
 
       # Dependencies
       #- name: Google Benchmark
@@ -1280,46 +1357,53 @@ jobs:
     name: debian13-amd64-gcc
     steps:
 
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
       # Clean
       - name: Clean
         run: |
           rm -rf "$HOME/_ci_sin-cpp"
           mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
       # Move Repositories
       - name: Move Repositories
-        run: mv * "$HOME/_ci_sin-cpp"
+        run: cp -r * "$HOME/_ci_sin-cpp"
 
       # Dependencies
       #- name: Google Benchmark
@@ -1396,46 +1480,53 @@ jobs:
     name: debian13-i386-clang
     steps:
 
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
       # Clean
       - name: Clean
         run: |
           rm -rf "$HOME/_ci_sin-cpp"
           mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
       # Move Repositories
       - name: Move Repositories
-        run: mv * "$HOME/_ci_sin-cpp"
+        run: cp -r * "$HOME/_ci_sin-cpp"
 
       # Dependencies
       #- name: Google Benchmark
@@ -1510,46 +1601,53 @@ jobs:
     name: debian13-i386-gcc
     steps:
 
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
       # Clean
       - name: Clean
         run: |
           rm -rf "$HOME/_ci_sin-cpp"
           mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
       # Move Repositories
       - name: Move Repositories
-        run: mv * "$HOME/_ci_sin-cpp"
+        run: cp -r * "$HOME/_ci_sin-cpp"
 
       # Dependencies
       #- name: Google Benchmark
@@ -1626,46 +1724,53 @@ jobs:
     name: debian13-armhf-clang
     steps:
 
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
       # Clean
       - name: Clean
         run: |
           rm -rf "$HOME/_ci_sin-cpp"
           mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
       # Move Repositories
       - name: Move Repositories
-        run: mv * "$HOME/_ci_sin-cpp"
+        run: cp -r * "$HOME/_ci_sin-cpp"
 
       # Dependencies
       #- name: Google Benchmark
@@ -1740,46 +1845,53 @@ jobs:
     name: debian13-armhf-gcc
     steps:
 
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
       # Clean
       - name: Clean
         run: |
           rm -rf "$HOME/_ci_sin-cpp"
           mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
       # Move Repositories
       - name: Move Repositories
-        run: mv * "$HOME/_ci_sin-cpp"
+        run: cp -r * "$HOME/_ci_sin-cpp"
 
       # Dependencies
       #- name: Google Benchmark
@@ -1856,46 +1968,53 @@ jobs:
     name: debian13-arm64-clang
     steps:
 
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
       # Clean
       - name: Clean
         run: |
           rm -rf "$HOME/_ci_sin-cpp"
           mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
       # Move Repositories
       - name: Move Repositories
-        run: mv * "$HOME/_ci_sin-cpp"
+        run: cp -r * "$HOME/_ci_sin-cpp"
 
       # Dependencies
       #- name: Google Benchmark
@@ -1970,46 +2089,53 @@ jobs:
     name: debian13-arm64-gcc
     steps:
 
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
       # Clean
       - name: Clean
         run: |
           rm -rf "$HOME/_ci_sin-cpp"
           mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
       # Move Repositories
       - name: Move Repositories
-        run: mv * "$HOME/_ci_sin-cpp"
+        run: cp -r * "$HOME/_ci_sin-cpp"
 
       # Dependencies
       #- name: Google Benchmark
@@ -2086,46 +2212,53 @@ jobs:
     name: debian13-ppc64el-clang
     steps:
 
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
       # Clean
       - name: Clean
         run: |
           rm -rf "$HOME/_ci_sin-cpp"
           mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
       # Move Repositories
       - name: Move Repositories
-        run: mv * "$HOME/_ci_sin-cpp"
+        run: cp -r * "$HOME/_ci_sin-cpp"
 
       # Dependencies
       #- name: Google Benchmark
@@ -2200,46 +2333,53 @@ jobs:
     name: debian13-ppc64el-gcc
     steps:
 
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
       # Clean
       - name: Clean
         run: |
           rm -rf "$HOME/_ci_sin-cpp"
           mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
       # Move Repositories
       - name: Move Repositories
-        run: mv * "$HOME/_ci_sin-cpp"
+        run: cp -r * "$HOME/_ci_sin-cpp"
 
       # Dependencies
       #- name: Google Benchmark
@@ -2316,46 +2456,53 @@ jobs:
     name: raspios12-armhf-clang
     steps:
 
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
       # Clean
       - name: Clean
         run: |
           rm -rf "$HOME/_ci_sin-cpp"
           mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
       # Move Repositories
       - name: Move Repositories
-        run: mv * "$HOME/_ci_sin-cpp"
+        run: cp -r * "$HOME/_ci_sin-cpp"
 
       # Dependencies
       #- name: Google Benchmark
@@ -2430,46 +2577,53 @@ jobs:
     name: raspios12-armhf-gcc
     steps:
 
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
       # Clean
       - name: Clean
         run: |
           rm -rf "$HOME/_ci_sin-cpp"
           mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
       # Move Repositories
       - name: Move Repositories
-        run: mv * "$HOME/_ci_sin-cpp"
+        run: cp -r * "$HOME/_ci_sin-cpp"
 
       # Dependencies
       #- name: Google Benchmark
@@ -2546,46 +2700,53 @@ jobs:
     name: raspios12-arm64-clang
     steps:
 
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
       # Clean
       - name: Clean
         run: |
           rm -rf "$HOME/_ci_sin-cpp"
           mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
       # Move Repositories
       - name: Move Repositories
-        run: mv * "$HOME/_ci_sin-cpp"
+        run: cp -r * "$HOME/_ci_sin-cpp"
 
       # Dependencies
       #- name: Google Benchmark
@@ -2660,46 +2821,53 @@ jobs:
     name: raspios12-arm64-gcc
     steps:
 
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
       # Clean
       - name: Clean
         run: |
           rm -rf "$HOME/_ci_sin-cpp"
           mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
       # Move Repositories
       - name: Move Repositories
-        run: mv * "$HOME/_ci_sin-cpp"
+        run: cp -r * "$HOME/_ci_sin-cpp"
 
       # Dependencies
       #- name: Google Benchmark
@@ -2776,46 +2944,53 @@ jobs:
     name: macos14-amd64-apple-clang
     steps:
 
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
       # Clean
       - name: Clean
         run: |
           rm -rf "$HOME/_ci_sin-cpp"
           mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
       # Move Repositories
       - name: Move Repositories
-        run: mv * "$HOME/_ci_sin-cpp"
+        run: cp -r * "$HOME/_ci_sin-cpp"
 
       # Dependencies
       #- name: Google Benchmark
@@ -2890,46 +3065,53 @@ jobs:
     name: macos14-amd64-clang
     steps:
 
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
       # Clean
       - name: Clean
         run: |
           rm -rf "$HOME/_ci_sin-cpp"
           mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
       # Move Repositories
       - name: Move Repositories
-        run: mv * "$HOME/_ci_sin-cpp"
+        run: cp -r * "$HOME/_ci_sin-cpp"
 
       # Dependencies
       #- name: Google Benchmark
@@ -3004,46 +3186,53 @@ jobs:
     name: macos14-amd64-gcc
     steps:
 
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
       # Clean
       - name: Clean
         run: |
           rm -rf "$HOME/_ci_sin-cpp"
           mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
       # Move Repositories
       - name: Move Repositories
-        run: mv * "$HOME/_ci_sin-cpp"
+        run: cp -r * "$HOME/_ci_sin-cpp"
 
       # Dependencies
       #- name: Google Benchmark
@@ -3120,46 +3309,53 @@ jobs:
     name: macos15-amd64-apple-clang
     steps:
 
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
       # Clean
       - name: Clean
         run: |
           rm -rf "$HOME/_ci_sin-cpp"
           mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
       # Move Repositories
       - name: Move Repositories
-        run: mv * "$HOME/_ci_sin-cpp"
+        run: cp -r * "$HOME/_ci_sin-cpp"
 
       # Dependencies
       #- name: Google Benchmark
@@ -3234,46 +3430,53 @@ jobs:
     name: macos15-amd64-clang
     steps:
 
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
       # Clean
       - name: Clean
         run: |
           rm -rf "$HOME/_ci_sin-cpp"
           mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
       # Move Repositories
       - name: Move Repositories
-        run: mv * "$HOME/_ci_sin-cpp"
+        run: cp -r * "$HOME/_ci_sin-cpp"
 
       # Dependencies
       #- name: Google Benchmark
@@ -3348,46 +3551,53 @@ jobs:
     name: macos15-amd64-gcc
     steps:
 
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
       # Clean
       - name: Clean
         run: |
           rm -rf "$HOME/_ci_sin-cpp"
           mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
       # Move Repositories
       - name: Move Repositories
-        run: mv * "$HOME/_ci_sin-cpp"
+        run: cp -r * "$HOME/_ci_sin-cpp"
 
       # Dependencies
       #- name: Google Benchmark
@@ -3464,46 +3674,53 @@ jobs:
     name: macos14-arm64-apple-clang
     steps:
 
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
       # Clean
       - name: Clean
         run: |
           rm -rf "$HOME/_ci_sin-cpp"
           mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
       # Move Repositories
       - name: Move Repositories
-        run: mv * "$HOME/_ci_sin-cpp"
+        run: cp -r * "$HOME/_ci_sin-cpp"
 
       # Dependencies
       #- name: Google Benchmark
@@ -3578,46 +3795,53 @@ jobs:
     name: macos14-arm64-clang
     steps:
 
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
       # Clean
       - name: Clean
         run: |
           rm -rf "$HOME/_ci_sin-cpp"
           mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
       # Move Repositories
       - name: Move Repositories
-        run: mv * "$HOME/_ci_sin-cpp"
+        run: cp -r * "$HOME/_ci_sin-cpp"
 
       # Dependencies
       #- name: Google Benchmark
@@ -3692,46 +3916,53 @@ jobs:
     name: macos14-arm64-gcc
     steps:
 
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
       # Clean
       - name: Clean
         run: |
           rm -rf "$HOME/_ci_sin-cpp"
           mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
       # Move Repositories
       - name: Move Repositories
-        run: mv * "$HOME/_ci_sin-cpp"
+        run: cp -r * "$HOME/_ci_sin-cpp"
 
       # Dependencies
       #- name: Google Benchmark
@@ -3808,46 +4039,53 @@ jobs:
     name: macos15-arm64-apple-clang
     steps:
 
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
       # Clean
       - name: Clean
         run: |
           rm -rf "$HOME/_ci_sin-cpp"
           mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
       # Move Repositories
       - name: Move Repositories
-        run: mv * "$HOME/_ci_sin-cpp"
+        run: cp -r * "$HOME/_ci_sin-cpp"
 
       # Dependencies
       #- name: Google Benchmark
@@ -3922,46 +4160,53 @@ jobs:
     name: macos15-arm64-clang
     steps:
 
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
       # Clean
       - name: Clean
         run: |
           rm -rf "$HOME/_ci_sin-cpp"
           mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
       # Move Repositories
       - name: Move Repositories
-        run: mv * "$HOME/_ci_sin-cpp"
+        run: cp -r * "$HOME/_ci_sin-cpp"
 
       # Dependencies
       #- name: Google Benchmark
@@ -4036,46 +4281,53 @@ jobs:
     name: macos15-arm64-gcc
     steps:
 
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
       # Clean
       - name: Clean
         run: |
           rm -rf "$HOME/_ci_sin-cpp"
           mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
       # Move Repositories
       - name: Move Repositories
-        run: mv * "$HOME/_ci_sin-cpp"
+        run: cp -r * "$HOME/_ci_sin-cpp"
 
       # Dependencies
       #- name: Google Benchmark
@@ -4152,38 +4404,6 @@ jobs:
     name: windows10-amd64-msvc
     steps:
 
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
       # Clean
       - name: Clean
         run: |
@@ -4191,11 +4411,49 @@ jobs:
             Remove-Item -Path "$env:USERPROFILE\_ci_sin-cpp" -Recurse -Force
           }
           mkdir "$env:USERPROFILE\_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
       # Move Repositories
       - name: Move Repositories
         run: |
-          dir
-          Move-Item -Path * -Destination "$env:USERPROFILE\_ci_sin-cpp"
+          Copy-Item -Path * -Destination "$env:USERPROFILE\_ci_sin-cpp" -Recurse -Force
 
       # Dependencies
       - name: Google Benchmark
@@ -4234,38 +4492,6 @@ jobs:
     name: windows10-i386-msvc
     steps:
 
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
       # Clean
       - name: Clean
         run: |
@@ -4273,11 +4499,49 @@ jobs:
             Remove-Item -Path "$env:USERPROFILE\_ci_sin-cpp" -Recurse -Force
           }
           mkdir "$env:USERPROFILE\_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
       # Move Repositories
       - name: Move Repositories
         run: |
-          dir
-          Move-Item -Path * -Destination "$env:USERPROFILE\_ci_sin-cpp"
+          Copy-Item -Path * -Destination "$env:USERPROFILE\_ci_sin-cpp" -Recurse -Force
 
       # Dependencies
       - name: Google Benchmark
@@ -4316,38 +4580,6 @@ jobs:
     name: windows11-amd64-msvc
     steps:
 
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v3
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-      - name: Clone Google Test
-        uses: actions/checkout@v3
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-      - name: Clone zlib
-        uses: actions/checkout@v3
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-      - name: Clone sin-python
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-      - name: Clone sin-cmake
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-      - name: Clone sin-cpp
-        uses: actions/checkout@v3
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-
       # Clean
       - name: Clean
         run: |
@@ -4355,11 +4587,49 @@ jobs:
             Remove-Item -Path "$env:USERPROFILE\_ci_sin-cpp" -Recurse -Force
           }
           mkdir "$env:USERPROFILE\_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
       # Move Repositories
       - name: Move Repositories
         run: |
-          dir
-          Move-Item -Path * -Destination "$env:USERPROFILE\_ci_sin-cpp"
+          Copy-Item -Path * -Destination "$env:USERPROFILE\_ci_sin-cpp" -Recurse -Force
 
       # Dependencies
       - name: Google Benchmark
