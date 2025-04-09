@@ -23,32 +23,31 @@
 #include <sstream>
 
 #include <gtest/gtest.h>
-#include <unordered_map>
 
 // number
 
 TEST(number_str, int) {
-  sincpp::number_str_t<sincpp::to_chars_max_size<int>()> const a0 = 7;
+  sincpp::number_str_t<sincpp::to_chars_max_size<int>()> const a0{7};
   EXPECT_EQ(a0.to_json_size(), 1);
   EXPECT_EQ(a0.to_json(), "7");
 
-  sincpp::number_str_t<sincpp::to_chars_max_size<int>()> const b0 = 42;
+  sincpp::number_str_t<sincpp::to_chars_max_size<int>()> const b0{42};
   EXPECT_EQ(b0.to_json_size(), 2);
   EXPECT_EQ(b0.to_json(), "42");
 
-  sincpp::number_str_t<sincpp::to_chars_max_size<int>()> const c0 = 1138;
+  sincpp::number_str_t<sincpp::to_chars_max_size<int>()> const c0{1138};
   EXPECT_EQ(c0.to_json_size(), 4);
   EXPECT_EQ(c0.to_json(), "1138");
 
-  sincpp::number_str_t<sincpp::to_chars_max_size<int>()> const a1 = 7;
+  sincpp::number_str_t<sincpp::to_chars_max_size<int>()> const a1{7};
   EXPECT_EQ(a1.to_json_size(), 1);
   EXPECT_EQ(a1.to_json(), "7");
 
-  sincpp::number_str_t<sincpp::to_chars_max_size<int>()> const b1 = 42;
+  sincpp::number_str_t<sincpp::to_chars_max_size<int>()> const b1{42};
   EXPECT_EQ(b1.to_json_size(), 2);
   EXPECT_EQ(b1.to_json(), "42");
 
-  sincpp::number_str_t<sincpp::to_chars_max_size<int>()> const c1 = 1138;
+  sincpp::number_str_t<sincpp::to_chars_max_size<int>()> const c1{1138};
   EXPECT_EQ(c1.to_json_size(), 4);
   EXPECT_EQ(c1.to_json(), "1138");
 
@@ -151,6 +150,13 @@ TEST(to_json_value, c_char_array) {
   auto const &v = sincpp::to_json_value(c_array);
   static_assert(std::is_same_v<decltype(v), char const(&)[10]>);
   EXPECT_EQ(&v, &c_array);
+}
+
+// bool
+
+TEST(to_json_value, bool) {
+  EXPECT_EQ(sincpp::to_json_value(true), true);
+  EXPECT_EQ(sincpp::to_json_value(false), false);
 }
 
 // array, vector, list, deque, set, unordered_set
