@@ -120,110 +120,130 @@ number_str_t<N> make_number_str(T const t) {
 /**
  * @brief Get the JSON value.
  *
- * Convert types to simplify the JSON conversion.
+ * Convert types, if necessary, to simplify the JSON conversion.
+ *
+ * @tparam T Type of the value to convert.
  *
  * **Example:**
  * @include examples/json/to_json_value.cpp
+ *
+ * @ingroup sincpp_json
  */
-class to_json_value_t {
-public:
-  // String
+template <class T> class to_json_value_t;
 
-  /// @brief Get the JSON value of a string.
+/// @brief Specialization for strings and chars.
+/// @tparam S String or char type.
+/// @see sincpp::to_json_value_t
+/// @ingroup sincpp_json
+template <class S>
+  requires(sincpp::is_string_v<S> || sincpp::is_char_v<S>)
+class to_json_value_t<S> {
+public:
+  /// @brief Get the JSON value of a string or a char.
   /// @details Leading and trailing quotes (`"`) are not added and no character
   /// is escaped.
-  /// @tparam T String type.
-  /// @param t A string.
+  /// @param s A string or a char.
   /// @returns the JSON value of the string.
-  template <class T>
-    requires(sincpp::is_string_v<T> || sincpp::is_char_v<T>)
-  T const &operator()(T const &t) {
-    return t;
-  }
+  S const &operator()(S const &s) { return s; }
+};
 
-  // Bool
-
-  /// @brief Get the JSON value of a number (integer or floating-point).
-  /// @tparam T Integer or floating-point type.
-  /// @param t A number.
+/// @brief Specialization for bools.
+/// @see sincpp::to_json_value_t
+/// @ingroup sincpp_json
+template <> class to_json_value_t<bool> {
+public:
+  /// @brief Get the JSON value of a bool.
+  /// @param b A bool.
   /// @returns the JSON value of the number.
   bool operator()(bool const b) { return b; }
+};
 
-  // Number
-
+/// @brief Specialization for numbers (integer or floating-point).
+/// @tparam N Number type.
+/// @see sincpp::to_json_value_t
+/// @ingroup sincpp_json
+template <class N>
+  requires(std::is_arithmetic_v<N> && sincpp::is_char_v<N> == false)
+class to_json_value_t<N> {
+public:
   /// @brief Get the JSON value of a number (integer or floating-point).
-  /// @tparam T Integer or floating-point type.
   /// @param t A number.
   /// @returns the JSON value of the number.
-  template <class T>
-    requires(std::is_arithmetic_v<T> && sincpp::is_char_v<T> == false)
-  sincpp::number_str_t<sincpp::to_chars_max_size<T>()> operator()(T const t) {
-    return sincpp::number_str_t<sincpp::to_chars_max_size<T>()>(t);
+  sincpp::number_str_t<sincpp::to_chars_max_size<N>()> operator()(N const n) {
+    return sincpp::number_str_t<sincpp::to_chars_max_size<N>()>(n);
   }
+};
 
-  // Array
-
-  /// @brief Get the JSON value of an array of strings.
-  /// @tparam T String type.
-  /// @tparam N Array size.
-  /// @tparam A Array of strings type.
-  /// @param a An array of strings.
+/// @brief Specialization for arrays of strings or chars.
+/// @tparam S String or char type.
+/// @tparam N Array size.
+/// @see sincpp::to_json_value_t
+/// @ingroup sincpp_json
+template <class S, size_t N>
+  requires(sincpp::is_string_v<S> || sincpp::is_char_v<S>)
+class to_json_value_t<std::array<S, N>> {
+public:
+  /// @brief Get the JSON value of an array of strings or chars.
+  /// @param a An array of strings or chars.
   /// @returns the JSON value of the array of strings.
-  template <class T, size_t N, class A>
-    requires(sincpp::is_string_v<T> || sincpp::is_char_v<T>)
-  A const &array_to_json_value(A const &a) {
-    return a;
-  }
+  // template <class A>
+  std::array<S, N> const &operator()(std::array<S, N> const &a) { return a; }
+};
 
-  /// @brief Get the JSON value of an array of numbers.
-  /// @tparam T String type.
-  /// @tparam N Array size.
-  /// @tparam A Array of numbers type.
+/// @brief Specialization for arrays of numbers (integer or floating-point).
+/// @tparam T Number type.
+/// @tparam N Array size.
+/// @see sincpp::to_json_value_t
+/// @ingroup sincpp_json
+template <class T, size_t N>
+  requires(std::is_arithmetic_v<T>)
+class to_json_value_t<std::array<T, N>> {
+public:
+  /// @brief Get the JSON value of an array of numbers (integer or
+  /// floating-point).
   /// @param a An array of numbers.
   /// @returns the JSON value of the array of numbers.
-  template <class T, size_t N, class A>
-    requires(std::is_arithmetic_v<T>)
   std::array<sincpp::number_str_t<sincpp::to_chars_max_size<T>()>, N>
-  array_to_json_value(A const &a) {
+  operator()(std::array<T, N> const &a) {
     std::array<number_str_t<sincpp::to_chars_max_size<T>()>, N> r;
     std::ranges::transform(
         a, r.begin(), [](T const v) { return sincpp::make_number_str(v); });
     return r;
   }
+};
 
-  /// @brief Get the JSON value of an array.
-  /// @tparam T String type.
-  /// @tparam N Array size.
-  /// @param a An array.
-  /// @returns the JSON value of the array.
-  template <class T, size_t N>
-  auto operator()(std::array<T, N> const &a)
-      -> decltype(array_to_json_value<T, N>(a)) {
-    return array_to_json_value<T, N>(a);
-  }
-
-  // C array
-
+/// @brief Specialization for C arrays of strings.
+/// @tparam S String type.
+/// @tparam N Array size.
+/// @see sincpp::to_json_value_t
+/// @ingroup sincpp_json
+template <class S, int N>
+  requires(sincpp::is_string_v<S>)
+class to_json_value_t<S[N]> {
+public:
   /// @brief Get the JSON value of a C array of strings.
-  /// @tparam T String type.
-  /// @tparam N Array size.
   /// @param a A C array of strings.
   /// @returns the JSON value of the C array of strings.
-  template <class T, int N>
-    requires(sincpp::is_string_v<T>)
-  std::array<std::string_view, N> operator()(T const (&a)[N]) {
+  std::array<std::string_view, N> operator()(S const (&a)[N]) {
     std::array<std::string_view, N> r;
     std::ranges::copy(a, a + N, r.begin());
     return r;
   }
+};
 
-  /// @brief Get the JSON value of a C array of numbers.
-  /// @tparam T Number type.
-  /// @tparam N Array size.
+/// @brief Specialization for C arrays of numbers (integer or floating-point).
+/// @tparam T Number type.
+/// @tparam N Array size.
+/// @see sincpp::to_json_value_t
+/// @ingroup sincpp_json
+template <class T, size_t N>
+  requires(std::is_arithmetic_v<T> && sincpp::is_char_v<T> == false)
+class to_json_value_t<T[N]> {
+public:
+  /// @brief Get the JSON value of a C array of numbers (integer or
+  /// floating-point).
   /// @param a A C array of numbers.
   /// @returns the JSON value of the C array of numbers.
-  template <class T, size_t N>
-    requires(std::is_arithmetic_v<T> && std::is_same_v<T, char> == false)
   std::array<number_str_t<sincpp::to_chars_max_size<T>()>, N>
   operator()(T const (&a)[N]) {
     std::array<sincpp::number_str_t<sincpp::to_chars_max_size<T>()>, N> r;
@@ -231,76 +251,121 @@ public:
                    [](T const v) { return sincpp::make_number_str(v); });
     return r;
   }
+};
 
-  // 1D container
+/// @brief Specialization for an 1D container of strings or chars.
+/// @tparam CS Container type.
+/// @see sincpp::to_json_value_t
+/// @ingroup sincpp_json
+template <class CS>
+  requires(sincpp::is_container_1d_v<CS> &&
+           (sincpp::is_string_v<typename CS::value_type> ||
+            sincpp::is_char_v<typename CS::value_type>))
+class to_json_value_t<CS> {
+public:
+  /// @brief Get the JSON value of an 1D container of strings or chars.
+  /// @param c An 1D container of strings or chars.
+  /// @returns the JSON value of the 1D container of strings or chars.
+  CS const &operator()(CS const &c) { return c; }
+};
 
-  /// @brief Get the JSON value of an 1D container of strings.
-  /// @tparam T String type.
-  /// @tparam C 1D container of strings type.
-  /// @param c An 1D container of strings.
-  /// @returns the JSON value of the 1D container of strings.
-  template <class T, class C>
-    requires(sincpp::is_string_v<T> || sincpp::is_char_v<T>)
-  C const &container_1d_to_json_value(C const &c) {
-    return c;
+/// @brief Specialization for an 1D container of numbers (integer or
+/// floating-point).
+/// @tparam C Container type.
+/// @see sincpp::to_json_value_t
+/// @ingroup sincpp_json
+template <class C>
+  requires(sincpp::is_container_1d_v<C> &&
+           std::is_arithmetic_v<typename C::value_type>)
+class to_json_value_t<C> {
+public:
+  /// @brief Get the JSON value of an 1D container of numbers (integer or
+  /// floating-point).
+  /// @param c An 1D container of numbers.
+  /// @returns the JSON value of the 1D container of numbers.
+  std::vector<
+      sincpp::number_str_t<sincpp::to_chars_max_size<typename C::value_type>()>>
+  operator()(C const &c) {
+    std::vector<sincpp::number_str_t<
+        sincpp::to_chars_max_size<typename C::value_type>()>>
+        r(c.size());
+    std::ranges::transform(c, r.begin(), [](typename C::value_type const v) {
+      return make_number_str(v);
+    });
+    return r;
   }
+};
+
+/*template <class C>
+  requires(sincpp::is_container_1d_v<C> &&
+           (sincpp::is_string_v<typename C::value_type> == false &&
+            sincpp::is_char_v<typename C::value_type> == false))
+class to_json_value_t<C> {
+public:
+  // 1D container
 
   /// @brief Get the JSON value of an 1D container of numbers.
   /// @tparam T Number type.
   /// @tparam C 1D container of numbers type.
   /// @param c An 1D container of numbers.
   /// @returns the JSON value of the 1D container of numbers.
-  template <class T, class C>
-    requires(std::is_arithmetic_v<T>)
-  std::vector<sincpp::number_str_t<sincpp::to_chars_max_size<T>()>>
-  container_1d_to_json_value(C const &c) {
-    std::vector<sincpp::number_str_t<sincpp::to_chars_max_size<T>()>> r(
-        c.size());
-    std::ranges::transform(c, r.begin(),
-                           [](T const v) { return make_number_str(v); });
+  std::vector<decltype(sincpp::to_json_value_t<typename C::value_type>{}(
+      std::declval<typename C::value_type const &>()))>
+  operator()(C const &c) {
+    std::vector<decltype(sincpp::to_json_value_t<typename C::value_type>{}(
+        std::declval<typename C::value_type const &>()))>
+        r(c.size());
+    std::ranges::transform(c, r.begin(), [](typename C::value_type const &v) {
+      return sincpp::to_json_value_t<typename C::value_type>{}(v);
+    });
     return r;
   }
+};*/
 
-  /// @brief Get the JSON value of an 1D container.
-  /// @tparam C 1D container type.
-  /// @param c An 1D container.
-  /// @returns the JSON value of the 1D container.
-  template <class C>
-    requires(sincpp::is_container_1d_v<C>)
-  auto operator()(C const &c)
-      -> decltype(container_1d_to_json_value<typename C::value_type>(c)) {
-    return container_1d_to_json_value<typename C::value_type>(c);
-  }
+/// @brief Specialization for a key-value container where keys and values are
+/// strings or chars.
+/// @tparam CS Container type.
+/// @see sincpp::to_json_value_t
+/// @ingroup sincpp_json
+template <class CS>
+  requires(is_container_key_value_v<CS> &&
+           (sincpp::is_string_v<typename CS::key_type> ||
+            sincpp::is_char_v<typename CS::key_type>) &&
+           (sincpp::is_string_v<typename CS::mapped_type> ||
+            sincpp::is_char_v<typename CS::mapped_type>))
+class to_json_value_t<CS> {
+public:
+  /// @brief Get the JSON value of a key-value container where keys and values
+  /// are strings or chars.
+  /// @param c A Key-value container where keys and values are strings or chars.
+  /// @returns the JSON value of the key-value container.
+  CS const &operator()(CS const &c) { return c; }
+};
 
-  // Key-value container
-
-  /// @brief Get the JSON value of a key-value container (key and value are
-  /// strings).
-  /// @tparam C Key-value container type (key and value are strings).
-  /// @param c A Key-value container (key and value are strings).
-  /// @returns the JSON value of the key-value container (key and value are
-  /// strings).
-  template <class Key, class T, class C>
-    requires((sincpp::is_string_v<Key> || sincpp::is_char_v<Key>) &&
-             (sincpp::is_string_v<T> || sincpp::is_char_v<T>))
-  C const &container_key_value_to_json_value(C const &c) {
-    return c;
-  }
-
-  /// @brief Get the JSON value of a key-value container (key is a string, value
-  /// is a number).
-  /// @tparam C Key-value container type (key is a string, value is a number).
-  /// @param c A Key-value container (key is a string, value is a number).
-  /// @returns the JSON value of the key-value container (key is a string, value
-  /// is a number).
-  template <class Key, class T, class C>
-    requires((sincpp::is_string_v<Key> || sincpp::is_char_v<Key>) &&
-             std::is_arithmetic_v<T>)
+/// @brief Specialization for a key-value container where keys are string or
+/// chars and the values are numbers (integer or floating-point).
+/// @tparam C Container type.
+/// @see sincpp::to_json_value_t
+/// @ingroup sincpp_json
+template <class C>
+  requires(is_container_key_value_v<C> &&
+           (sincpp::is_string_v<typename C::key_type> ||
+            sincpp::is_char_v<typename C::key_type>) &&
+           std::is_arithmetic_v<typename C::mapped_type>)
+class to_json_value_t<C> {
+public:
+  /// @brief Get the JSON value of a key-value container where keys are string
+  /// or chars and the values are numbers (integer or floating-point).
+  /// @param c A Key-value container where keys are string or chars and the
+  /// values are numbers
+  /// @returns the JSON value of the key-value container.
   sincpp::vector_pair_t<std::string_view,
-                        sincpp::number_str_t<sincpp::to_chars_max_size<T>()>>
-  container_key_value_to_json_value(C const &c) {
+                        sincpp::number_str_t<sincpp::to_chars_max_size<
+                            typename C::mapped_type>()>>
+  operator()(C const &c) {
     sincpp::vector_pair_t<std::string_view,
-                          sincpp::number_str_t<sincpp::to_chars_max_size<T>()>>
+                          sincpp::number_str_t<sincpp::to_chars_max_size<
+                              typename C::mapped_type>()>>
         r;
     r.reserve(c.size());
     for (auto const &[key, value] : c) {
@@ -308,36 +373,20 @@ public:
     }
     return r;
   }
-
-  /// @brief Get the JSON value of a key-value container (key is a string).
-  /// @tparam C Key-value container type (key is a string).
-  /// @param c A Key-value container (key is a string).
-  /// @returns the JSON value of the key-value container (key is a string).
-  template <class C>
-    requires(is_container_key_value_v<C>)
-  auto operator()(C const &c)
-      -> decltype(container_key_value_to_json_value<
-                  typename C::key_type, typename C::mapped_type>(c)) {
-    return container_key_value_to_json_value<typename C::key_type,
-                                             typename C::mapped_type>(c);
-  }
 };
 
 /**
  * @copydoc sincpp::to_json_value_t
  *
- * @tparam T Type of the value to convert.
- *
  * @param t Value to convert.
  *
- * **Example:**
- * @include examples/json/to_json_value.cpp
- *
  * @returns the JSON output.
+ *
+ * @ingroup sincpp_json
  */
 template <class T>
-auto to_json_value(T const &t) -> decltype(sincpp::to_json_value_t{}(t)) {
-  return sincpp::to_json_value_t{}(t);
+auto to_json_value(T const &t) -> decltype(sincpp::to_json_value_t<T>{}(t)) {
+  return sincpp::to_json_value_t<T>{}(t);
 }
 
 } // namespace sincpp
