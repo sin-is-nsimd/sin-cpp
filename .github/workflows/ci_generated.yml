@@ -77,7 +77,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+      #      -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -91,7 +91,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+            -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -104,7 +104,7 @@ jobs:
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+            -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
           cmake --build build --target install
 
       # sin-cpp
@@ -117,7 +117,7 @@ jobs:
           -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
       - name: Build
         shell: bash
         run: |
@@ -198,7 +198,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+      #      -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -212,7 +212,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -225,7 +225,7 @@ jobs:
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
           cmake --build build --target install
 
       # sin-cpp
@@ -238,7 +238,7 @@ jobs:
           -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
       - name: Build
         shell: bash
         run: |
@@ -321,7 +321,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+      #      -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -335,7 +335,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+            -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -348,7 +348,7 @@ jobs:
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+            -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
           cmake --build build --target install
 
       # sin-cpp
@@ -361,7 +361,7 @@ jobs:
           -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
       - name: Build
         shell: bash
         run: |
@@ -442,7 +442,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+      #      -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -456,7 +456,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -469,7 +469,7 @@ jobs:
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
           cmake --build build --target install
 
       # sin-cpp
@@ -482,7 +482,7 @@ jobs:
           -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
       - name: Build
         shell: bash
         run: |
@@ -565,7 +565,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+      #      -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -579,7 +579,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+            -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -592,7 +592,7 @@ jobs:
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+            -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
           cmake --build build --target install
 
       # sin-cpp
@@ -605,7 +605,7 @@ jobs:
           -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
       - name: Build
         shell: bash
         run: |
@@ -686,7 +686,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+      #      -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -700,7 +700,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -713,7 +713,7 @@ jobs:
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
           cmake --build build --target install
 
       # sin-cpp
@@ -726,7 +726,7 @@ jobs:
           -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
       - name: Build
         shell: bash
         run: |
@@ -809,7 +809,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+      #      -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -823,7 +823,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+            -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -836,7 +836,7 @@ jobs:
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+            -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
           cmake --build build --target install
 
       # sin-cpp
@@ -849,7 +849,7 @@ jobs:
           -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
       - name: Build
         shell: bash
         run: |
@@ -930,7 +930,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+      #      -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -944,7 +944,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -957,7 +957,7 @@ jobs:
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
           cmake --build build --target install
 
       # sin-cpp
@@ -970,7 +970,7 @@ jobs:
           -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
       - name: Build
         shell: bash
         run: |
@@ -1053,7 +1053,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+      #      -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -1067,7 +1067,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+            -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -1080,7 +1080,7 @@ jobs:
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+            -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
           cmake --build build --target install
 
       # sin-cpp
@@ -1093,7 +1093,7 @@ jobs:
           -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
       - name: Build
         shell: bash
         run: |
@@ -1174,7 +1174,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+      #      -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -1188,7 +1188,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -1201,7 +1201,7 @@ jobs:
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
           cmake --build build --target install
 
       # sin-cpp
@@ -1214,7 +1214,7 @@ jobs:
           -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
       - name: Build
         shell: bash
         run: |
@@ -1297,7 +1297,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+      #      -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -1311,7 +1311,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+            -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -1324,7 +1324,7 @@ jobs:
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+            -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
           cmake --build build --target install
 
       # sin-cpp
@@ -1337,7 +1337,7 @@ jobs:
           -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
       - name: Build
         shell: bash
         run: |
@@ -1418,7 +1418,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+      #      -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -1432,7 +1432,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -1445,7 +1445,7 @@ jobs:
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
           cmake --build build --target install
 
       # sin-cpp
@@ -1458,7 +1458,7 @@ jobs:
           -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
       - name: Build
         shell: bash
         run: |
@@ -1541,7 +1541,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+      #      -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -1555,7 +1555,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+            -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -1568,7 +1568,7 @@ jobs:
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+            -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
           cmake --build build --target install
 
       # sin-cpp
@@ -1581,7 +1581,7 @@ jobs:
           -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
       - name: Build
         shell: bash
         run: |
@@ -1662,7 +1662,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+      #      -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -1676,7 +1676,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -1689,7 +1689,7 @@ jobs:
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
           cmake --build build --target install
 
       # sin-cpp
@@ -1702,7 +1702,7 @@ jobs:
           -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
       - name: Build
         shell: bash
         run: |
@@ -1785,7 +1785,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+      #      -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -1799,7 +1799,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+            -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -1812,7 +1812,7 @@ jobs:
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+            -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
           cmake --build build --target install
 
       # sin-cpp
@@ -1825,7 +1825,7 @@ jobs:
           -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
       - name: Build
         shell: bash
         run: |
@@ -1906,7 +1906,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+      #      -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -1920,7 +1920,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -1933,7 +1933,7 @@ jobs:
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
           cmake --build build --target install
 
       # sin-cpp
@@ -1946,7 +1946,7 @@ jobs:
           -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
       - name: Build
         shell: bash
         run: |
@@ -2029,7 +2029,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+      #      -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -2043,7 +2043,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+            -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -2056,7 +2056,7 @@ jobs:
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+            -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
           cmake --build build --target install
 
       # sin-cpp
@@ -2069,7 +2069,7 @@ jobs:
           -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
       - name: Build
         shell: bash
         run: |
@@ -2150,7 +2150,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+      #      -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -2164,7 +2164,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -2177,7 +2177,7 @@ jobs:
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
           cmake --build build --target install
 
       # sin-cpp
@@ -2190,7 +2190,7 @@ jobs:
           -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
       - name: Build
         shell: bash
         run: |
@@ -2273,7 +2273,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+      #      -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -2287,7 +2287,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+            -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -2300,7 +2300,7 @@ jobs:
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+            -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
           cmake --build build --target install
 
       # sin-cpp
@@ -2313,7 +2313,7 @@ jobs:
           -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
       - name: Build
         shell: bash
         run: |
@@ -2394,7 +2394,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+      #      -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -2408,7 +2408,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -2421,7 +2421,7 @@ jobs:
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
           cmake --build build --target install
 
       # sin-cpp
@@ -2434,7 +2434,1227 @@ jobs:
           -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
+      - name: Build
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Tests
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  # debian14-amd64
+
+  debian14-amd64-clang:
+    continue-on-error: true
+    timeout-minutes: 600
+    runs-on: [ self-hosted, debian14-amd64 ]
+    name: debian14-amd64-clang
+    steps:
+
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
+      # Move Repositories
+      - name: Move Repositories
+        run: cp -r * "$HOME/_ci_sin-cpp"
+
+      # Dependencies
+      #- name: Google Benchmark
+      #  shell: bash
+      #  run: |
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
+      #    cmake \
+      #      -B build \
+      #      -DBENCHMARK_ENABLE_TESTING=OFF \
+      #      -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+      #      -DCMAKE_BUILD_TYPE=Release \
+      #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+      #      -GNinja \
+      #      -DCMAKE_INSTALL_PREFIX=../_install \
+      #      -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
+      #    cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/googletest"
+          cmake \
+            -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/zlib"
+          cmake \
+            -B build \
+            -DZLIB_BUILD_TESTING=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_C_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+          -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
+      - name: Build
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Tests
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  debian14-amd64-gcc:
+    continue-on-error: true
+    timeout-minutes: 600
+    runs-on: [ self-hosted, debian14-amd64 ]
+    name: debian14-amd64-gcc
+    steps:
+
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
+      # Move Repositories
+      - name: Move Repositories
+        run: cp -r * "$HOME/_ci_sin-cpp"
+
+      # Dependencies
+      #- name: Google Benchmark
+      #  shell: bash
+      #  run: |
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
+      #    cmake \
+      #      -B build \
+      #      -DBENCHMARK_ENABLE_TESTING=OFF \
+      #      -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+      #      -DCMAKE_BUILD_TYPE=Release \
+      #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+      #      -GNinja \
+      #      -DCMAKE_INSTALL_PREFIX=../_install \
+      #      -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
+      #    cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/googletest"
+          cmake \
+            -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/zlib"
+          cmake \
+            -B build \
+            -DZLIB_BUILD_TESTING=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_C_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+          -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
+      - name: Build
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Tests
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  # debian14-i386
+
+  debian14-i386-clang:
+    continue-on-error: true
+    timeout-minutes: 600
+    runs-on: [ self-hosted, debian14-i386 ]
+    name: debian14-i386-clang
+    steps:
+
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
+      # Move Repositories
+      - name: Move Repositories
+        run: cp -r * "$HOME/_ci_sin-cpp"
+
+      # Dependencies
+      #- name: Google Benchmark
+      #  shell: bash
+      #  run: |
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
+      #    cmake \
+      #      -B build \
+      #      -DBENCHMARK_ENABLE_TESTING=OFF \
+      #      -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+      #      -DCMAKE_BUILD_TYPE=Release \
+      #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+      #      -GNinja \
+      #      -DCMAKE_INSTALL_PREFIX=../_install \
+      #      -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
+      #    cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/googletest"
+          cmake \
+            -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/zlib"
+          cmake \
+            -B build \
+            -DZLIB_BUILD_TESTING=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_C_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+          -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
+      - name: Build
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Tests
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  debian14-i386-gcc:
+    continue-on-error: true
+    timeout-minutes: 600
+    runs-on: [ self-hosted, debian14-i386 ]
+    name: debian14-i386-gcc
+    steps:
+
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
+      # Move Repositories
+      - name: Move Repositories
+        run: cp -r * "$HOME/_ci_sin-cpp"
+
+      # Dependencies
+      #- name: Google Benchmark
+      #  shell: bash
+      #  run: |
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
+      #    cmake \
+      #      -B build \
+      #      -DBENCHMARK_ENABLE_TESTING=OFF \
+      #      -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+      #      -DCMAKE_BUILD_TYPE=Release \
+      #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+      #      -GNinja \
+      #      -DCMAKE_INSTALL_PREFIX=../_install \
+      #      -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
+      #    cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/googletest"
+          cmake \
+            -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/zlib"
+          cmake \
+            -B build \
+            -DZLIB_BUILD_TESTING=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_C_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+          -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
+      - name: Build
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Tests
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  # debian14-armhf
+
+  debian14-armhf-clang:
+    continue-on-error: true
+    timeout-minutes: 600
+    runs-on: [ self-hosted, debian14-armhf ]
+    name: debian14-armhf-clang
+    steps:
+
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
+      # Move Repositories
+      - name: Move Repositories
+        run: cp -r * "$HOME/_ci_sin-cpp"
+
+      # Dependencies
+      #- name: Google Benchmark
+      #  shell: bash
+      #  run: |
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
+      #    cmake \
+      #      -B build \
+      #      -DBENCHMARK_ENABLE_TESTING=OFF \
+      #      -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+      #      -DCMAKE_BUILD_TYPE=Release \
+      #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+      #      -GNinja \
+      #      -DCMAKE_INSTALL_PREFIX=../_install \
+      #      -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
+      #    cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/googletest"
+          cmake \
+            -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/zlib"
+          cmake \
+            -B build \
+            -DZLIB_BUILD_TESTING=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_C_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+          -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
+      - name: Build
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Tests
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  debian14-armhf-gcc:
+    continue-on-error: true
+    timeout-minutes: 600
+    runs-on: [ self-hosted, debian14-armhf ]
+    name: debian14-armhf-gcc
+    steps:
+
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
+      # Move Repositories
+      - name: Move Repositories
+        run: cp -r * "$HOME/_ci_sin-cpp"
+
+      # Dependencies
+      #- name: Google Benchmark
+      #  shell: bash
+      #  run: |
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
+      #    cmake \
+      #      -B build \
+      #      -DBENCHMARK_ENABLE_TESTING=OFF \
+      #      -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+      #      -DCMAKE_BUILD_TYPE=Release \
+      #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+      #      -GNinja \
+      #      -DCMAKE_INSTALL_PREFIX=../_install \
+      #      -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
+      #    cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/googletest"
+          cmake \
+            -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/zlib"
+          cmake \
+            -B build \
+            -DZLIB_BUILD_TESTING=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_C_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+          -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
+      - name: Build
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Tests
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  # debian14-arm64
+
+  debian14-arm64-clang:
+    continue-on-error: true
+    timeout-minutes: 600
+    runs-on: [ self-hosted, debian14-arm64 ]
+    name: debian14-arm64-clang
+    steps:
+
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
+      # Move Repositories
+      - name: Move Repositories
+        run: cp -r * "$HOME/_ci_sin-cpp"
+
+      # Dependencies
+      #- name: Google Benchmark
+      #  shell: bash
+      #  run: |
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
+      #    cmake \
+      #      -B build \
+      #      -DBENCHMARK_ENABLE_TESTING=OFF \
+      #      -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+      #      -DCMAKE_BUILD_TYPE=Release \
+      #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+      #      -GNinja \
+      #      -DCMAKE_INSTALL_PREFIX=../_install \
+      #      -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
+      #    cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/googletest"
+          cmake \
+            -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/zlib"
+          cmake \
+            -B build \
+            -DZLIB_BUILD_TESTING=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_C_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+          -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
+      - name: Build
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Tests
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  debian14-arm64-gcc:
+    continue-on-error: true
+    timeout-minutes: 600
+    runs-on: [ self-hosted, debian14-arm64 ]
+    name: debian14-arm64-gcc
+    steps:
+
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
+      # Move Repositories
+      - name: Move Repositories
+        run: cp -r * "$HOME/_ci_sin-cpp"
+
+      # Dependencies
+      #- name: Google Benchmark
+      #  shell: bash
+      #  run: |
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
+      #    cmake \
+      #      -B build \
+      #      -DBENCHMARK_ENABLE_TESTING=OFF \
+      #      -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+      #      -DCMAKE_BUILD_TYPE=Release \
+      #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+      #      -GNinja \
+      #      -DCMAKE_INSTALL_PREFIX=../_install \
+      #      -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
+      #    cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/googletest"
+          cmake \
+            -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/zlib"
+          cmake \
+            -B build \
+            -DZLIB_BUILD_TESTING=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_C_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+          -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
+      - name: Build
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Tests
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  # debian14-ppc64el
+
+  debian14-ppc64el-clang:
+    continue-on-error: true
+    timeout-minutes: 600
+    runs-on: [ self-hosted, debian14-ppc64el ]
+    name: debian14-ppc64el-clang
+    steps:
+
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
+      # Move Repositories
+      - name: Move Repositories
+        run: cp -r * "$HOME/_ci_sin-cpp"
+
+      # Dependencies
+      #- name: Google Benchmark
+      #  shell: bash
+      #  run: |
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
+      #    cmake \
+      #      -B build \
+      #      -DBENCHMARK_ENABLE_TESTING=OFF \
+      #      -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+      #      -DCMAKE_BUILD_TYPE=Release \
+      #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+      #      -GNinja \
+      #      -DCMAKE_INSTALL_PREFIX=../_install \
+      #      -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
+      #    cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/googletest"
+          cmake \
+            -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/zlib"
+          cmake \
+            -B build \
+            -DZLIB_BUILD_TESTING=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_C_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+          -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
+      - name: Build
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Tests
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  debian14-ppc64el-gcc:
+    continue-on-error: true
+    timeout-minutes: 600
+    runs-on: [ self-hosted, debian14-ppc64el ]
+    name: debian14-ppc64el-gcc
+    steps:
+
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
+      # Move Repositories
+      - name: Move Repositories
+        run: cp -r * "$HOME/_ci_sin-cpp"
+
+      # Dependencies
+      #- name: Google Benchmark
+      #  shell: bash
+      #  run: |
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
+      #    cmake \
+      #      -B build \
+      #      -DBENCHMARK_ENABLE_TESTING=OFF \
+      #      -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+      #      -DCMAKE_BUILD_TYPE=Release \
+      #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+      #      -GNinja \
+      #      -DCMAKE_INSTALL_PREFIX=../_install \
+      #      -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
+      #    cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/googletest"
+          cmake \
+            -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/zlib"
+          cmake \
+            -B build \
+            -DZLIB_BUILD_TESTING=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_C_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+          -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
       - name: Build
         shell: bash
         run: |
@@ -2517,7 +3737,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+      #      -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_FLAGS="-mcpu=arm1176jzf-s -mfpu=vfp -mfloat-abi=hard" -DCMAKE_CXX_FLAGS="-mcpu=arm1176jzf-s -mfpu=vfp -mfloat-abi=hard"
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -2531,7 +3751,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+            -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_FLAGS="-mcpu=arm1176jzf-s -mfpu=vfp -mfloat-abi=hard" -DCMAKE_CXX_FLAGS="-mcpu=arm1176jzf-s -mfpu=vfp -mfloat-abi=hard"
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -2544,7 +3764,7 @@ jobs:
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+            -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_FLAGS="-mcpu=arm1176jzf-s -mfpu=vfp -mfloat-abi=hard" -DCMAKE_CXX_FLAGS="-mcpu=arm1176jzf-s -mfpu=vfp -mfloat-abi=hard"
           cmake --build build --target install
 
       # sin-cpp
@@ -2557,7 +3777,7 @@ jobs:
           -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_FLAGS="-mcpu=arm1176jzf-s -mfpu=vfp -mfloat-abi=hard" -DCMAKE_CXX_FLAGS="-mcpu=arm1176jzf-s -mfpu=vfp -mfloat-abi=hard"
       - name: Build
         shell: bash
         run: |
@@ -2638,7 +3858,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+      #      -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_FLAGS="-mcpu=arm1176jzf-s -mfpu=vfp -mfloat-abi=hard" -DCMAKE_CXX_FLAGS="-mcpu=arm1176jzf-s -mfpu=vfp -mfloat-abi=hard"
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -2652,7 +3872,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_FLAGS="-mcpu=arm1176jzf-s -mfpu=vfp -mfloat-abi=hard" -DCMAKE_CXX_FLAGS="-mcpu=arm1176jzf-s -mfpu=vfp -mfloat-abi=hard"
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -2665,7 +3885,7 @@ jobs:
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_FLAGS="-mcpu=arm1176jzf-s -mfpu=vfp -mfloat-abi=hard" -DCMAKE_CXX_FLAGS="-mcpu=arm1176jzf-s -mfpu=vfp -mfloat-abi=hard"
           cmake --build build --target install
 
       # sin-cpp
@@ -2678,7 +3898,7 @@ jobs:
           -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_FLAGS="-mcpu=arm1176jzf-s -mfpu=vfp -mfloat-abi=hard" -DCMAKE_CXX_FLAGS="-mcpu=arm1176jzf-s -mfpu=vfp -mfloat-abi=hard"
       - name: Build
         shell: bash
         run: |
@@ -2761,7 +3981,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+      #      -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -2775,7 +3995,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+            -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -2788,7 +4008,7 @@ jobs:
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+            -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
           cmake --build build --target install
 
       # sin-cpp
@@ -2801,7 +4021,7 @@ jobs:
           -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
       - name: Build
         shell: bash
         run: |
@@ -2882,7 +4102,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+      #      -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -2896,7 +4116,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -2909,7 +4129,7 @@ jobs:
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
           cmake --build build --target install
 
       # sin-cpp
@@ -2922,7 +4142,7 @@ jobs:
           -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+          -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
       - name: Build
         shell: bash
         run: |
@@ -2935,13 +4155,13 @@ jobs:
           cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
-  # macos14-amd64
+  # raspios13-armhf
 
-  macos14-amd64-apple-clang:
+  raspios13-armhf-clang:
     continue-on-error: true
     timeout-minutes: 600
-    runs-on: [ self-hosted, macos14-amd64 ]
-    name: macos14-amd64-apple-clang
+    runs-on: [ self-hosted, raspios13-armhf ]
+    name: raspios13-armhf-clang
     steps:
 
       # Clean
@@ -3005,7 +4225,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+      #      -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_FLAGS="-mcpu=arm1176jzf-s -mfpu=vfp -mfloat-abi=hard" -DCMAKE_CXX_FLAGS="-mcpu=arm1176jzf-s -mfpu=vfp -mfloat-abi=hard"
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -3019,7 +4239,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+            -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_FLAGS="-mcpu=arm1176jzf-s -mfpu=vfp -mfloat-abi=hard" -DCMAKE_CXX_FLAGS="-mcpu=arm1176jzf-s -mfpu=vfp -mfloat-abi=hard"
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -3032,7 +4252,7 @@ jobs:
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+            -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_FLAGS="-mcpu=arm1176jzf-s -mfpu=vfp -mfloat-abi=hard" -DCMAKE_CXX_FLAGS="-mcpu=arm1176jzf-s -mfpu=vfp -mfloat-abi=hard"
           cmake --build build --target install
 
       # sin-cpp
@@ -3045,7 +4265,7 @@ jobs:
           -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_FLAGS="-mcpu=arm1176jzf-s -mfpu=vfp -mfloat-abi=hard" -DCMAKE_CXX_FLAGS="-mcpu=arm1176jzf-s -mfpu=vfp -mfloat-abi=hard"
       - name: Build
         shell: bash
         run: |
@@ -3058,11 +4278,11 @@ jobs:
           cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
-  macos14-amd64-clang:
+  raspios13-armhf-gcc:
     continue-on-error: true
     timeout-minutes: 600
-    runs-on: [ self-hosted, macos14-amd64 ]
-    name: macos14-amd64-clang
+    runs-on: [ self-hosted, raspios13-armhf ]
+    name: raspios13-armhf-gcc
     steps:
 
       # Clean
@@ -3126,7 +4346,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+      #      -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -3140,7 +4360,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -3153,7 +4373,7 @@ jobs:
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
           cmake --build build --target install
 
       # sin-cpp
@@ -3166,7 +4386,7 @@ jobs:
           -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+          -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
       - name: Build
         shell: bash
         run: |
@@ -3179,11 +4399,13 @@ jobs:
           cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
-  macos14-amd64-gcc:
+  # raspios13-arm64
+
+  raspios13-arm64-clang:
     continue-on-error: true
     timeout-minutes: 600
-    runs-on: [ self-hosted, macos14-amd64 ]
-    name: macos14-amd64-gcc
+    runs-on: [ self-hosted, raspios13-arm64 ]
+    name: raspios13-arm64-clang
     steps:
 
       # Clean
@@ -3247,7 +4469,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk
+      #      -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -3261,7 +4483,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk
+            -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -3274,7 +4496,7 @@ jobs:
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk
+            -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
           cmake --build build --target install
 
       # sin-cpp
@@ -3287,7 +4509,128 @@ jobs:
           -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk
+          -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
+      - name: Build
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
+      - name: Tests
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
+          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
+
+  raspios13-arm64-gcc:
+    continue-on-error: true
+    timeout-minutes: 600
+    runs-on: [ self-hosted, raspios13-arm64 ]
+    name: raspios13-arm64-gcc
+    steps:
+
+      # Clean
+      - name: Clean
+        run: |
+          rm -rf "$HOME/_ci_sin-cpp"
+          mkdir -p "$HOME/_ci_sin-cpp"
+
+      # Clone
+      - name: Clone Google Benchmark
+        uses: actions/checkout@v4
+        with:
+          repository: "google/benchmark"
+          path: 'benchmark'
+          fetch-depth: 1
+      - name: Clone Google Test
+        uses: actions/checkout@v4
+        with:
+          repository: "google/googletest"
+          path: 'googletest'
+          fetch-depth: 1
+      - name: Clone zlib
+        uses: actions/checkout@v4
+        with:
+          repository: "madler/zlib"
+          path: 'zlib'
+          fetch-depth: 1
+      - name: Clone sin-python
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-python'
+          path: 'sin-python'
+          fetch-depth: 1
+      - name: Clone sin-cmake
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cmake'
+          path: 'sin-cmake'
+          fetch-depth: 1
+      - name: Clone sin-cpp
+        uses: actions/checkout@v4
+        with:
+          repository: 'sin-is-nsimd/sin-cpp'
+          path: 'sin-cpp'
+          fetch-depth: 1
+
+      # Move Repositories
+      - name: Move Repositories
+        run: cp -r * "$HOME/_ci_sin-cpp"
+
+      # Dependencies
+      #- name: Google Benchmark
+      #  shell: bash
+      #  run: |
+      #    cd "$HOME/_ci_sin-cpp/benchmark"
+      #    cmake \
+      #      -B build \
+      #      -DBENCHMARK_ENABLE_TESTING=OFF \
+      #      -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+      #      -DCMAKE_BUILD_TYPE=Release \
+      #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+      #      -GNinja \
+      #      -DCMAKE_INSTALL_PREFIX=../_install \
+      #      -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
+      #    cmake --build build --target install
+      - name: Google Test
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/googletest"
+          cmake \
+            -B build \
+            -DBUILD_GMOCK=OFF \
+            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
+          cmake --build build --target install
+      - name: zlib
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/zlib"
+          cmake \
+            -B build \
+            -DZLIB_BUILD_TESTING=OFF \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_C_COMPILER_LAUNCHER=ccache \
+            -GNinja \
+            -DCMAKE_INSTALL_PREFIX=../_install \
+            -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
+          cmake --build build --target install
+
+      # sin-cpp
+      - name: CMake
+        shell: bash
+        run: |
+          cd "$HOME/_ci_sin-cpp/sin-cpp"
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
+          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
+          -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
+          -DCMAKE_INSTALL_PREFIX=../_install \
+          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+          -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
       - name: Build
         shell: bash
         run: |
@@ -3370,7 +4713,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+      #       -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -3384,7 +4727,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+             -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -3397,7 +4740,7 @@ jobs:
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+             -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
           cmake --build build --target install
 
       # sin-cpp
@@ -3410,7 +4753,7 @@ jobs:
           -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+           -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
       - name: Build
         shell: bash
         run: |
@@ -3491,7 +4834,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+      #      -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_OSX_SYSROOT=macosx
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -3505,7 +4848,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+            -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_OSX_SYSROOT=macosx
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -3518,7 +4861,7 @@ jobs:
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+            -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_OSX_SYSROOT=macosx
           cmake --build build --target install
 
       # sin-cpp
@@ -3531,7 +4874,7 @@ jobs:
           -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include
+          -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_OSX_SYSROOT=macosx
       - name: Build
         shell: bash
         run: |
@@ -3612,7 +4955,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk
+      #      -DCMAKE_C_COMPILER=/usr/local/bin/gcc-15 -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-15 -DCMAKE_OSX_SYSROOT=macosx
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -3626,7 +4969,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk
+            -DCMAKE_C_COMPILER=/usr/local/bin/gcc-15 -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-15 -DCMAKE_OSX_SYSROOT=macosx
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -3639,7 +4982,7 @@ jobs:
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk
+            -DCMAKE_C_COMPILER=/usr/local/bin/gcc-15 -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-15 -DCMAKE_OSX_SYSROOT=macosx
           cmake --build build --target install
 
       # sin-cpp
@@ -3652,7 +4995,7 @@ jobs:
           -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk
+          -DCMAKE_C_COMPILER=/usr/local/bin/gcc-15 -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-15 -DCMAKE_OSX_SYSROOT=macosx
       - name: Build
         shell: bash
         run: |
@@ -3665,13 +5008,13 @@ jobs:
           cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
-  # macos14-arm64
+  # macos26-amd64
 
-  macos14-arm64-apple-clang:
+  macos26-amd64-apple-clang:
     continue-on-error: true
     timeout-minutes: 600
-    runs-on: [ self-hosted, macos14-arm64 ]
-    name: macos14-arm64-apple-clang
+    runs-on: [ self-hosted, macos26-amd64 ]
+    name: macos26-amd64-apple-clang
     steps:
 
       # Clean
@@ -3735,7 +5078,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+      #       -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -3749,7 +5092,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+             -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -3762,7 +5105,7 @@ jobs:
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+             -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
           cmake --build build --target install
 
       # sin-cpp
@@ -3775,7 +5118,7 @@ jobs:
           -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+           -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
       - name: Build
         shell: bash
         run: |
@@ -3788,11 +5131,11 @@ jobs:
           cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
-  macos14-arm64-clang:
+  macos26-amd64-clang:
     continue-on-error: true
     timeout-minutes: 600
-    runs-on: [ self-hosted, macos14-arm64 ]
-    name: macos14-arm64-clang
+    runs-on: [ self-hosted, macos26-amd64 ]
+    name: macos26-amd64-clang
     steps:
 
       # Clean
@@ -3856,7 +5199,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++" CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+      #      -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_OSX_SYSROOT=macosx
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -3870,7 +5213,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++" CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+            -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_OSX_SYSROOT=macosx
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -3883,7 +5226,7 @@ jobs:
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++" CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+            -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_OSX_SYSROOT=macosx
           cmake --build build --target install
 
       # sin-cpp
@@ -3896,7 +5239,7 @@ jobs:
           -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++" CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+          -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_OSX_SYSROOT=macosx
       - name: Build
         shell: bash
         run: |
@@ -3909,11 +5252,11 @@ jobs:
           cd "$HOME/_ci_sin-cpp/sin-cpp/build"
           VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
 
-  macos14-arm64-gcc:
+  macos26-amd64-gcc:
     continue-on-error: true
     timeout-minutes: 600
-    runs-on: [ self-hosted, macos14-arm64 ]
-    name: macos14-arm64-gcc
+    runs-on: [ self-hosted, macos26-amd64 ]
+    name: macos26-amd64-gcc
     steps:
 
       # Clean
@@ -3977,7 +5320,7 @@ jobs:
       #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
       #      -GNinja \
       #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk
+      #      -DCMAKE_C_COMPILER=/usr/local/bin/gcc-15 -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-15 -DCMAKE_OSX_SYSROOT=macosx
       #    cmake --build build --target install
       - name: Google Test
         shell: bash
@@ -3991,7 +5334,7 @@ jobs:
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk
+            -DCMAKE_C_COMPILER=/usr/local/bin/gcc-15 -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-15 -DCMAKE_OSX_SYSROOT=macosx
           cmake --build build --target install
       - name: zlib
         shell: bash
@@ -4004,7 +5347,7 @@ jobs:
             -DCMAKE_C_COMPILER_LAUNCHER=ccache \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk
+            -DCMAKE_C_COMPILER=/usr/local/bin/gcc-15 -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-15 -DCMAKE_OSX_SYSROOT=macosx
           cmake --build build --target install
 
       # sin-cpp
@@ -4017,372 +5360,7 @@ jobs:
           -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
           -DCMAKE_INSTALL_PREFIX=../_install \
           -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX14.sdk
-      - name: Build
-        shell: bash
-        run: |
-          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
-          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
-          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Tests
-        shell: bash
-        run: |
-          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
-          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
-
-  # macos15-arm64
-
-  macos15-arm64-apple-clang:
-    continue-on-error: true
-    timeout-minutes: 600
-    runs-on: [ self-hosted, macos15-arm64 ]
-    name: macos15-arm64-apple-clang
-    steps:
-
-      # Clean
-      - name: Clean
-        run: |
-          rm -rf "$HOME/_ci_sin-cpp"
-          mkdir -p "$HOME/_ci_sin-cpp"
-
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v4
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-          fetch-depth: 1
-      - name: Clone Google Test
-        uses: actions/checkout@v4
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-          fetch-depth: 1
-      - name: Clone zlib
-        uses: actions/checkout@v4
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-          fetch-depth: 1
-      - name: Clone sin-python
-        uses: actions/checkout@v4
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-          fetch-depth: 1
-      - name: Clone sin-cmake
-        uses: actions/checkout@v4
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-          fetch-depth: 1
-      - name: Clone sin-cpp
-        uses: actions/checkout@v4
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-          fetch-depth: 1
-
-      # Move Repositories
-      - name: Move Repositories
-        run: cp -r * "$HOME/_ci_sin-cpp"
-
-      # Dependencies
-      #- name: Google Benchmark
-      #  shell: bash
-      #  run: |
-      #    cd "$HOME/_ci_sin-cpp/benchmark"
-      #    cmake \
-      #      -B build \
-      #      -DBENCHMARK_ENABLE_TESTING=OFF \
-      #      -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
-      #      -DCMAKE_BUILD_TYPE=Release \
-      #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-      #      -GNinja \
-      #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
-      #    cmake --build build --target install
-      - name: Google Test
-        shell: bash
-        run: |
-          cd "$HOME/_ci_sin-cpp/googletest"
-          cmake \
-            -B build \
-            -DBUILD_GMOCK=OFF \
-            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
-            -DCMAKE_BUILD_TYPE=Release \
-            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-            -GNinja \
-            -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
-          cmake --build build --target install
-      - name: zlib
-        shell: bash
-        run: |
-          cd "$HOME/_ci_sin-cpp/zlib"
-          cmake \
-            -B build \
-            -DZLIB_BUILD_TESTING=OFF \
-            -DCMAKE_BUILD_TYPE=Release \
-            -DCMAKE_C_COMPILER_LAUNCHER=ccache \
-            -GNinja \
-            -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
-          cmake --build build --target install
-
-      # sin-cpp
-      - name: CMake
-        shell: bash
-        run: |
-          cd "$HOME/_ci_sin-cpp/sin-cpp"
-          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
-          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-          -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
-          -DCMAKE_INSTALL_PREFIX=../_install \
-          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
-      - name: Build
-        shell: bash
-        run: |
-          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
-          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
-          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Tests
-        shell: bash
-        run: |
-          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
-          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
-
-  macos15-arm64-clang:
-    continue-on-error: true
-    timeout-minutes: 600
-    runs-on: [ self-hosted, macos15-arm64 ]
-    name: macos15-arm64-clang
-    steps:
-
-      # Clean
-      - name: Clean
-        run: |
-          rm -rf "$HOME/_ci_sin-cpp"
-          mkdir -p "$HOME/_ci_sin-cpp"
-
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v4
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-          fetch-depth: 1
-      - name: Clone Google Test
-        uses: actions/checkout@v4
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-          fetch-depth: 1
-      - name: Clone zlib
-        uses: actions/checkout@v4
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-          fetch-depth: 1
-      - name: Clone sin-python
-        uses: actions/checkout@v4
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-          fetch-depth: 1
-      - name: Clone sin-cmake
-        uses: actions/checkout@v4
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-          fetch-depth: 1
-      - name: Clone sin-cpp
-        uses: actions/checkout@v4
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-          fetch-depth: 1
-
-      # Move Repositories
-      - name: Move Repositories
-        run: cp -r * "$HOME/_ci_sin-cpp"
-
-      # Dependencies
-      #- name: Google Benchmark
-      #  shell: bash
-      #  run: |
-      #    cd "$HOME/_ci_sin-cpp/benchmark"
-      #    cmake \
-      #      -B build \
-      #      -DBENCHMARK_ENABLE_TESTING=OFF \
-      #      -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
-      #      -DCMAKE_BUILD_TYPE=Release \
-      #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-      #      -GNinja \
-      #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++" CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
-      #    cmake --build build --target install
-      - name: Google Test
-        shell: bash
-        run: |
-          cd "$HOME/_ci_sin-cpp/googletest"
-          cmake \
-            -B build \
-            -DBUILD_GMOCK=OFF \
-            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
-            -DCMAKE_BUILD_TYPE=Release \
-            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-            -GNinja \
-            -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++" CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
-          cmake --build build --target install
-      - name: zlib
-        shell: bash
-        run: |
-          cd "$HOME/_ci_sin-cpp/zlib"
-          cmake \
-            -B build \
-            -DZLIB_BUILD_TESTING=OFF \
-            -DCMAKE_BUILD_TYPE=Release \
-            -DCMAKE_C_COMPILER_LAUNCHER=ccache \
-            -GNinja \
-            -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++" CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
-          cmake --build build --target install
-
-      # sin-cpp
-      - name: CMake
-        shell: bash
-        run: |
-          cd "$HOME/_ci_sin-cpp/sin-cpp"
-          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
-          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-          -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
-          -DCMAKE_INSTALL_PREFIX=../_install \
-          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++" CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
-      - name: Build
-        shell: bash
-        run: |
-          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
-          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
-          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --build .
-      - name: Tests
-        shell: bash
-        run: |
-          cd "$HOME/_ci_sin-cpp/sin-cpp/build"
-          VERBOSE=1 PATH="../_install/bin:$PATH" ctest --output-on-failure
-
-  macos15-arm64-gcc:
-    continue-on-error: true
-    timeout-minutes: 600
-    runs-on: [ self-hosted, macos15-arm64 ]
-    name: macos15-arm64-gcc
-    steps:
-
-      # Clean
-      - name: Clean
-        run: |
-          rm -rf "$HOME/_ci_sin-cpp"
-          mkdir -p "$HOME/_ci_sin-cpp"
-
-      # Clone
-      - name: Clone Google Benchmark
-        uses: actions/checkout@v4
-        with:
-          repository: "google/benchmark"
-          path: 'benchmark'
-          fetch-depth: 1
-      - name: Clone Google Test
-        uses: actions/checkout@v4
-        with:
-          repository: "google/googletest"
-          path: 'googletest'
-          fetch-depth: 1
-      - name: Clone zlib
-        uses: actions/checkout@v4
-        with:
-          repository: "madler/zlib"
-          path: 'zlib'
-          fetch-depth: 1
-      - name: Clone sin-python
-        uses: actions/checkout@v4
-        with:
-          repository: 'sin-is-nsimd/sin-python'
-          path: 'sin-python'
-          fetch-depth: 1
-      - name: Clone sin-cmake
-        uses: actions/checkout@v4
-        with:
-          repository: 'sin-is-nsimd/sin-cmake'
-          path: 'sin-cmake'
-          fetch-depth: 1
-      - name: Clone sin-cpp
-        uses: actions/checkout@v4
-        with:
-          repository: 'sin-is-nsimd/sin-cpp'
-          path: 'sin-cpp'
-          fetch-depth: 1
-
-      # Move Repositories
-      - name: Move Repositories
-        run: cp -r * "$HOME/_ci_sin-cpp"
-
-      # Dependencies
-      #- name: Google Benchmark
-      #  shell: bash
-      #  run: |
-      #    cd "$HOME/_ci_sin-cpp/benchmark"
-      #    cmake \
-      #      -B build \
-      #      -DBENCHMARK_ENABLE_TESTING=OFF \
-      #      -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
-      #      -DCMAKE_BUILD_TYPE=Release \
-      #      -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-      #      -GNinja \
-      #      -DCMAKE_INSTALL_PREFIX=../_install \
-      #      -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk
-      #    cmake --build build --target install
-      - name: Google Test
-        shell: bash
-        run: |
-          cd "$HOME/_ci_sin-cpp/googletest"
-          cmake \
-            -B build \
-            -DBUILD_GMOCK=OFF \
-            -Dgtest_build_tests=OFF -Dgtest_build_samples=OFF \
-            -DCMAKE_BUILD_TYPE=Release \
-            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-            -GNinja \
-            -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk
-          cmake --build build --target install
-      - name: zlib
-        shell: bash
-        run: |
-          cd "$HOME/_ci_sin-cpp/zlib"
-          cmake \
-            -B build \
-            -DZLIB_BUILD_TESTING=OFF \
-            -DCMAKE_BUILD_TYPE=Release \
-            -DCMAKE_C_COMPILER_LAUNCHER=ccache \
-            -GNinja \
-            -DCMAKE_INSTALL_PREFIX=../_install \
-            -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk
-          cmake --build build --target install
-
-      # sin-cpp
-      - name: CMake
-        shell: bash
-        run: |
-          cd "$HOME/_ci_sin-cpp/sin-cpp"
-          VERBOSE=1 PATH="../_install/bin:$PATH" cmake --version
-          VERBOSE=1 PATH="../_install/bin:$PATH" cmake -B build -DCMAKE_BUILD_TYPE=Release \
-          -G"`python3 -c "import random; print(random.choice(['Ninja', 'Unix Makefiles']))"`" \
-          -DCMAKE_INSTALL_PREFIX=../_install \
-          -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
-          -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk
+          -DCMAKE_C_COMPILER=/usr/local/bin/gcc-15 -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-15 -DCMAKE_OSX_SYSROOT=macosx
       - name: Build
         shell: bash
         run: |

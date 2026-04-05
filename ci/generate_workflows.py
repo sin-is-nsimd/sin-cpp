@@ -3,7 +3,7 @@
 
 """Generate github action workflows."""
 
-# Copyright © 2023-2025 Lénaïc Bagnères, lenaicb@singularity.fr
+# Copyright © 2023-2026 Lénaïc Bagnères, lenaicb@singularity.fr
 # Copyright © 2024 Rodolphe Cargnello, rodolphe.cargnello@gmail.com
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -30,7 +30,9 @@ import sys
 
 config: dict[str, Any] = {}
 
-# debian + raspios + manjaro
+# raspios armhf flags
+raspios_armhf_flags = ' -DCMAKE_C_FLAGS="-mcpu=arm1176jzf-s -mfpu=vfp -mfloat-abi=hard" -DCMAKE_CXX_FLAGS="-mcpu=arm1176jzf-s -mfpu=vfp -mfloat-abi=hard"'
+# debian + raspios
 for system in [
     # debian12
     "debian12-amd64",
@@ -44,9 +46,18 @@ for system in [
     "debian13-armhf",
     "debian13-arm64",
     "debian13-ppc64el",
+    # debian14
+    "debian14-amd64",
+    "debian14-i386",
+    "debian14-armhf",
+    "debian14-arm64",
+    "debian14-ppc64el",
     # raspios12
     "raspios12-armhf",
     "raspios12-arm64",
+    # raspios13
+    "raspios13-armhf",
+    "raspios13-arm64",
 ]:
     config.update(
         {
@@ -54,11 +65,19 @@ for system in [
                 "compilers_args": [
                     {
                         "name": "clang",
-                        "args": "-DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang",
+                        "args": "-DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++"
+                        + (
+                            raspios_armhf_flags
+                            if system in ["raspios12-armhf", "raspios13-armhf"]
+                            else ""
+                        ),
                     },
                     {
                         "name": "gcc",
-                        "args": "-DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc",
+                        "args": "-DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++"
+                        + (
+                            raspios_armhf_flags if system in ["raspios12-armhf"] else ""
+                        ),
                     },
                 ]
             },
@@ -66,50 +85,49 @@ for system in [
     )
 
 # macOS
-for version in ["14", "15"]:
-    system = "macos" + version + "-amd64"
+for system in ["macos15-amd64", "macos26-amd64"]:
     config.update(
         {
             system: {
                 "compilers_args": [
                     {
                         "name": "apple-clang",
-                        "args": "-DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang",
+                        "args": " -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++",
                     },
                     {
                         "name": "clang",
-                        "args": '-DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ LDFLAGS="-L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib/c++ -lunwind" CPPFLAGS=-I/usr/local/opt/llvm/include',
+                        "args": "-DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++ -DCMAKE_OSX_SYSROOT=macosx",
                     },
                     {
                         "name": "gcc",
-                        "args": f"-DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX{version}.sdk",
+                        "args": f"-DCMAKE_C_COMPILER=/usr/local/bin/gcc-15 -DCMAKE_CXX_COMPILER=/usr/local/bin/g++-15 -DCMAKE_OSX_SYSROOT=macosx",
                     },
                 ]
             },
         }
     )
-for version in ["14", "15"]:
-    system = "macos" + version + "-arm64"
-    config.update(
-        {
-            system: {
-                "compilers_args": [
-                    {
-                        "name": "apple-clang",
-                        "args": "-DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang",
-                    },
-                    {
-                        "name": "clang",
-                        "args": '-DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ -DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++" CPPFLAGS="-I/opt/homebrew/opt/llvm/include"',
-                    },
-                    {
-                        "name": "gcc",
-                        "args": f"-DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14 -DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX{version}.sdk",
-                    },
-                ]
-            },
-        }
-    )
+# for version in ["15", "26"]:
+#     system = "macos" + version + "-arm64"
+#     config.update(
+#         {
+#             system: {
+#                 "compilers_args": [
+#                     {
+#                         "name": "apple-clang",
+#                         "args": " -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++",
+#                     },
+#                     {
+#                         "name": "clang",
+#                         "args": '-DCMAKE_C_COMPILER=/opt/homebrew/opt/llvm/bin/clang CFLAGS="-I/opt/homebrew/opt/llvm/include" -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/llvm/bin/clang++ CPPFLAGS="-I/opt/homebrew/opt/llvm/include" LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"',
+#                     },
+#                     {
+#                         "name": "gcc",
+#                         "args": f"-DCMAKE_C_COMPILER=/opt/homebrew/opt/gcc/bin/gcc-14 -DCMAKE_CXX_COMPILER=/opt/homebrew/opt/gcc/bin/g++-14-DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX{version}.sdk",
+#                     },
+#                 ]
+#             },
+#         }
+#     )
 
 # Windows
 for system in ["windows10-amd64", "windows10-i386", "windows11-amd64"]:
@@ -353,10 +371,12 @@ if __name__ == "__main__":
 
             for compilers_args in configs["compilers_args"]:
 
+                job = f"{system}-{compilers_args['name']}".lower()
+
                 # Header
                 f.write(
                     runner.format(
-                        job=f"{system}-{compilers_args['name']}".lower(),
+                        job=job,
                         system=system,
                     )
                 )
